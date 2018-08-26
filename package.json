@@ -1,0 +1,30 @@
+{
+  "name": "auction_price_track",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "antd": "^3.8.1",
+    "react": "^16.4.2",
+    "react-dom": "^16.4.2",
+    "react-flip-move": "^3.0.2",
+    "react-redux": "^5.0.7",
+    "react-scripts": "1.1.4",
+    "react-select": "^2.0.0",
+    "redux": "^4.0.0",
+    "wowhead": "0.0.2"
+  },
+  "scripts": {
+    "build-css": "node-sass src/css/scss -o src/css",
+    "watch-css": "npm run build-css && node-sass src/css/scss -wo src/css",
+    "start": "react-app-rewired start",
+    "build": "react-app-rewired build",
+    "test": "react-app-rewired test --env=jsdom",
+    "eject": "react-scripts eject"
+  },
+  "proxy": "http://localhost:5000/",
+  "devDependencies": {
+    "babel-plugin-import": "^1.8.0",
+    "node-sass-tilde-importer": "^1.0.2",
+    "react-app-rewired": "^1.5.2"
+  }
+}

@@ -1,0 +1,25 @@
+.ant-table-like{
+    background: #fafafa;
+    color: rgba(0, 0, 0, 0.85);
+    border: 1px solid #e8e8e8;
+    padding: 16px 16px;
+    border-top-left-radius: 4px;
+}
+
+.money-icon{
+    background: no-repeat;
+    width: 15px;
+    height: 12px;
+    display: inline-block;
+    background-size: 90%;
+    &.gold{
+        background-image: url("../img/money-gold.gif")
+    }
+    &.silver{
+        background-image: url("../img/money-silver.gif")
+    }
+    &.copper{
+        background-image: url("../img/money-copper.gif")
+    }
+}
+
