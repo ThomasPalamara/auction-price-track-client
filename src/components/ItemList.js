@@ -4,7 +4,7 @@ import ItemListItem from "./ItemListItem";
 import ItemListAddedItem from "./ItemListAddedItem";
 import ItemListFilter from "./ItemListFilter";
 import FlipMove from "react-flip-move";
-import { Row, Col, Spin, Icon } from "antd";
+import { Row, Col, Spin, Icon, Button } from "antd";
 
 const antIcon = <Icon type="loading" style={{ fontSize: 24 }} spin />;
 
@@ -36,6 +36,7 @@ class ItemList extends React.Component {
     this.setState({ typeOfAddedItem: type })
   }
 
+
   render() {
     return (
       <div className="ItemList">
@@ -52,6 +53,10 @@ class ItemList extends React.Component {
           <button
             className={`typeOfItemBtn ${this.state.typeOfAddedItem === 'ingredient' ? 'selected' : ''}`}
             onClick={() => this.handleTypeofItem('ingredient')}>Ajouter objets à acheter</button>
+
+        </div>
+        <div className="itemLanguageBtn">
+          <Button onClick={() => this.props.handleItemLanguageChange()} type="dashed">Utiliser les noms d'objets {this.state.itemLanguage == 'en' ? 'francais' : 'anglais'}</Button>
         </div>
 
         <Row className="container-item-display">
@@ -61,7 +66,7 @@ class ItemList extends React.Component {
                 <p className={this.state.typeOfAddedItem === 'product' ? 'selected' : ''}>Produits à vendre</p>
                 <ul>
                   {this.props.product.map((item =>
-                    <ItemListAddedItem id={item.id} name={item.name} itemType="product" />
+                    <ItemListAddedItem id={item.id} name={item.name[this.props.itemLanguage]} itemType="product" />
                   ))}
                 </ul>
               </Col>
@@ -69,7 +74,7 @@ class ItemList extends React.Component {
                 <p className={this.state.typeOfAddedItem === 'ingredient' ? 'selected' : ''}>Ingrédients necessaires</p>
                 <ul>
                   {this.props.ingredient.map((item =>
-                    <ItemListAddedItem id={item.id} name={item.name} itemType="ingredient" />
+                    <ItemListAddedItem id={item.id} name={item.name[this.props.itemLanguage]} itemType="ingredient" />
                   ))}
                 </ul>
               </Col>
@@ -82,12 +87,14 @@ class ItemList extends React.Component {
                 <FlipMove>
                   {this.state.response &&
                     this.state.response
-                      .filter(
-                        (item) => (item.name.toLowerCase().includes(this.props.textFilter.toLowerCase()))
-                      )
+                      .filter(item => {
+                          let itemName = this.props.itemLanguage === 'en' ? item.name : item.name_fr;
+                         return itemName.toLowerCase().includes(this.props.textFilter.toLowerCase())
+                        })
                       .slice(0, 30)
-                      .map(item => (
-                        <ItemListItem id={item.id} name={item.name} typeOfAddedItem={this.state.typeOfAddedItem} />))
+                      .map(item => {
+                        return (<ItemListItem key={item.id} item={item} itemLanguage={this.props.itemLanguage} typeOfAddedItem={this.state.typeOfAddedItem} />)
+                      })
                   }
                 </FlipMove>
               </ul>

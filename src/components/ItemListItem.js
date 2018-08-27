@@ -7,18 +7,17 @@ const ItemListItem = (props) => (
             <li>
                 <a
                     href="#"
-                    data-wowhead={`item=${props.id}`}
+                    data-wowhead={`item=${props.item.id}`}
                     key={props.id}
                     onClick={(e) => {
-                        console.log(e.target);
                         if (props.typeOfAddedItem === 'product') {
-                            props.dispatch(addProduct({ id: props.id, name:props.name }))
+                            props.dispatch(addProduct({ id: props.item.id, name:{ en: props.item.name, fr: props.item.name_fr} }))
                         } else {
-                            props.dispatch(addIngredient({ id: props.id, name:props.name }))
+                            props.dispatch(addIngredient({ id: props.item.id, name:{ en: props.item.name, fr: props.item.name_fr} }))
                         }
                     }
                     }
-                >{props.name}</a> 
+                >{props.itemLanguage === 'en' ? props.item.name : props.item.name_fr}</a> 
             </li>
         )
 

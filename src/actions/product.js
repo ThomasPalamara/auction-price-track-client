@@ -1,5 +1,5 @@
 //Action generators cf redux 101
-export const addProduct = ({ id = 0, name='', quantity=1 } = {}) => ({
+export const addProduct = ({ id = 0, name={}, quantity=1 } = {}) => ({
     type: 'ADD_PRODUCT',
     product: {
         id,

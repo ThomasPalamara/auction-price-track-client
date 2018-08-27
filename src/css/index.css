@@ -61,6 +61,10 @@
           left: 54%;
           transform: translate(-50%, -50%); }
 
+.ItemList .itemLanguageBtn {
+  margin-top: 20px;
+  text-align: right; }
+
 .typeOfItemBtn {
   background-color: #fff;
   border-radius: 20px;

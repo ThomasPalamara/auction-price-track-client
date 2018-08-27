@@ -4,11 +4,14 @@ import ItemList from './ItemList';
 import DisplayPrices from './DisplayPrices';
 import { Divider, Row, Col } from 'antd';
 
+// TODO Ajouter la selection de language au store puis corrigé celle en place et ajouter a display table
+
 export default class AuctionPriceTrack extends React.Component {
   state = {
     realm : '',
     auctionHouse: null,
-    loading: false
+    loading: false,
+    itemLanguage: 'en'
   };
   handleRealmPicked = (realm) => {
     this.setState({ realm });
@@ -31,6 +34,14 @@ export default class AuctionPriceTrack extends React.Component {
     }
   }
 
+  handleItemLanguageChange = () => {
+    if(this.state.itemLanguage == 'en'){
+      this.setState({ itemLanguage: 'fr'})
+    }else{
+      this.setState({ itemLanguage: 'en'})
+    }
+  }
+
     render() {
     let displayPriceSection;
     if(!this.state.auctionHouse){
@@ -42,7 +53,7 @@ export default class AuctionPriceTrack extends React.Component {
       <div className="main">
         <RealmSelection loading={this.state.loading} handleRealmPicked={this.handleRealmPicked}/>
         <Divider/>
-        <ItemList/>
+        <ItemList handleItemLanguageChange={this.handleItemLanguageChange} itemLanguage={this.state.itemLanguage}/>
         <Divider/>
         {displayPriceSection}
       </div>

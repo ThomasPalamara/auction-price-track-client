@@ -4,6 +4,7 @@ const ingredientReducerDefaultState = [];
 export default (state = ingredientReducerDefaultState, action) => {
     switch (action.type) {
         case 'ADD_INGREDIENT':
+            console.log(action);
             const idExists = state.find((item) => item.id === action.ingredient.id)
             if (!idExists) {
                 return [...state, action.ingredient]
