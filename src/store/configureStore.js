@@ -1,5 +1,6 @@
 import { createStore, combineReducers } from "redux";
 import filtersReducer from '../reducers/filters';
+import itemLanguageReducer from '../reducers/itemLanguage';
 import productReducer from '../reducers/product';
 import ingredientReducer from '../reducers/ingredient';
 
@@ -10,8 +11,10 @@ export default () => {
         combineReducers({
             product: productReducer,
             ingredient: ingredientReducer,
-            filters: filtersReducer
-        })
+            filters: filtersReducer,
+            itemLanguage: itemLanguageReducer
+        }),
+        window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
     );
 return store;
 }

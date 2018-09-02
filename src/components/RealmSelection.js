@@ -19,7 +19,6 @@ export default class realmSelection extends React.Component {
 
   handleRealmPicked = e => {
     e.preventDefault();
-    console.log(this.state.selectedOption);
     if(this.state.selectedOption && this.state.response.find(x => x.label === this.state.selectedOption.label) ){
     const realm = this.state.selectedOption.label;
       this.setState({status: 'done'})

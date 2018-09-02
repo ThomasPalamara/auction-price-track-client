@@ -35,12 +35,11 @@ class DisplayPrices extends React.Component {
                         title: 'Nom',
                         dataIndex: 'name',
                         key: 'name',
-                        render: (text) => (
+                        render: (text,record) => (
                             <a
-                                data-wowhead={`item=${text}`}
+                                data-wowhead={`item=${record.key}`}
                                 href="#"
-                                data-wh-rename-link="true"
-                            >loading</a>
+                            >{text}</a>
                         ),
                     }, {
                         title: 'Prix total',
@@ -83,7 +82,7 @@ class DisplayPrices extends React.Component {
                                 return (
                                     {
                                         key: element.id,
-                                        name: element.id,
+                                        name: element.name[this.props.itemLanguage],
                                         auctions: null,
                                         totalPrice: "Aucune enchere pour cet objet",
                                         quantityMax: 0,
@@ -94,7 +93,7 @@ class DisplayPrices extends React.Component {
                                 return (
                                     {
                                         key: element.id,
-                                        name: element.id,
+                                        name: element.name[this.props.itemLanguage],
                                         auctions: itemElem.auctions[0],
                                         totalPrice: this.getPriceForQuantity(itemElem.auctions[0], element.quantity),
                                         quantityMax: itemElem.auctions[0].total_quantity,
@@ -115,8 +114,8 @@ const mapStatetoProps = state => {
 
     return {
         product: state.product,
-        ingredient: state.ingredient
-
+        ingredient: state.ingredient,
+        itemLanguage: state.itemLanguage
     }
 };
 

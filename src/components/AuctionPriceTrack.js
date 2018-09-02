@@ -11,7 +11,6 @@ export default class AuctionPriceTrack extends React.Component {
     realm : '',
     auctionHouse: null,
     loading: false,
-    itemLanguage: 'en'
   };
   handleRealmPicked = (realm) => {
     this.setState({ realm });
@@ -31,14 +30,6 @@ export default class AuctionPriceTrack extends React.Component {
           return this.setState({ auctionHouse: response })
         }
           );
-    }
-  }
-
-  handleItemLanguageChange = () => {
-    if(this.state.itemLanguage == 'en'){
-      this.setState({ itemLanguage: 'fr'})
-    }else{
-      this.setState({ itemLanguage: 'en'})
     }
   }
 

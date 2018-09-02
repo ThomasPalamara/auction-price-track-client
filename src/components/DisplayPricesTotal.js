@@ -20,7 +20,6 @@ class DisplayPricesTotal extends React.Component {
                 let qte = Math.min(need - qteactu, element.quantity);
                 result += qte * element.price
                 qteactu += qte
-                console.log(result);
             }
         });
         return result;
@@ -32,12 +31,16 @@ class DisplayPricesTotal extends React.Component {
 
         this.props.product.map((element) => {
             const itemElem = this.props.auctionHouse.find(elem => elem.item_id === element.id.toString()); 
+            if(itemElem){
             totalProduct += this.getPriceForQuantity(itemElem.auctions[0], element.quantity);
+            }
         });
 
         this.props.ingredient.map((element) => {
             const itemElem = this.props.auctionHouse.find(elem => elem.item_id === element.id.toString()); 
+            if(itemElem){
             totalIngredient += this.getPriceForQuantity(itemElem.auctions[0], element.quantity);
+        }
         });
 
         const profit = totalProduct - totalIngredient;

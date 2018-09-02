@@ -10,8 +10,6 @@ export default (state = productReducerDefaultState, action) => {
             }
             return state;
         case 'EDIT_QUANTITY_PRODUCT':
-            console.log(action);
-            console.log('state', state);
             return state.map((product) => {
                 if (product.id === action.id) {
                     return {
@@ -19,7 +17,6 @@ export default (state = productReducerDefaultState, action) => {
                         ...{quantity:action.quantity}
                     }
                 } else {
-                    console.log('ko');
                     return product;
                 }
             })

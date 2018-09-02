@@ -5,6 +5,7 @@ import ItemListAddedItem from "./ItemListAddedItem";
 import ItemListFilter from "./ItemListFilter";
 import FlipMove from "react-flip-move";
 import { Row, Col, Spin, Icon, Button } from "antd";
+import ItemLanguage from "./ItemLanguage";
 
 const antIcon = <Icon type="loading" style={{ fontSize: 24 }} spin />;
 
@@ -55,9 +56,8 @@ class ItemList extends React.Component {
             onClick={() => this.handleTypeofItem('ingredient')}>Ajouter objets à acheter</button>
 
         </div>
-        <div className="itemLanguageBtn">
-          <Button onClick={() => this.props.handleItemLanguageChange()} type="dashed">Utiliser les noms d'objets {this.state.itemLanguage == 'en' ? 'francais' : 'anglais'}</Button>
-        </div>
+        
+        <ItemLanguage/>
 
         <Row className="container-item-display">
           <Col span={6} className="selected-items">
@@ -111,8 +111,8 @@ const mapStatetoProps = state => {
   return {
     textFilter: state.filters.text,
     product: state.product,
-    ingredient: state.ingredient
-
+    ingredient: state.ingredient,
+    itemLanguage: state.itemLanguage
   }
 };
 
