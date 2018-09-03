@@ -3,7 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "all": "^0.0.0",
     "antd": "^3.8.1",
+    "netlify-cli": "^1.2.3",
     "react": "^16.4.2",
     "react-dom": "^16.4.2",
     "react-flip-move": "^3.0.2",
@@ -16,8 +18,8 @@
   "scripts": {
     "build-css": "node-sass src/css/scss -o src/css",
     "watch-css": "npm run build-css && node-sass src/css/scss -wo src/css",
-    "start": "react-app-rewired start",
-    "build": "react-app-rewired build",
+    "start": "react-scripts start",
+    "build": "react-scripts build",
     "test": "react-app-rewired test --env=jsdom",
     "eject": "react-scripts eject"
   },
