@@ -1,6 +1,7 @@
 import React from 'react';
 import Select from 'react-select';
 import { Button } from 'antd';
+import config from '../config';
 
 export default class realmSelection extends React.Component {
   state = {
@@ -12,7 +13,7 @@ export default class realmSelection extends React.Component {
   };
 
   componentDidMount() {
-    fetch('/api/realms')
+    fetch(`${config.serverUrl}/api/realms`)
     .then(res => res.json())
     .then(response => this.setState({ response: response}));
   }

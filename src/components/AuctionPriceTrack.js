@@ -3,6 +3,7 @@ import RealmSelection from './RealmSelection';
 import ItemList from './ItemList';
 import DisplayPrices from './DisplayPrices';
 import { Divider, Row, Col } from 'antd';
+import config from '../config';
 
 // TODO Ajouter la selection de language au store puis corrigé celle en place et ajouter a display table
 
@@ -20,7 +21,7 @@ export default class AuctionPriceTrack extends React.Component {
     if (this.state.realm && prevState.realm !== this.state.realm) {
       console.log('Fetching');
       this.setState({ loading: true });
-      fetch(`/api/auctions/${this.state.realm}`)
+      fetch(`${config.serverUrl}/api/auctions/${this.state.realm}`)
         .then(res => res.json())
         .then(response => {
           this.setState({ loading: false });

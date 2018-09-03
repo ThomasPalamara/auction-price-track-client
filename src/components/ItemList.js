@@ -6,6 +6,7 @@ import ItemListFilter from "./ItemListFilter";
 import FlipMove from "react-flip-move";
 import { Row, Col, Spin, Icon, Button } from "antd";
 import ItemLanguage from "./ItemLanguage";
+import config from '../config';
 
 const antIcon = <Icon type="loading" style={{ fontSize: 24 }} spin />;
 
@@ -25,7 +26,7 @@ class ItemList extends React.Component {
   }
 
   componentDidMount() {
-    fetch(`/api/items`)
+    fetch(`${config.serverUrl}/api/items`)
       .then(res => res.json())
       .then(response => {
         this.setState({ loading: false });
