@@ -4,7 +4,7 @@ import { Provider } from "react-redux";
 import configureStore from "./store/configureStore";
 import { setTextFilter } from "./actions/filters";
 import { setItemLanguage } from "./actions/itemLanguage";
-
+import 'antd/dist/antd.css';
 // import logo from './logo.svg';
 
 import './css/App.css';
