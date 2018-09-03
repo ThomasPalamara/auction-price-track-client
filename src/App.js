@@ -8,6 +8,7 @@ import { setItemLanguage } from "./actions/itemLanguage";
 // import logo from './logo.svg';
 
 import './css/App.css';
+import 'antd/dist/antd.css';
 
 const store = configureStore();
 
