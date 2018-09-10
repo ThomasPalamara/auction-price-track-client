@@ -2,7 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { setTextFilter } from "../actions/filters";
 
-const ItemListFilter = (props) => (
+const MainListFilter = (props) => (
     <div className="InputTextFilter">
         <input
             type="text"
@@ -21,4 +21,4 @@ const mapStateToProps = state => {
     };
 };
 
-export default connect(mapStateToProps)(ItemListFilter);
+export default connect(mapStateToProps)(MainListFilter);

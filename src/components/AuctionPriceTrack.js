@@ -1,8 +1,8 @@
 import React from 'react';
 import RealmSelection from './RealmSelection';
-import ItemList from './ItemList';
+import MainList from './MainList';
 import DisplayPrices from './DisplayPrices';
-import { Divider, Row, Col } from 'antd';
+import { Divider } from 'antd';
 
 // TODO Ajouter la selection de language au store puis corrigé celle en place et ajouter a display table
 
@@ -44,7 +44,7 @@ export default class AuctionPriceTrack extends React.Component {
       <div className="main">
         <RealmSelection loading={this.state.loading} handleRealmPicked={this.handleRealmPicked}/>
         <Divider/>
-        <ItemList handleItemLanguageChange={this.handleItemLanguageChange} itemLanguage={this.state.itemLanguage}/>
+        <MainList handleItemLanguageChange={this.handleItemLanguageChange} itemLanguage={this.state.itemLanguage}/>
         <Divider/>
         {displayPriceSection}
       </div>

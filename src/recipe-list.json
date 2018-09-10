@@ -1,0 +1,145 @@
+{
+    "recipe": [{
+        "profession": "alchemy",
+        "type": "flask",
+        "craft": {
+            "id": 152641,
+            "Quantity": 1
+        },
+        "reagents": [{
+            "id": 152510,
+            "Quantity": 5
+        }, {
+            "id": 152507,
+            "Quantity": 10
+        }, {
+            "id": 152509,
+            "Quantity": 15
+        }]
+    }, {
+        "profession": "alchemy",
+        "type": "flask",
+        "craft": {
+            "id": 152640,
+            "Quantity": 1
+        },
+        "reagents": [{
+            "id": 152510,
+            "Quantity": 5
+        }, {
+            "id": 152508,
+            "Quantity": 10
+        }, {
+            "id": 152506,
+            "Quantity": 15
+        }]
+    }, {
+        "profession": "alchemy",
+        "type": "flask",
+        "craft": {
+            "id": 152638,
+            "Quantity": 1
+        },
+        "reagents": [{
+            "id": 152510,
+            "Quantity": 5
+        }, {
+            "id": 152507,
+            "Quantity": 10
+        }, {
+            "id": 152511,
+            "Quantity": 15
+        }]
+    }, {
+        "profession": "alchemy",
+        "type": "flask",
+        "craft": {
+            "id": 152639,
+            "Quantity": 1
+        },
+        "reagents": [{
+            "id": 152510,
+            "Quantity": 5
+        }, {
+            "id": 152508,
+            "Quantity": 10
+        }, {
+            "id": 152505,
+            "Quantity": 15
+        }]
+    }, {
+        "profession": "alchemy",
+        "type": "potion",
+        "craft": {
+            "id": 163223,
+            "Quantity": 1
+        },
+        "reagents": [{
+            "id": 152509,
+            "Quantity": 10
+        }, {
+            "id": 152505,
+            "Quantity": 8
+        }]
+    }, {
+        "profession": "alchemy",
+        "type": "potion",
+        "craft": {
+            "id": 163222,
+            "Quantity": 1
+        },
+        "reagents": [{
+            "id": 152509,
+            "Quantity": 10
+        }, {
+            "id": 152505,
+            "Quantity": 8
+        }]
+    }, {
+        "profession": "alchemy",
+        "type": "potion",
+        "craft": {
+            "id": 163225,
+            "Quantity": 1
+        },
+        "reagents": [{
+            "id": 152511,
+            "Quantity": 10
+        }, {
+            "id": 152506,
+            "Quantity": 8
+        }]
+    }, {
+        "profession": "alchemy",
+        "type": "potion",
+        "craft": {
+            "id": 152496,
+            "Quantity": 1
+        },
+        "reagents": [{
+            "id": 152543,
+            "Quantity": 5
+        }, {
+            "id": 152511,
+            "Quantity": 5
+        }]
+    }, {
+        "profession": "enchant",
+        "type": "ring",
+        "craft": {
+            "id": 153442,
+            "Quantity": 1
+        },
+        "reagents": [{
+            "id": 152875,
+            "Quantity": 15
+        }, {
+            "id": 152876,
+            "Quantity": 3
+        }, {
+            "id": 152877,
+            "Quantity": 4
+        }]
+    }, {}, {}]
+
+}

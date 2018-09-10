@@ -12,27 +12,27 @@
   min-width: 70px;
   margin-left: 20px; }
 
-.ItemList .container-item-display {
+.MainList .container-item-display {
   margin-top: 50px; }
-  .ItemList .container-item-display .item-list {
+  .MainList .container-item-display .item-list {
     margin-left: 10px;
     border-left: 1px solid #e8e8e8;
     text-align: center;
     padding-left: 0;
     overflow-y: auto;
     min-height: 100px; }
-    .ItemList .container-item-display .item-list li {
+    .MainList .container-item-display .item-list li {
       transition: all 0.3s;
       display: inline-block;
       width: 18%;
       text-align: left;
       margin: 5px 8px;
       text-decoration: none; }
-  .ItemList .container-item-display .selected-items > div {
+  .MainList .container-item-display .selected-items > div {
     display: inline-block; }
-  .ItemList .container-item-display .selected-items p.selected {
+  .MainList .container-item-display .selected-items p.selected {
     color: #2684ff; }
-  .ItemList .container-item-display .selected-items li {
+  .MainList .container-item-display .selected-items li {
     position: relative;
     list-style: none;
     border-radius: 5px;
@@ -40,9 +40,9 @@
     background: #fafafa;
     padding: 0 37px 0 7px;
     margin-bottom: 10px; }
-    .ItemList .container-item-display .selected-items li a {
+    .MainList .container-item-display .selected-items li a {
       margin-right: 6px; }
-    .ItemList .container-item-display .selected-items li span {
+    .MainList .container-item-display .selected-items li span {
       cursor: pointer;
       text-align: center;
       position: absolute;
@@ -51,17 +51,17 @@
       width: 30px;
       height: 100%;
       border-left: 1px solid #d9d9d9; }
-      .ItemList .container-item-display .selected-items li span i {
+      .MainList .container-item-display .selected-items li span i {
         height: 100%;
         display: block;
         position: relative; }
-        .ItemList .container-item-display .selected-items li span i::before {
+        .MainList .container-item-display .selected-items li span i::before {
           position: absolute;
           top: 53%;
           left: 54%;
           transform: translate(-50%, -50%); }
 
-.ItemList .itemLanguageBtn {
+.MainList .itemLanguageBtn {
   margin-top: 20px;
   text-align: right; }
 
