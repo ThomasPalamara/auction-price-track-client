@@ -1,6 +1,6 @@
 @import './base/variables.scss';
 @import './components/realmSelection.scss';
-@import './components/MainList.scss';
+@import './components/mainList.scss';
 @import './components/displayPrices.scss';
 
 *{
@@ -20,6 +20,9 @@ body {
 
 .step.done{
   color: darkgray;
+}
+ul{  
+  list-style: none;
 }
 
 .InputTextFilter input{

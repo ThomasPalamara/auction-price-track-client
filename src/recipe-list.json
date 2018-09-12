@@ -1,5 +1,5 @@
 {
-    "recipe": [{
+    "recipes": [{
         "profession": "alchemy",
         "type": "flask",
         "craft": {
@@ -140,6 +140,6 @@
             "id": 152877,
             "Quantity": 4
         }]
-    }, {}, {}]
+    }]
 
 }

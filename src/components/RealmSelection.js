@@ -37,6 +37,7 @@ export default class realmSelection extends React.Component {
   }
 
   render() {
+    console.log(this.props.handleRealmPicked);
     return (
       <div className="realmSelection">
       <h2 className={`step ${this.state.status}`}>1/ Choisissez votre royaume</h2>

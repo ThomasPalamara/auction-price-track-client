@@ -1,14 +1,14 @@
 import React from 'react';
 import RealmSelection from './RealmSelection';
 import MainList from './MainList';
-import DisplayPrices from './DisplayPrices';
+import DisplayStats from './DisplayStats';
 import { Divider } from 'antd';
 
 // TODO Ajouter la selection de language au store puis corrigé celle en place et ajouter a display table
 
 export default class AuctionPriceTrack extends React.Component {
   state = {
-    realm : '',
+    realm : 'Ysondre',
     auctionHouse: null,
     loading: false,
   };
@@ -25,7 +25,7 @@ export default class AuctionPriceTrack extends React.Component {
         .then(response => {
           this.setState({ loading: false });
           response.map((item) => {
-            item.auctions[0].prices.sort(function (a, b) { return (a.price > b.price) ? 1 : ((b.price > a.price) ? -1 : 0); });
+            return item.auctions[0].prices.sort(function (a, b) { return (a.price > b.price) ? 1 : ((b.price > a.price) ? -1 : 0); });
           })
           return this.setState({ auctionHouse: response })
         }
@@ -38,7 +38,7 @@ export default class AuctionPriceTrack extends React.Component {
     if(!this.state.auctionHouse){
       displayPriceSection = <h3>Veuillez selectionner un serveur</h3>;
     }else{
-      displayPriceSection = <DisplayPrices auctionHouse={this.state.auctionHouse}/>
+      displayPriceSection = <DisplayStats auctionHouse={this.state.auctionHouse}/>
     }
     return (
       <div className="main">

@@ -4,9 +4,6 @@ import { setItemLanguage } from '../actions/itemLanguage';
 import { Button } from "antd";
 
 class ItemLanguage extends React.Component {
-  constructor(props) {
-    super(props);
-  }
 
   handleItemLanguageChange = () => {
     if (this.props.itemLanguage === 'en') {

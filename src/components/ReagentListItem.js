@@ -1,17 +1,15 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { addProduct } from '../actions/product';
-import { addIngredient } from '../actions/ingredient';
 
-const MainListItem = (props) => (
-    <li>
+const ReagentListItem = (props) => (
+    <li className="recipe list-item">
         <div>
-            <h6>Flask of the Current</h6>
+        {console.log(props)}
             <ul>
-                {props.items.map((item) => (
+                {props.element.map((item) => (
                     <li>
                         <a
-                            href="#"
+                            href="javascript(void)"
                             data-wowhead={`item=${item}`}
                             key={item}
                         >item</a>
@@ -22,6 +20,5 @@ const MainListItem = (props) => (
     </li>
 )
 
-export default connect()(MainListItem);
 
-
+export default connect()(ReagentListItem);

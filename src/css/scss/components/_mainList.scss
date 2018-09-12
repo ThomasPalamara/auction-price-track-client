@@ -1,0 +1,75 @@
+.MainList {
+    .container-item-display {
+        margin-top: 50px;
+
+        .list {
+            text-align: center;
+            padding-left: 0;
+            overflow-y: auto;
+            min-height: 100px;
+            padding: 5px;
+
+            &>div {
+                display: flex;
+                flex-wrap: wrap;
+                align-content: stretch;
+                height: 100%;
+            }
+
+            .list-item {
+                width: 270px;
+                display: inline-block;
+                padding: 5px 10px;
+
+                &.selected {
+                    border-color: #40a9ff;
+                    outline: 0;
+                    -webkit-box-shadow: 0 0 0 2px rgba(24, 144, 255, 0.2);
+                    box-shadow: 0 0 0 2px rgba(24, 144, 255, 0.2);
+                    border-right-width: 1px !important;
+                }
+
+                // a {
+                //     color: white;
+                // }
+
+                // div {
+                //     background-color: #353535;
+                //     padding: 10px 0;
+                //     border-radius: 6px;
+                //     &.alchemyBg{
+                //         background-image: url('../img/alchemy.jpg');
+                //         background-size: 83%;
+                //         background-position: -23px -20px;
+                //         background-repeat: no-repeat;
+                //         box-shadow: inset 200px 200px 200px 200px rgba(0,0,0,.6)
+                //     }
+                // }
+
+                h6 {
+                    display: block;
+                    font-size: 18px;
+                    font-weight: bold;
+                }
+
+                ul {
+                    display: flex;
+                    flex-wrap: wrap;
+                    align-content: stretch;
+                    height: 100%;
+                    padding: 0;
+
+                    li {
+                        display: inline-block;
+                        width: 33.333332%;
+                    }
+                }
+            }
+        }
+    }
+
+    .itemLanguageBtn {
+        margin-top: 20px;
+        text-align: right;
+    }
+}

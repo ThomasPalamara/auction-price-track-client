@@ -1,9 +1,8 @@
 import React from 'react';
 import AuctionPriceTrack from './components/AuctionPriceTrack';
-import { Provider } from "react-redux";
-import configureStore from "./store/configureStore";
-import { setTextFilter } from "./actions/filters";
-import { setItemLanguage } from "./actions/itemLanguage";
+import { Provider } from 'react-redux';
+import configureStore from './store/configureStore';
+import { setTextFilter } from './actions/filters';
 
 // import logo from './logo.svg';
 
@@ -13,7 +12,6 @@ import 'antd/dist/antd.css';
 const store = configureStore();
 
 store.dispatch(setTextFilter(''));
-store.dispatch(setItemLanguage('en'));
 
 const App = (
   <div className="App">

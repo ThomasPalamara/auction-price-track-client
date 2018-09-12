@@ -14,104 +14,44 @@
 
 .MainList .container-item-display {
   margin-top: 50px; }
-  .MainList .container-item-display .item-list {
-    margin-left: 10px;
-    border-left: 1px solid #e8e8e8;
+  .MainList .container-item-display .list {
     text-align: center;
     padding-left: 0;
     overflow-y: auto;
-    min-height: 100px; }
-    .MainList .container-item-display .item-list li {
-      transition: all 0.3s;
+    min-height: 100px;
+    padding: 5px; }
+    .MainList .container-item-display .list > div {
+      display: flex;
+      flex-wrap: wrap;
+      align-content: stretch;
+      height: 100%; }
+    .MainList .container-item-display .list .list-item {
+      width: 270px;
       display: inline-block;
-      width: 18%;
-      text-align: left;
-      margin: 5px 8px;
-      text-decoration: none; }
-  .MainList .container-item-display .selected-items > div {
-    display: inline-block; }
-  .MainList .container-item-display .selected-items p.selected {
-    color: #2684ff; }
-  .MainList .container-item-display .selected-items li {
-    position: relative;
-    list-style: none;
-    border-radius: 5px;
-    border: 1px solid #d9d9d9;
-    background: #fafafa;
-    padding: 0 37px 0 7px;
-    margin-bottom: 10px; }
-    .MainList .container-item-display .selected-items li a {
-      margin-right: 6px; }
-    .MainList .container-item-display .selected-items li span {
-      cursor: pointer;
-      text-align: center;
-      position: absolute;
-      right: 0;
-      top: 0;
-      width: 30px;
-      height: 100%;
-      border-left: 1px solid #d9d9d9; }
-      .MainList .container-item-display .selected-items li span i {
-        height: 100%;
+      padding: 5px 10px; }
+      .MainList .container-item-display .list .list-item.selected {
+        border-color: #40a9ff;
+        outline: 0;
+        -webkit-box-shadow: 0 0 0 2px rgba(24, 144, 255, 0.2);
+        box-shadow: 0 0 0 2px rgba(24, 144, 255, 0.2);
+        border-right-width: 1px !important; }
+      .MainList .container-item-display .list .list-item h6 {
         display: block;
-        position: relative; }
-        .MainList .container-item-display .selected-items li span i::before {
-          position: absolute;
-          top: 53%;
-          left: 54%;
-          transform: translate(-50%, -50%); }
+        font-size: 18px;
+        font-weight: bold; }
+      .MainList .container-item-display .list .list-item ul {
+        display: flex;
+        flex-wrap: wrap;
+        align-content: stretch;
+        height: 100%;
+        padding: 0; }
+        .MainList .container-item-display .list .list-item ul li {
+          display: inline-block;
+          width: 33.333332%; }
 
 .MainList .itemLanguageBtn {
   margin-top: 20px;
   text-align: right; }
-
-.typeOfItemBtn {
-  background-color: #fff;
-  border-radius: 20px;
-  font-size: 15px;
-  color: darkgray;
-  border: darkgray 2px solid;
-  position: relative;
-  padding: 10px 8px 10px 45px;
-  -webkit-transition: all .2s ease;
-  -ms-transition: all .2s ease;
-  transition: all .2s ease; }
-  .typeOfItemBtn:before {
-    content: "";
-    display: block;
-    border-radius: 100px;
-    position: absolute;
-    top: 12px;
-    left: 18px;
-    border: darkgray 2px solid;
-    width: 18px;
-    height: 18px;
-    -webkit-transition: all .2s ease;
-    -ms-transition: all .2s ease;
-    transition: all .2s ease; }
-  .typeOfItemBtn:after {
-    content: "";
-    display: block;
-    position: absolute;
-    top: 18px;
-    left: 23px;
-    border: #fff 2px solid;
-    border-top: none;
-    border-right: none;
-    transform: rotate(-45deg);
-    width: 9px;
-    height: 5px; }
-  .typeOfItemBtn.selected {
-    border-color: #2684ff;
-    color: #2684ff; }
-    .typeOfItemBtn.selected:before {
-      border-color: #2684ff; }
-    .typeOfItemBtn.selected:after {
-      border-color: #2684ff; }
-  .typeOfItemBtn + .typeOfItemBtn {
-    margin-left: 10px; }
-  .typeOfItemBtn:focus {
-    outline: none; }
 
 .ant-table-like {
   background: #fafafa;
@@ -148,6 +88,9 @@ body {
 
 .step.done {
   color: darkgray; }
+
+ul {
+  list-style: none; }
 
 .InputTextFilter input {
   margin: 20px auto;
