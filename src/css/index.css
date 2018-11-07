@@ -1,3 +1,11 @@
+@import url("https://fonts.googleapis.com/css?family=Lato|Montserrat+Alternates");
+@font-face {
+  font-family: 'League Spartan';
+  font-style: bold;
+  font-weight: 700;
+  src: url("../fonts/LeagueSpartan-Bold.otf");
+  /* IE9 Compat Modes */ }
+
 .realmSelection .select-realm {
   display: inline-block;
   margin: 20px auto;
@@ -79,15 +87,19 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: sans-serif;
-  /* background-color: #333745;
-  color: #fff */ }
+  font-family: 'Lato', 'Montserrat Alternates', sans-serif !important;
+  background-color: #fefefe !important; }
 
 .main {
   padding: 50px; }
 
-.step.done {
-  color: darkgray; }
+.step {
+  font-size: 19px;
+  margin-bottom: 0;
+  color: #444444;
+  text-transform: uppercase; }
+  .step .done {
+    color: darkgray; }
 
 ul {
   list-style: none; }
@@ -108,3 +120,24 @@ ul {
 
 .ant-spin-blur {
   background-color: #f0f0f0; }
+
+.lined-title {
+  color: #616161;
+  text-align: left;
+  padding-left: 50px; }
+  .lined-title span {
+    padding: 15px;
+    background: #fefefe; }
+  .lined-title:before {
+    content: "";
+    display: block;
+    width: 95vw;
+    height: 1px;
+    position: absolute;
+    top: 50%;
+    z-index: -1;
+    transform: translateY(-50%);
+    margin: 0 auto;
+    right: 0;
+    left: 0;
+    background-color: #616161; }

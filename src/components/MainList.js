@@ -65,7 +65,6 @@ class MainList extends React.Component {
       list = reagents;
       ListItemComponent = ReagentListItem
     }
-
     return (
       <div className="MainList">
         <h2 className="step">2/ Choisissez vos objets</h2>
@@ -80,9 +79,9 @@ class MainList extends React.Component {
               <ul className="list">
                 <FlipMove>
                   {this.state.response &&
-                    this.filteringList(list)
+                    this.filteringList(recipeJson[this.state.activeList])
                       .map(item => {
-                        return (<ListItemComponent element={item} itemLanguage={this.props.itemLanguage} />)
+                        return (<RecipeListItem element={item} itemLanguage={this.props.itemLanguage} />)
                       })
                   }
                 </FlipMove>

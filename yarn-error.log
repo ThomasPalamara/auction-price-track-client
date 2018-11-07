@@ -1,8 +1,8 @@
 Arguments: 
-  C:\Program Files\nodejs\node.exe C:\Users\Web Thomas\AppData\Roaming\npm\node_modules\yarn\bin\yarn.js start
+  C:\Program Files\nodejs\node.exe C:\Users\Web Thomas\AppData\Roaming\npm\node_modules\yarn\bin\yarn.js install all
 
 PATH: 
-  D:\auction_price_track\node_modules\.bin;C:\Users\Web Thomas\AppData\Local\Yarn\Data\link\node_modules\.bin;D:\auction_price_track\node_modules\.bin;C:\Users\Web Thomas\AppData\Local\Yarn\Data\link\node_modules\.bin;C:\Program Files\libexec\lib\node_modules\npm\bin\node-gyp-bin;C:\Program Files\lib\node_modules\npm\bin\node-gyp-bin;C:\Program Files\nodejs\node_modules\npm\bin\node-gyp-bin;D:\auction_price_track\node_modules\.bin;C:\Users\Web Thomas\AppData\Local\Yarn\Data\link\node_modules\.bin;D:\auction_price_track\node_modules\.bin;C:\Users\Web Thomas\AppData\Local\Yarn\Data\link\node_modules\.bin;C:\Users\Web Thomas\AppData\Local\Yarn\bin;C:\Program Files\libexec\lib\node_modules\npm\bin\node-gyp-bin;C:\Program Files\lib\node_modules\npm\bin\node-gyp-bin;C:\Program Files\nodejs\node_modules\npm\bin\node-gyp-bin;C:\Program Files (x86)\Intel\iCLS Client\;C:\Program Files\Intel\iCLS Client\;C:\windows\system32;C:\windows;C:\windows\System32\Wbem;C:\windows\System32\WindowsPowerShell\v1.0\;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\Git\cmd;C:\Program Files\Intel\WiFi\bin\;C:\Program Files\Common Files\Intel\WirelessCommon\;C:\Program Files\nodejs\;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\Program Files (x86)\Brackets\command;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\Microsoft VS Code\bin;C:\Ruby25-x64\bin;C:\Users\Web Thomas\AppData\Local\Microsoft\WindowsApps;C:\Users\Web Thomas\AppData\Local\atom\bin;C:\Users\Web Thomas\AppData\Roaming\npm;C:\Users\Web Thomas\AppData\Local\Microsoft\WindowsApps;;C:\Program Files\Microsoft VS Code\bin;C:\Program Files\heroku\bin
+  C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Intel\iCLS Client\;C:\Program Files\Intel\iCLS Client\;C:\windows\system32;C:\windows;C:\windows\System32\Wbem;C:\windows\System32\WindowsPowerShell\v1.0\;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\Git\cmd;C:\Program Files\nodejs\;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\Program Files (x86)\Brackets\command;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\Microsoft VS Code\bin;C:\Program Files\Intel\WiFi\bin\;C:\Program Files\Common Files\Intel\WirelessCommon\;D:\wamp64\bin\php\php7.1.9;C:\ProgramData\ComposerSetup\bin;C:\Ruby25-x64\bin;C:\Users\Web Thomas\AppData\Local\Microsoft\WindowsApps;C:\Users\Web Thomas\AppData\Local\atom\bin;C:\Users\Web Thomas\AppData\Roaming\npm;C:\Users\Web Thomas\AppData\Local\Microsoft\WindowsApps;;C:\Program Files\Microsoft VS Code\bin;C:\Program Files\heroku\bin;C:\Users\Web Thomas\AppData\Roaming\Composer\vendor\bin
 
 Yarn version: 
   1.5.1
@@ -44,7 +44,8 @@ npm manifest:
     "devDependencies": {
       "babel-plugin-import": "^1.8.0",
       "node-sass-tilde-importer": "^1.0.2",
-      "react-app-rewired": "^1.5.2"
+      "react-app-rewired": "^1.5.2",
+      "react-test-renderer": "^16.6.1"
     }
   }
 
@@ -7039,6 +7040,10 @@ Lockfile:
     dependencies:
       prop-types "^15.5.8"
   
+  react-is@^16.6.1:
+    version "16.6.1"
+    resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.6.1.tgz#f77b1c3d901be300abe8d58645b7a59e794e5982"
+  
   react-lazy-load@^3.0.12:
     version "3.0.13"
     resolved "https://registry.yarnpkg.com/react-lazy-load/-/react-lazy-load-3.0.13.tgz#3b0a92d336d43d3f0d73cbe6f35b17050b08b824"
@@ -7129,6 +7134,15 @@ Lockfile:
       json2mq "^0.2.0"
       lodash.debounce "^4.0.8"
       resize-observer-polyfill "^1.5.0"
+  
+  react-test-renderer@^16.6.1:
+    version "16.6.1"
+    resolved "https://registry.yarnpkg.com/react-test-renderer/-/react-test-renderer-16.6.1.tgz#8ea357652be3cf81cbd6b2f686e74ebe67c17b78"
+    dependencies:
+      object-assign "^4.1.1"
+      prop-types "^15.6.2"
+      react-is "^16.6.1"
+      scheduler "^0.11.0"
   
   react-transition-group@^2.2.1:
     version "2.4.0"
@@ -7587,6 +7601,13 @@ Lockfile:
   sax@^1.2.1, sax@^1.2.4, sax@~1.2.1:
     version "1.2.4"
     resolved "https://registry.yarnpkg.com/sax/-/sax-1.2.4.tgz#2816234e2378bddc4e5354fab5caa895df7100d9"
+  
+  scheduler@^0.11.0:
+    version "0.11.0"
+    resolved "https://registry.yarnpkg.com/scheduler/-/scheduler-0.11.0.tgz#def1f1bfa6550cc57981a87106e65e8aea41a6b5"
+    dependencies:
+      loose-envify "^1.1.0"
+      object-assign "^4.1.1"
   
   schema-utils@^0.3.0:
     version "0.3.0"
@@ -9074,17 +9095,10 @@ Lockfile:
       window-size "0.1.0"
 
 Trace: 
-  Error: Command failed.
-  Exit code: 3221225786
-  Command: C:\WINDOWS\system32\cmd.exe
-  Arguments: /d /s /c react-scripts start
-  Directory: D:\auction_price_track\client
-  Output:
-  
-      at ProcessTermError.MessageError (C:\Users\Web Thomas\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:186:110)
-      at new ProcessTermError (C:\Users\Web Thomas\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:226:113)
-      at ChildProcess.<anonymous> (C:\Users\Web Thomas\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:30281:17)
-      at emitTwo (events.js:126:13)
-      at ChildProcess.emit (events.js:214:7)
-      at maybeClose (internal/child_process.js:925:16)
-      at Process.ChildProcess._handle.onexit (internal/child_process.js:209:5)
+  Error: `install` has been replaced with `add` to add new dependencies. Run "yarn add all" instead.
+      at new MessageError (C:\Users\Web Thomas\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:186:110)
+      at Object.<anonymous> (C:\Users\Web Thomas\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:21987:13)
+      at Generator.next (<anonymous>)
+      at step (C:\Users\Web Thomas\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:98:30)
+      at C:\Users\Web Thomas\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:109:13
+      at <anonymous>

@@ -11,7 +11,11 @@
   color: white; }
 
 .App-title {
-  font-size: 1.5em; }
+  font-size: 3em;
+  letter-spacing: -6.5px;
+  font-family: 'League Spartan';
+  color: #f1f1f1;
+  margin-bottom: 0; }
 
 .App-intro {
   font-size: large; }

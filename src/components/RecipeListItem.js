@@ -6,13 +6,15 @@ const RecipeListItem = (props) => (
     <li className={`recipe list-item ${props.shoppingListId === props.element.craft.id ? 'selected' : ''}`} onClick={() => props.dispatch(setShoppingList(props.element))}
     >
         <div className="alchemyBg">
-            <h6>
-                <a
-                    href="javascript(void)"
-                    data-wowhead={`item=${props.element.craft.id}`}
-                    key={props.element.craft.id}
-                >item</a>
-            </h6>
+            {props.element.craft.id &&
+                <h6>
+                    <a
+                        href="javascript(void)"
+                        data-wowhead={`item=${props.element.craft.id}`}
+                        key={props.element.craft.id}
+                    >item</a>
+                </h6>
+            }
 
             <ul>
                 {props.element.reagents.map((reagent) => (

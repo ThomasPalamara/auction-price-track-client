@@ -1,6 +1,6 @@
 import React from 'react';
 import Select from 'react-select';
-import { Button } from 'antd';
+import { Button, Divider } from 'antd';
 
 export default class realmSelection extends React.Component {
   state = {
@@ -13,22 +13,25 @@ export default class realmSelection extends React.Component {
 
   componentDidMount() {
     fetch('/api/realms')
-    .then(res => res.json())
-    .then(response => this.setState({ response: response}));
+      .then(res => {
+        console.log(res);
+        return res.json()
+      })
+      .then(response => this.setState({ response: response }));
   }
 
   handleRealmPicked = e => {
     e.preventDefault();
-    if(this.state.selectedOption && this.state.response.find(x => x.label === this.state.selectedOption.label) ){
-    const realm = this.state.selectedOption.label;
-      this.setState({status: 'done'})
+    if (this.state.selectedOption && this.state.response.find(x => x.label === this.state.selectedOption.label)) {
+      const realm = this.state.selectedOption.label;
+      this.setState({ status: 'done' })
       this.props.handleRealmPicked(realm)
-    }else{
-      this.setState({selectedOption: null})
-      this.setState({error: 'Veuillez selectionner un nom de royaume valide'})
+    } else {
+      this.setState({ selectedOption: null })
+      this.setState({ error: 'Veuillez selectionner un nom de royaume valide' })
     }
 
-    
+
   }
 
   handleChange = (selectedOption) => {
@@ -40,18 +43,19 @@ export default class realmSelection extends React.Component {
     console.log(this.props.handleRealmPicked);
     return (
       <div className="realmSelection">
-      <h2 className={`step ${this.state.status}`}>1/ Choisissez votre royaume</h2>
+      <Divider orientation="left"> <h3 className={`step ${this.state.status}`}>1/ Choisissez votre royaume</h3> </Divider>
+       
         <form onSubmit={this.handleRealmPicked}>
-        <div className="select-realm">
-        <Select
-          value={this.state.selectedOption}
-          onChange={this.handleChange}
-          name="realm"
-          options={this.state.response}
-        />
-        </div>
-        <Button id="chooseRealmBtn" htmlType="submit" className="btn btn-large" loading={this.props.loading} onClick={this.enterLoading}>
-          Go !
+          <div className="select-realm">
+            <Select
+              value={this.state.selectedOption}
+              onChange={this.handleChange}
+              name="realm"
+              options={this.state.response}
+            />
+          </div>
+          <Button id="chooseRealmBtn" htmlType="submit" className="btn btn-large" loading={this.props.loading} onClick={this.enterLoading}>
+            Go !
         </Button>
         </form>
       </div>

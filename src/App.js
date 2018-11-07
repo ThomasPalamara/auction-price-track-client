@@ -16,7 +16,7 @@ store.dispatch(setTextFilter(''));
 const App = (
   <div className="App">
     <header className="App-header">
-      <h1 className="App-title">Auction Price Tracker</h1>
+      <h1 className="App-title">ATP</h1>
     </header>
     <Provider store={store}>
       <AuctionPriceTrack />
