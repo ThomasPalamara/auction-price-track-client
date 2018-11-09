@@ -2,39 +2,42 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { setShoppingList } from '../actions/shoppingList'
 
-const RecipeListItem = (props) => (
-    <li className={`recipe list-item ${props.shoppingListId === props.element.craft.id ? 'selected' : ''}`} onClick={() => props.dispatch(setShoppingList(props.element))}
-    >
-        <div className="alchemyBg">
-            {props.element.craft.id &&
-                <h6>
-                    <a
-                        href="javascript(void)"
-                        data-wowhead={`item=${props.element.craft.id}`}
-                        key={props.element.craft.id}
-                    >item</a>
-                </h6>
-            }
-
-            <ul>
-                {props.element.reagents.map((reagent) => (
-                    <li>
+const RecipeListItem = (props) => {
+    // console.log(props);
+    // console.log(props.element.craft.blizzardId);
+    return (
+        <li 
+        className={`recipe list-item ${props.shoppingListId === props.element.craft.blizzardId ? 'selected' : ''}`} 
+        onClick={() => props.dispatch(setShoppingList(props.element))}
+        >
+            <div className="alchemyBg">
+                {props.element.craft.blizzardId &&
+                    <h6>
                         <a
-                            href="javascript(void)"
-                            data-wowhead={`item=${reagent.id}`}
-                            key={reagent.id}
+                            href="javascript:(void)"
+                            data-wowhead={`item=${props.element.craft.blizzardId}`}
                         >item</a>
-                    </li>
-                ))}
-            </ul>
-        </div>
-    </li>
-)
+                    </h6>
+                }
+
+                <ul>
+                    {props.element.reagents.map((reagent) => (
+                        <li key={reagent.blizzardId}>
+                            <a
+                                href="javascript:(void)"
+                                data-wowhead={`item=${reagent.blizzardId}`}
+                            >item</a>
+                        </li>
+                    ))}
+                </ul>
+            </div>
+        </li>)
+};
 
 const mapStateToProps = state => {
     // if(state.shoppingList.)
     return {
-        shoppingListId: state.shoppingList.craft.id
+        shoppingListId: state.shoppingList.craft.blizzardId
     };
 };
 

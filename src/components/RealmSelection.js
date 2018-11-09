@@ -14,7 +14,6 @@ export default class realmSelection extends React.Component {
   componentDidMount() {
     fetch('/api/realms')
       .then(res => {
-        console.log(res);
         return res.json()
       })
       .then(response => this.setState({ response: response }));
@@ -40,7 +39,6 @@ export default class realmSelection extends React.Component {
   }
 
   render() {
-    console.log(this.props.handleRealmPicked);
     return (
       <div className="realmSelection">
       <Divider orientation="left"> <h3 className={`step ${this.state.status}`}>1/ Choisissez votre royaume</h3> </Divider>

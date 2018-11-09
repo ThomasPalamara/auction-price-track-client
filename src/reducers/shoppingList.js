@@ -14,9 +14,10 @@ const defaultShoppingListState = {
     }]
 }
 export default (state = defaultShoppingListState, action) => {
+    console.log(state);
     switch (action.type) {
-        case 'SET_SHOPPING_LIST':
-            return action.shoppingList;
+        case 'ADD_RECIPE':
+            return {...state, ...action.recipe};
         default:
             return state;
     }

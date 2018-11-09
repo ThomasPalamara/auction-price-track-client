@@ -22,3 +22,5 @@ const ReagentListItem = (props) => (
 
 
 export default connect()(ReagentListItem);
+
+//Outdated Use ReceipListItem Instead
