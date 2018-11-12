@@ -10,6 +10,11 @@ class MainListFilter extends React.Component {
      handleToggleList = (e) => {
          this.props.handleToggleList(e.target.value);
      }
+
+    capitalize = (string) => {
+        return string.charAt(0).toUpperCase() + string.slice(1);
+    }
+
     //DEBUG
     // componentDidMount() {
     //     console.log(this.props, 'props');
@@ -20,20 +25,23 @@ class MainListFilter extends React.Component {
     render() {
         return (
             <div className="InputTextFilter">
-                <Radio.Group value={this.props.activeList} onChange={value => {this.props.dispatch(setisCustomFilter(value))}}>
-                    <Radio.Button value="false">Recettes</Radio.Button>
-                    <Radio.Button value="true">Composants</Radio.Button>
+                <Radio.Group value={this.props.activeList} onChange={e => {this.props.dispatch(setisCustomFilter(e.target.value))}}>
+                    <Radio.Button value={false}>Recipes</Radio.Button>
+                    <Radio.Button value={true}>Reagents</Radio.Button>
                 </Radio.Group>
-                <label> Metier : </label>
+                <label> Profession : </label>
                 <Select defaultValue="all" style={{ width: 120 }} onChange={value => {this.props.dispatch(setProfessionFilter(value))}}>
-                    <Option value="all">Tout</Option>
-                    <Option value="alchemy">Alchimie</Option>
-                    <Option value="enchant">Enchantement</Option>
+                    <Option value="all">All</Option>
+                    {
+                        this.props.professions.map( profession => (
+                            <Option value={profession.toLowerCase()}>{this.capitalize(profession)}</Option>
+                        ))
+                    }
                 </Select>
                 <input
                     type="text"
                     value={this.props.filters.text}
-                    placeholder="Filtrer les objets"
+                    placeholder="Filter items"
                     onChange={e => {this.props.dispatch(setTextFilter(e.target.value))}} />
             </div>
         );
@@ -42,8 +50,13 @@ class MainListFilter extends React.Component {
 
 
 const mapStateToProps = state => {
+    console.log(state.recipes);
+    let array = [];
+    state.recipes.map( recipe => {recipe.professions.map( profession => {array.indexOf(profession) === -1 ? array.push(profession) : ''})})
+
     return {
-        filters: state.filters
+        filters: state.filters,
+        professions: array
     };
 };
 

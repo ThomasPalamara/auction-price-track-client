@@ -1,32 +1,32 @@
 import { createStore, combineReducers } from "redux";
 import filtersReducer from '../reducers/filters';
 import itemLanguageReducer from '../reducers/itemLanguage';
-import shoppingListReducer from '../reducers/shoppingList';
+import recipesReducer from '../reducers/recipes';
 
 //Store creation we put the store creation inside of a function so it can be exported 
 
 export default () => {
     const initialState = {
-        shoppingList: {
-            "profession": "",
+        recipes: [{
+            "professions": [""],
             "type": "",
             "craft": {
-                "id": 0,
-                "Quantity": 0
+                "blizzardId": 0,
+                "quantity": 1
             },
             "reagents": [{
-                "id": 0,
-                "Quantity": 0
+                "blizzardId": 0,
+                "quantity": 0
             }, {
-                "id": 0,
-                "Quantity": 0
+                "blizzardId": 1,
+                "quantity": 0
             }]
-        },
+        }],
         itemLanguage: 'en'
     }
     const store = createStore(
         combineReducers({
-            shoppingList: shoppingListReducer,
+            recipes: recipesReducer,
             filters: filtersReducer,
             itemLanguage: itemLanguageReducer
         }),

@@ -1,17 +1,17 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { setShoppingList } from '../actions/shoppingList'
+import { setShoppingList } from '../actions/recipes'
 
 const RecipeListItem = (props) => {
     // console.log(props);
     // console.log(props.element.craft.blizzardId);
     return (
         <li 
-        className={`recipe list-item ${props.shoppingListId === props.element.craft.blizzardId ? 'selected' : ''}`} 
+        className={`recipe list-item ${/*props.shoppingListId === props.element.craft.blizzardId*/ false ? 'selected' : ''}`} 
         onClick={() => props.dispatch(setShoppingList(props.element))}
         >
             <div className="alchemyBg">
-                {props.element.craft.blizzardId &&
+                {props.element.craft &&
                     <h6>
                         <a
                             href="javascript:(void)"
@@ -21,14 +21,15 @@ const RecipeListItem = (props) => {
                 }
 
                 <ul>
-                    {props.element.reagents.map((reagent) => (
-                        <li key={reagent.blizzardId}>
-                            <a
-                                href="javascript:(void)"
-                                data-wowhead={`item=${reagent.blizzardId}`}
-                            >item</a>
-                        </li>
-                    ))}
+                     {props.element.reagents.map((reagent) => (
+                         <li key={reagent.blizzardId}>
+                             <a
+                                 href="javascript:(void)"
+                                 data-wowhead={`item=${reagent.blizzardId}`}
+                             >item</a>
+                         </li>
+                     ))
+                }
                 </ul>
             </div>
         </li>)
@@ -37,7 +38,7 @@ const RecipeListItem = (props) => {
 const mapStateToProps = state => {
     // if(state.shoppingList.)
     return {
-        shoppingListId: state.shoppingList.craft.blizzardId
+        // shoppingListId: state.shoppingList.craft.blizzardId
     };
 };
 

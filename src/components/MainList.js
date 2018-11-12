@@ -6,7 +6,7 @@ import FlipMove from "react-flip-move";
 import { Row, Col, Spin, Icon } from "antd";
 import ItemLanguage from "./ItemLanguage";
 import selectRecipes from "../selectors/recipes"
-import { addRecipe } from "../actions/shoppingList"
+import { addRecipes } from "../actions/recipes"
 
 //reagentJson = reagentJson.reagents; Voir avec LUDO
 
@@ -30,7 +30,8 @@ class MainList extends React.Component {
       .then(res => res.json())
       .then(response => {
         this.setState({ loading: false });
-        response.map(recipe => addRecipe(recipe))
+        console.log('ok');
+        this.props.dispatch(addRecipes(response));
       });
   }
   componentDidMount() {
@@ -44,9 +45,10 @@ class MainList extends React.Component {
 
 
   render() {
+    console.log(this.props.recipesList, "recipesList");
     return (
       <div className="MainList">
-        <h2 className="step">2/ Choisissez vos objets</h2>
+        <h2 className="step">2/ Choose your Recipe</h2>
 
         <MainListFilter activeList={this.state.activeList} handleToggleList={this.handleToggleList} />
 
@@ -57,7 +59,7 @@ class MainList extends React.Component {
             <Spin spinning={this.state.loading} indicator={antIcon}>
               <ul className="list">
                 <FlipMove>
-                  {this.props.recipeList &&
+                  {this.props.recipesList &&
                     this.props.recipesList
                       .map((item,i) => {
                         return (<RecipeListItem element={item} key={i} itemLanguage={this.props.itemLanguage} />)
@@ -75,12 +77,12 @@ class MainList extends React.Component {
   }
 };
 
-const mapStatetoProps = (state, ownProps) => {
-  console.log(state);
+const mapStatetoProps = state => {
+  console.log(state, "State in statetoprops");
   return {
     itemLanguage: state.itemLanguage,
-    // recipesList : selectRecipes(state.recipes,state.filters)
-    recipesList : state.recipes
+    recipesList : selectRecipes(state.recipes,state.filters)
+    // recipesList : state.recipes
   }
 };
 

@@ -17,7 +17,7 @@ class ItemLanguage extends React.Component {
     return (
       <div className="itemLanguageBtn">
         <Button onClick={() => this.handleItemLanguageChange()} type="dashed">
-          Utiliser les noms d'objets {this.props.itemLanguage === 'en' ? 'francais' : 'anglais'}
+          Use {this.props.itemLanguage === 'en' ? 'french' : 'english'} items names
         </Button>
       </div>
     )
