@@ -1,7 +1,7 @@
 import { addRecipes } from "../../actions/recipes";
 
-test('should add recipe', () => {
-    const recipe = {
+test('should add recipes', () => {
+    const recipe = [{
         "professions": ["alchemy"],
         "type": "flask",
         "craft": {
@@ -18,12 +18,12 @@ test('should add recipe', () => {
             "blizzardId": 152509,
             "quantity": 15
         }]
-    }
+    }]
     const action = addRecipes(recipe);
     
     expect(action).toEqual({
         type: "ADD_RECIPES",
-        recipes: {
+        recipes: [{
             "professions": ["alchemy"],
             "type": "flask",
             "craft": {
@@ -40,17 +40,17 @@ test('should add recipe', () => {
                 "blizzardId": 152509,
                 "quantity": 15
             }]
-        }
+        }]
     })
 });
 
-test('should add default recipe', () => {
+test('should add default recipes', () => {
 
     const action = addRecipes();
 
     expect(action).toEqual({
         type: "ADD_RECIPES",
-        recipes: {
+        recipes: [{
             "professions": [""],
             "type": "",
             "craft": {
@@ -64,6 +64,6 @@ test('should add default recipe', () => {
                 "blizzardId": 1,
                 "quantity": 0
             }]
-        }
+        }]
     })
 });

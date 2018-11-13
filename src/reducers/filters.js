@@ -6,15 +6,15 @@ const filtersReducerDefaultState = {
 
 export default (state = filtersReducerDefaultState, action) => {
 	switch (action.type) {
-		case 'SET_ITEM_TEXT_FILTER':
+		case 'SET_TEXT_FILTER':
 			return {
 				...state, text: action.text
 			};
-		case 'SET_ITEM_PROFESSION_FILTER':
+		case 'SET_PROFESSION_FILTER':
 			return {
 				...state, profession: action.profession
 			};
-		case 'SET_ITEM_IS_CUSTOM_FILTER':
+		case 'SET_IS_CUSTOM_FILTER':
 			return {
 				...state, isCustom: action.isCustom
 			};

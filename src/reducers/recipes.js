@@ -1,5 +1,5 @@
 
-export default (state = null, action) => {
+export default (state = [], action) => {
     switch (action.type) {
         case 'ADD_RECIPES':
             return action.recipes;
