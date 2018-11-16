@@ -1,0 +1,67 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Should render MainListFilter component correctly 1`] = `
+<div
+  className="InputTextFilter"
+>
+  <RadioGroup
+    buttonStyle="outline"
+    disabled={false}
+    onChange={[Function]}
+    prefixCls="ant-radio"
+  >
+    <RadioButton
+      prefixCls="ant-radio-button"
+      value={false}
+    >
+      Recipes
+    </RadioButton>
+    <RadioButton
+      prefixCls="ant-radio-button"
+      value={true}
+    >
+      Reagents
+    </RadioButton>
+  </RadioGroup>
+  <label>
+     Profession : 
+  </label>
+  <Select
+    choiceTransitionName="zoom"
+    defaultValue="all"
+    onChange={[Function]}
+    prefixCls="ant-select"
+    showSearch={false}
+    style={
+      Object {
+        "width": 120,
+      }
+    }
+    transitionName="slide-up"
+  >
+    <Option
+      value="all"
+    >
+      All
+    </Option>
+    <Option
+      key="0"
+      value="enchant"
+    >
+      Enchant
+    </Option>
+    <Option
+      key="1"
+      value="alchemy"
+    >
+      Alchemy
+    </Option>
+  </Select>
+  <input
+    onChange={[Function]}
+    placeholder="Filter items"
+    type="text"
+    value=""
+  />
+</div>
+`;

@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from 'react-redux';
-import RecipeListItem from "./RecipeListItem";
+import MainListItem from "./MainListItem";
 import MainListFilter from "./MainListFilter";
 import FlipMove from "react-flip-move";
 import { Row, Col, Spin, Icon } from "antd";
@@ -12,7 +12,7 @@ import { addRecipes } from "../actions/recipes"
 
 const antIcon = <Icon type="loading" style={{ fontSize: 24 }} spin />;
 
-class MainList extends React.Component {
+export class MainList extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -25,12 +25,11 @@ class MainList extends React.Component {
   componentDidUpdate() {
     window.$WowheadPower.refreshLinks();
   }
-  componentWillMount(){
+  componentWillMount() {
     fetch(`/api/recipes`)
       .then(res => res.json())
       .then(response => {
         this.setState({ loading: false });
-        console.log('ok');
         this.props.dispatch(addRecipes(response));
       });
   }
@@ -43,9 +42,7 @@ class MainList extends React.Component {
   }
 
 
-
   render() {
-    console.log(this.props.recipesList, "recipesList");
     return (
       <div className="MainList">
         <h2 className="step">2/ Choose your Recipe</h2>
@@ -61,8 +58,8 @@ class MainList extends React.Component {
                 <FlipMove>
                   {this.props.recipesList &&
                     this.props.recipesList
-                      .map((item,i) => {
-                        return (<RecipeListItem element={item} key={i} itemLanguage={this.props.itemLanguage} />)
+                      .map((item, i) => {
+                        return (<MainListItem element={item} key={item._id} itemLanguage={this.props.itemLanguage} />)
                       })
                   }
                 </FlipMove>
@@ -78,10 +75,9 @@ class MainList extends React.Component {
 };
 
 const mapStatetoProps = state => {
-  console.log(state, "State in statetoprops");
   return {
     itemLanguage: state.itemLanguage,
-    recipesList : selectRecipes(state.recipes,state.filters)
+    recipesList: selectRecipes(state.recipes, state.filters)
     // recipesList : state.recipes
   }
 };

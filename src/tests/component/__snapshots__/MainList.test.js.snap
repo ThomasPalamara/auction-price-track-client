@@ -1,0 +1,222 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Should render MainList component correctly 1`] = `
+<div
+  className="MainList"
+>
+  <h2
+    className="step"
+  >
+    2/ Choose your Recipe
+  </h2>
+  <Connect(MainListFilter) />
+  <Connect(ItemLanguage) />
+  <Row
+    className="container-item-display"
+    gutter={0}
+  >
+    <Col
+      span={24}
+    >
+      <Spin
+        indicator={
+          <Icon
+            spin={true}
+            style={
+              Object {
+                "fontSize": 24,
+              }
+            }
+            type="loading"
+          />
+        }
+        prefixCls="ant-spin"
+        size="default"
+        spinning={true}
+        wrapperClassName=""
+      >
+        <ul
+          className="list"
+        >
+          <FlipMovePropConverter
+            delay={0}
+            disableAllAnimations={false}
+            duration={350}
+            easing="ease-in-out"
+            enterAnimation="elevator"
+            getPosition={[Function]}
+            leaveAnimation="elevator"
+            maintainContainerHeight={false}
+            staggerDelayBy={0}
+            staggerDurationBy={0}
+            typeName="div"
+            verticalAlignment="top"
+          />
+        </ul>
+      </Spin>
+    </Col>
+  </Row>
+</div>
+`;
+
+exports[`Should render MainList component correctly with recipes 1`] = `
+<div
+  className="MainList"
+>
+  <h2
+    className="step"
+  >
+    2/ Choose your Recipe
+  </h2>
+  <Connect(MainListFilter) />
+  <Connect(ItemLanguage) />
+  <Row
+    className="container-item-display"
+    gutter={0}
+  >
+    <Col
+      span={24}
+    >
+      <Spin
+        indicator={
+          <Icon
+            spin={true}
+            style={
+              Object {
+                "fontSize": 24,
+              }
+            }
+            type="loading"
+          />
+        }
+        prefixCls="ant-spin"
+        size="default"
+        spinning={true}
+        wrapperClassName=""
+      >
+        <ul
+          className="list"
+        >
+          <FlipMovePropConverter
+            delay={0}
+            disableAllAnimations={false}
+            duration={350}
+            easing="ease-in-out"
+            enterAnimation="elevator"
+            getPosition={[Function]}
+            leaveAnimation="elevator"
+            maintainContainerHeight={false}
+            staggerDelayBy={0}
+            staggerDurationBy={0}
+            typeName="div"
+            verticalAlignment="top"
+          >
+            <MainListItem
+              element={
+                Object {
+                  "isCustom": true,
+                  "professions": Array [
+                    "alchemy",
+                    "inscription",
+                  ],
+                  "reagents": Array [
+                    Object {
+                      "blizzardId": 152510,
+                      "quantity": 1,
+                    },
+                    Object {
+                      "blizzardId": 152507,
+                      "quantity": 1,
+                    },
+                    Object {
+                      "blizzardId": 152511,
+                      "quantity": 1,
+                    },
+                    Object {
+                      "blizzardId": 152508,
+                      "quantity": 1,
+                    },
+                    Object {
+                      "blizzardId": 152505,
+                      "quantity": 1,
+                    },
+                    Object {
+                      "blizzardId": 152509,
+                      "quantity": 1,
+                    },
+                    Object {
+                      "blizzardId": 152506,
+                      "quantity": 1,
+                    },
+                  ],
+                }
+              }
+              key="0"
+            />
+            <MainListItem
+              element={
+                Object {
+                  "craft": Object {
+                    "blizzardId": 152641,
+                    "quantity": 1,
+                  },
+                  "isCustom": false,
+                  "professions": Array [
+                    "alchemy",
+                  ],
+                  "reagents": Array [
+                    Object {
+                      "blizzardId": 152510,
+                      "quantity": 5,
+                    },
+                    Object {
+                      "blizzardId": 152507,
+                      "quantity": 10,
+                    },
+                    Object {
+                      "blizzardId": 152509,
+                      "quantity": 15,
+                    },
+                  ],
+                  "type": "flask",
+                }
+              }
+              key="1"
+            />
+            <MainListItem
+              element={
+                Object {
+                  "craft": Object {
+                    "blizzardId": 153442,
+                    "quantity": 1,
+                  },
+                  "isCustom": false,
+                  "professions": Array [
+                    "enchant",
+                  ],
+                  "reagents": Array [
+                    Object {
+                      "blizzardId": 152875,
+                      "quantity": 15,
+                    },
+                    Object {
+                      "blizzardId": 152876,
+                      "quantity": 3,
+                    },
+                    Object {
+                      "blizzardId": 152877,
+                      "quantity": 4,
+                    },
+                  ],
+                  "type": "ring",
+                }
+              }
+              key="2"
+            />
+          </FlipMovePropConverter>
+        </ul>
+      </Spin>
+    </Col>
+  </Row>
+</div>
+`;

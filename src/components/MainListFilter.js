@@ -5,7 +5,7 @@ import { setTextFilter, setProfessionFilter, setisCustomFilter } from "../action
 
 const Option = Select.Option;
 
-class MainListFilter extends React.Component {
+export class MainListFilter extends React.Component {
 
      handleToggleList = (e) => {
          this.props.handleToggleList(e.target.value);
@@ -33,8 +33,8 @@ class MainListFilter extends React.Component {
                 <Select defaultValue="all" style={{ width: 120 }} onChange={value => {this.props.dispatch(setProfessionFilter(value))}}>
                     <Option value="all">All</Option>
                     {
-                        this.props.professions.map( profession => (
-                            <Option value={profession.toLowerCase()}>{this.capitalize(profession)}</Option>
+                        this.props.professions.map( (profession, i) => (
+                            <Option key={i} value={profession.toLowerCase()}>{this.capitalize(profession)}</Option>
                         ))
                     }
                 </Select>
@@ -50,7 +50,6 @@ class MainListFilter extends React.Component {
 
 
 const mapStateToProps = state => {
-    console.log(state.recipes);
     let array = [];
     state.recipes.map( recipe => {recipe.professions.map( profession => {array.indexOf(profession) === -1 ? array.push(profession) : ''})})
 

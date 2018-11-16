@@ -1,0 +1,137 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Should render MainListItem component correctly for reagent (isCustom === true) 1`] = `
+<li
+  className="recipe list-item"
+  onClick={[Function]}
+>
+  <div
+    className="alchemyBg"
+  >
+    <ul>
+      <li
+        key="152510"
+      >
+        <a
+          data-wowhead="item=152510"
+          href="javascript:(void)"
+        >
+          item
+        </a>
+      </li>
+      <li
+        key="152507"
+      >
+        <a
+          data-wowhead="item=152507"
+          href="javascript:(void)"
+        >
+          item
+        </a>
+      </li>
+      <li
+        key="152511"
+      >
+        <a
+          data-wowhead="item=152511"
+          href="javascript:(void)"
+        >
+          item
+        </a>
+      </li>
+      <li
+        key="152508"
+      >
+        <a
+          data-wowhead="item=152508"
+          href="javascript:(void)"
+        >
+          item
+        </a>
+      </li>
+      <li
+        key="152505"
+      >
+        <a
+          data-wowhead="item=152505"
+          href="javascript:(void)"
+        >
+          item
+        </a>
+      </li>
+      <li
+        key="152509"
+      >
+        <a
+          data-wowhead="item=152509"
+          href="javascript:(void)"
+        >
+          item
+        </a>
+      </li>
+      <li
+        key="152506"
+      >
+        <a
+          data-wowhead="item=152506"
+          href="javascript:(void)"
+        >
+          item
+        </a>
+      </li>
+    </ul>
+  </div>
+</li>
+`;
+
+exports[`Should render MainListItem component correctly for recipe (isCustom === false) 1`] = `
+<li
+  className="recipe list-item"
+  onClick={[Function]}
+>
+  <div
+    className="alchemyBg"
+  >
+    <h6>
+      <a
+        data-wowhead="item=152641"
+        href="javascript:(void)"
+      >
+        item
+      </a>
+    </h6>
+    <ul>
+      <li
+        key="152510"
+      >
+        <a
+          data-wowhead="item=152510"
+          href="javascript:(void)"
+        >
+          item
+        </a>
+      </li>
+      <li
+        key="152507"
+      >
+        <a
+          data-wowhead="item=152507"
+          href="javascript:(void)"
+        >
+          item
+        </a>
+      </li>
+      <li
+        key="152509"
+      >
+        <a
+          data-wowhead="item=152509"
+          href="javascript:(void)"
+        >
+          item
+        </a>
+      </li>
+    </ul>
+  </div>
+</li>
+`;

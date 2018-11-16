@@ -29,7 +29,7 @@ export default class AuctionPriceTrack extends React.Component {
           })
           return this.setState({ auctionHouse: response })
         }
-          );
+      );
     }
   }
 
@@ -44,7 +44,7 @@ export default class AuctionPriceTrack extends React.Component {
       <div className="main">
         <RealmSelection loading={this.state.loading} handleRealmPicked={this.handleRealmPicked}/>
         <Divider/>
-        <MainList handleItemLanguageChange={this.handleItemLanguageChange} itemLanguage={this.state.itemLanguage}/>
+        <MainList/>
         <Divider/>
         {displayPriceSection}
       </div>

@@ -1,0 +1,39 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Should render AuctionPriceTrack component correctly 1`] = `
+<div
+  className="main"
+>
+  <realmSelection
+    handleRealmPicked={[Function]}
+    loading={false}
+  />
+  <Divider />
+  <Connect(MainList) />
+  <Divider />
+  <h3>
+    Veuillez selectionner un serveur
+  </h3>
+</div>
+`;
+
+exports[`Should render DisplayStats component correctly when server set 1`] = `
+<div
+  className="main"
+>
+  <realmSelection
+    handleRealmPicked={[Function]}
+    loading={false}
+  />
+  <Divider />
+  <Connect(MainList) />
+  <Divider />
+  <DisplayStats
+    auctionHouse={
+      Object {
+        "data": "some data",
+      }
+    }
+  />
+</div>
+`;

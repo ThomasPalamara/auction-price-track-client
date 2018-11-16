@@ -1,0 +1,194 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Should render RealmSelection component correctly 1`] = `
+<div
+  className="realmSelection"
+>
+  <Divider
+    orientation="left"
+  >
+     
+    <h3
+      className="step undefined"
+    >
+      1/ Choisissez votre royaume
+    </h3>
+     
+  </Divider>
+  <form
+    onSubmit={[Function]}
+  >
+    <div
+      className="select-realm"
+    >
+      <StateManager
+        defaultInputValue=""
+        defaultMenuIsOpen={false}
+        defaultValue={null}
+        name="realm"
+        onChange={[Function]}
+        options={
+          Array [
+            Object {
+              "label": "Elune",
+              "value": "elune",
+            },
+            Object {
+              "label": "Ysondre",
+              "value": "ysondre",
+            },
+            Object {
+              "label": "Krasus",
+              "value": "krasus",
+            },
+          ]
+        }
+        value={Object {}}
+      />
+    </div>
+    <Button
+      block={false}
+      className="btn btn-large"
+      ghost={false}
+      htmlType="submit"
+      id="chooseRealmBtn"
+      loading={false}
+      prefixCls="ant-btn"
+    >
+      Go !
+    </Button>
+  </form>
+</div>
+`;
+
+exports[`Should render error correctly for empty input 1`] = `
+<div
+  className="realmSelection"
+>
+  <Divider
+    orientation="left"
+  >
+     
+    <h3
+      className="step undefined"
+    >
+      1/ Choisissez votre royaume
+    </h3>
+     
+  </Divider>
+  <form
+    onSubmit={[Function]}
+  >
+    <div
+      className="select-realm"
+    >
+      <StateManager
+        defaultInputValue=""
+        defaultMenuIsOpen={false}
+        defaultValue={null}
+        name="realm"
+        onChange={[Function]}
+        options={
+          Array [
+            Object {
+              "label": "Elune",
+              "value": "elune",
+            },
+            Object {
+              "label": "Ysondre",
+              "value": "ysondre",
+            },
+            Object {
+              "label": "Krasus",
+              "value": "krasus",
+            },
+          ]
+        }
+        value={null}
+      />
+      <label
+        className="error"
+      >
+        Veuillez selectionner un nom de royaume valide
+      </label>
+    </div>
+    <Button
+      block={false}
+      className="btn btn-large"
+      ghost={false}
+      htmlType="submit"
+      id="chooseRealmBtn"
+      loading={false}
+      prefixCls="ant-btn"
+    >
+      Go !
+    </Button>
+  </form>
+</div>
+`;
+
+exports[`Should render error correctly for invalid input 1`] = `
+<div
+  className="realmSelection"
+>
+  <Divider
+    orientation="left"
+  >
+     
+    <h3
+      className="step undefined"
+    >
+      1/ Choisissez votre royaume
+    </h3>
+     
+  </Divider>
+  <form
+    onSubmit={[Function]}
+  >
+    <div
+      className="select-realm"
+    >
+      <StateManager
+        defaultInputValue=""
+        defaultMenuIsOpen={false}
+        defaultValue={null}
+        name="realm"
+        onChange={[Function]}
+        options={
+          Array [
+            Object {
+              "label": "Elune",
+              "value": "elune",
+            },
+            Object {
+              "label": "Ysondre",
+              "value": "ysondre",
+            },
+            Object {
+              "label": "Krasus",
+              "value": "krasus",
+            },
+          ]
+        }
+        value={null}
+      />
+      <label
+        className="error"
+      >
+        Veuillez selectionner un nom de royaume valide
+      </label>
+    </div>
+    <Button
+      block={false}
+      className="btn btn-large"
+      ghost={false}
+      htmlType="submit"
+      id="chooseRealmBtn"
+      loading={false}
+      prefixCls="ant-btn"
+    >
+      Go !
+    </Button>
+  </form>
+</div>
+`;

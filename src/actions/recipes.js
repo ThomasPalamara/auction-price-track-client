@@ -1,7 +1,7 @@
-export const setShoppingList = (shoppingList = {}) => (
+export const selectRecipe = (recipe = {}) => (
     {
-    type: 'SET_SHOPPING_LIST',
-    shoppingList
+    type: 'SELECT_RECIPE',
+    recipe
 });
 
 

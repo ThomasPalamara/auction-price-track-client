@@ -14,7 +14,7 @@ export default class realmSelection extends React.Component {
   componentDidMount() {
     fetch('/api/realms')
       .then(res => {
-        return res.json()
+        return res.json() //TODO See why this is here
       })
       .then(response => this.setState({ response: response }));
   }
@@ -23,11 +23,12 @@ export default class realmSelection extends React.Component {
     e.preventDefault();
     if (this.state.selectedOption && this.state.response.find(x => x.label === this.state.selectedOption.label)) {
       const realm = this.state.selectedOption.label;
-      this.setState({ status: 'done' })
-      this.props.handleRealmPicked(realm)
+      this.setState({ error: '' });
+      this.setState({ status: 'done' });
+      this.props.handleRealmPicked(realm);
     } else {
-      this.setState({ selectedOption: null })
-      this.setState({ error: 'Veuillez selectionner un nom de royaume valide' })
+      this.setState({ selectedOption: null });
+      this.setState({ error: 'Veuillez selectionner un nom de royaume valide' });
     }
 
 
@@ -49,13 +50,15 @@ export default class realmSelection extends React.Component {
               value={this.state.selectedOption}
               onChange={this.handleChange}
               name="realm"
-              options={this.state.response}
+              options={this.state.response.map(realm => realm)}
             />
+            {this.state.error && <label className="error">{this.state.error}</label> }
           </div>
           <Button id="chooseRealmBtn" htmlType="submit" className="btn btn-large" loading={this.props.loading} onClick={this.enterLoading}>
             Go !
         </Button>
         </form>
+        
       </div>
     );
   }

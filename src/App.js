@@ -12,7 +12,6 @@ import 'antd/dist/antd.css';
 const store = configureStore();
 
 store.dispatch(setTextFilter(''));
-
 const App = (
   <div className="App">
     <header className="App-header">

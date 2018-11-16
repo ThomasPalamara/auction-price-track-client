@@ -5,7 +5,11 @@
   "dependencies": {
     "all": "^0.0.0",
     "antd": "^3.8.1",
+    "enzyme": "^3.7.0",
+    "enzyme-adapter-react-16": "^1.7.0",
+    "enzyme-to-json": "^3.3.4",
     "netlify-cli": "^1.2.3",
+    "raf": "^3.4.1",
     "react": "^16.4.2",
     "react-dom": "^16.4.2",
     "react-flip-move": "^3.0.2",
@@ -22,6 +26,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-app-rewired test --env=jsdom",
+    "tests": "jest --config=jest.config.json",
     "eject": "react-scripts eject"
   },
   "proxy": "http://localhost:5000/",
