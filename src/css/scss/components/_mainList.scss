@@ -17,7 +17,7 @@
             }
 
             .list-item {
-                width: 270px;
+                width: 430px;
                 display: inline-block;
                 padding: 5px 10px;
 
@@ -29,22 +29,22 @@
                     border-right-width: 1px !important;
                 }
 
-                // a {
-                //     color: white;
-                // }
+                a {
+                    color: white;
+                }
 
-                // div {
-                //     background-color: #353535;
-                //     padding: 10px 0;
-                //     border-radius: 6px;
-                //     &.alchemyBg{
-                //         background-image: url('../img/alchemy.jpg');
-                //         background-size: 83%;
-                //         background-position: -23px -20px;
-                //         background-repeat: no-repeat;
-                //         box-shadow: inset 200px 200px 200px 200px rgba(0,0,0,.6)
-                //     }
-                // }
+                div {
+                    background-color: #353535;
+                    padding: 10px 0;
+                    border-radius: 6px;
+                    &.alchemyBg{
+                        background-image: url('../img/alchemy.jpg');
+                        background-size: 83%;
+                        background-position: -23px -20px;
+                        background-repeat: no-repeat;
+                        box-shadow: inset 200px 200px 200px 200px rgba(0,0,0,.6)
+                    }
+                }
 
                 h6 {
                     display: block;

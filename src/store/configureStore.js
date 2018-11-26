@@ -7,21 +7,44 @@ import recipesReducer from '../reducers/recipes';
 
 export default () => {
     const initialState = {
-        recipes: [{
-            "professions": [""],
-            "type": "",
-            "craft": {
-                "blizzardId": 0,
-                "quantity": 1
+        recipes: {
+            selectedRecipe: {
+                "professions": [""],
+                "type": "",
+                "craft": {
+                    "blizzardId": 0,
+                    "quantity": 1,
+                    "name": ''
+                },
+                "reagents": [{
+                    "blizzardId": 0,
+                    "quantity": 0,
+                    "name": ''
+                }, {
+                    "blizzardId": 1,
+                    "quantity": 0,
+                    "name": ''
+                }]
             },
-            "reagents": [{
-                "blizzardId": 0,
-                "quantity": 0
-            }, {
-                "blizzardId": 1,
-                "quantity": 0
+            recipesList:  [{
+                "professions": [""],
+                "type": "",
+                "craft": {
+                    "blizzardId": 0,
+                    "quantity": 1,
+                    "name": ''
+                },
+                "reagents": [{
+                    "blizzardId": 0,
+                    "quantity": 0,
+                    "name": ''
+                }, {
+                    "blizzardId": 1,
+                    "quantity": 0,
+                    "name": ''
+                }]
             }]
-        }],
+        },
         itemLanguage: 'en'
     }
     const store = createStore(

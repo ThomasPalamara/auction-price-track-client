@@ -59,7 +59,7 @@ export class MainList extends React.Component {
                   {this.props.recipesList &&
                     this.props.recipesList
                       .map((item, i) => {
-                        return (<MainListItem element={item} key={item._id} itemLanguage={this.props.itemLanguage} />)
+                        return (<MainListItem element={item} key={item._id} itemLanguage={this.props.itemLanguage} active={this.props.selectedRecipe._id === item._id}/>)
                       })
                   }
                 </FlipMove>
@@ -77,8 +77,8 @@ export class MainList extends React.Component {
 const mapStatetoProps = state => {
   return {
     itemLanguage: state.itemLanguage,
-    recipesList: selectRecipes(state.recipes, state.filters)
-    // recipesList : state.recipes
+    recipesList: selectRecipes(state.recipes.recipesList, state.filters),
+    selectedRecipe : state.recipes.selectedRecipe
   }
 };
 

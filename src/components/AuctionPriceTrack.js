@@ -46,6 +46,7 @@ export default class AuctionPriceTrack extends React.Component {
         <Divider/>
         <MainList/>
         <Divider/>
+        <DisplayStats/>
         {displayPriceSection}
       </div>
     );

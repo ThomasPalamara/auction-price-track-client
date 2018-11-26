@@ -1,8 +1,11 @@
 import React from 'react';
+import { connect } from 'react-redux'
 import { selectRecipe } from '../actions/recipes'
+import WHLink from './WHLink'
 
 class MainListItem extends React.Component {
     componentDidUpdate(){
+        console.log('ok');
     }
     render() {
         return (
@@ -13,20 +16,14 @@ class MainListItem extends React.Component {
                 <div className={this.props.element.isCustom ? 'generalBg' : this.props.element.professions[0] + 'Bg'}>
                     {this.props.element.craft &&
                         <h6>
-                            <a
-                                href="javascript:(void)"
-                                data-wowhead={`item=${this.props.element.craft.blizzardId}`}
-                            >{this.props.element.craft.name}</a>
+                            <WHLink {...this.props.element.craft}/>
                         </h6>
                     }
 
                     <ul>
                         {this.props.element.reagents.map((reagent) => (
                             <li key={reagent.blizzardId}>
-                                <a
-                                    href="javascript:(void)"
-                                    data-wowhead={`item=${reagent.blizzardId}`}
-                                >{reagent.name}</a>
+                                <WHLink {...reagent}/>
                             </li>
                         ))
                         }
@@ -35,5 +32,5 @@ class MainListItem extends React.Component {
             </li>)
     }
 };
-
-export default MainListItem;
+  
+export default connect()(MainListItem);
