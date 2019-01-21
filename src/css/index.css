@@ -44,18 +44,6 @@
         -webkit-box-shadow: 0 0 0 2px rgba(24, 144, 255, 0.2);
         box-shadow: 0 0 0 2px rgba(24, 144, 255, 0.2);
         border-right-width: 1px !important; }
-      .MainList .container-item-display .list .list-item a {
-        color: white; }
-      .MainList .container-item-display .list .list-item div {
-        background-color: #353535;
-        padding: 10px 0;
-        border-radius: 6px; }
-        .MainList .container-item-display .list .list-item div.alchemyBg {
-          background-image: url("../img/alchemy.jpg");
-          background-size: 83%;
-          background-position: -23px -20px;
-          background-repeat: no-repeat;
-          box-shadow: inset 200px 200px 200px 200px rgba(0, 0, 0, 0.6); }
       .MainList .container-item-display .list .list-item h6 {
         display: block;
         font-size: 18px;

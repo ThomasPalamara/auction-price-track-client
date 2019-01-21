@@ -1,4 +1,4 @@
-
+import { apiURL } from '../constants';
 let itemsJSON = {};
 
 export default (id, language = '') =>{
@@ -10,7 +10,7 @@ export default (id, language = '') =>{
 }
 
 export function initItemsNameJSON(_callback = () => {}){
-    fetch(`/api/items`)
+    fetch(`${apiURL}/items`)
     .then(res => res.json())
     .then(response => {
         itemsJSON = response;
