@@ -4,7 +4,7 @@ import WHLink from "../WHLink";
 
 
 const Recipe = (props) => (
-    <Checkbox.Group style={{ width: '100%' }} onChange={props.handler} defaultValue={['recipe']}>
+    <Checkbox.Group style={{ width: '100%' }} onChange={props.handler}>
         <Checkbox value="recipe">Recipe</Checkbox>
         {
             props.recipe.craft &&

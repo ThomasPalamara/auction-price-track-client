@@ -12,3 +12,8 @@ export const setisCustomFilter = (isCustom = false) => ({
     type: 'SET_IS_CUSTOM_FILTER',
     isCustom
 })
+
+export const setRealm = (realm = null) => ({
+    type: 'SET_REALM',
+    realm
+})
