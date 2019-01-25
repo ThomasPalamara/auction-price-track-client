@@ -7,14 +7,19 @@ import { apiURL } from '../../constants';
 
 class DisplayStats extends React.Component {
     state = {
-        selectedStats: []
+        selectedStats: [],
+        realm: {
+            label: '',
+            value: ''
+        }
     }
 
     componentDidUpdate(prevProps, prevState) {
-        if (this.state.realm && prevState.realm !== this.state.realm) {
+        console.log(this.state.selectedStats.length);
+        if ((this.props.realm.value && this.state.selectedStats.length) && ( prevProps.realm.value !== this.props.realm.value  ||  prevState.selectedStats !== this.state.selectedStats)) {
             console.log('Fetching');
             this.setState({ loading: true });
-            fetch(`${apiURL}/itemstats/${this.state.selectedStats[0]}`)
+            fetch(`${apiURL}/itemstats/${this.props.realm.value}/${this.state.selectedStats[0]}`)
                 .then(res => {
                     if (!res.ok) {
                         throw new Error("Not found");

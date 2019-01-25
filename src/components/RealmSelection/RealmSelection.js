@@ -34,7 +34,7 @@ export default class realmSelection extends React.Component {
       }
     }, function () {
       if (this.state.selectedOption && this.state.realms.find(x => {return x.value === this.state.selectedOption.value })) {
-        const realm = this.state.selectedOption.label;
+        const realm = this.state.selectedOption;
         this.setState({ error: '' });
         this.props.handleRealmPicked(realm);
       } else {

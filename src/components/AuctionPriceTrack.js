@@ -8,26 +8,30 @@ import { apiURL } from '../constants';
 
 export default class AuctionPriceTrack extends React.Component {
   state = {
-    realm : null,
+    realm: {
+      label: '',
+      value: ''
+    },
     auctionHouse: null,
     loading: false,
   };
   handleRealmPicked = (realm) => {
+    console.log(realm, 'relam');
     this.setState({ realm });
   }
 
-    render() {
+  render() {
     let displayPriceSection;
-    if(!this.state.auctionHouse){
+    if (!this.state.auctionHouse) {
       displayPriceSection = <h3>Veuillez selectionner un serveur</h3>;
-    }else{
-      displayPriceSection = <Stats auctionHouse={this.state.auctionHouse}/>
+    } else {
+      displayPriceSection = <Stats auctionHouse={this.state.auctionHouse} />
     }
     return (
       <div className="main">
-        <RealmSelection loading={this.state.loading} handleRealmPicked={this.handleRealmPicked}/>
-        <MainList/>
-        <Stats realm={this.state.realm}/>
+        <RealmSelection loading={this.state.loading} handleRealmPicked={this.handleRealmPicked} />
+        <MainList />
+        <Stats realm={this.state.realm} />
         {displayPriceSection}
       </div>
     );
