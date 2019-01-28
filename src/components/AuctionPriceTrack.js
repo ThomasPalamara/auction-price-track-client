@@ -9,8 +9,8 @@ import { apiURL } from '../constants';
 export default class AuctionPriceTrack extends React.Component {
   state = {
     realm: {
-      label: '',
-      value: ''
+      label: 'Arathi',
+      value: 'arathi'
     },
     auctionHouse: null,
     loading: false,
