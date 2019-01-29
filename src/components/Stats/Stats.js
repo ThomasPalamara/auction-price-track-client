@@ -16,15 +16,15 @@ class DisplayStats extends React.Component {
 
         if ((this.props.realm.value && this.props.selectedRecipe._id) && (prevProps.realm.value !== this.props.realm.value || prevProps.selectedRecipe._id !== this.props.selectedRecipe._id)) {
             let fetches = [];
-            console.log('Fetching');
-            this.setState({ loading: true }, () => {
-                console.log(this.state.loading, 'before fetch');
+            console.log('%c Fetching', 'background: #222; color: #bada55');
+            this.setState({ loading: true, stats: null }, () => {
                 this.props.selectedRecipe.reagents.map(reagent => fetches.push(this.fetchItemStats(reagent.blizzardId)));
                 fetches.push(this.fetchItemStats(this.props.selectedRecipe.craft.blizzardId));
-                Promise.all(fetches).then((response) => {
-                    console.log(response);
-                    this.setState({ loading: false });
-                    console.log('End Fetching');
+                Promise.all(fetches).then((responses) => {
+                    let stats = {};
+                    responses.map(response => stats[response[0].itemId] = response);
+                    this.setState({ loading: false, stats });
+                    console.log('%c End Fetching', 'background: #222; color: #bada55');
                 });
             }
             );
@@ -46,7 +46,6 @@ class DisplayStats extends React.Component {
     }
 
     render() {
-        // console.log('stats', this.state.stats);
         let display;
         if (this.props.realm && this.props.selectedRecipe.type) {
             display = (
@@ -66,14 +65,7 @@ class DisplayStats extends React.Component {
         }
 
         return (
-            <div>
-                {!this.props.selectedRecipe && this.state.stats &&
-                    <div>
-                        {this.props.selectedRecipe.reagents.map((reagent) => <h1>{this.state.stats[reagent.blizzardId].name} Stats</h1>
-                        )}
-                    </div>
-                }
-            </div>
+            display
         );
     }
 }

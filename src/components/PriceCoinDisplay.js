@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from 'prop-types';
 
 const PriceCoinDisplay = (props) => (
     <div>
@@ -7,5 +8,9 @@ const PriceCoinDisplay = (props) => (
         <span>{props.price.toString().slice(-2)} <i className="money-icon copper" /> </span>
     </div>
 );
+
+PriceCoinDisplay.propTypes = {
+    price: PropTypes.number.isRequired,
+  }
 
 export default PriceCoinDisplay;
