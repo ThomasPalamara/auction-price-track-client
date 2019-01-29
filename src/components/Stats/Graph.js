@@ -8,27 +8,42 @@ class Stats extends React.Component {
         const { stats, recipe, selectedStats } = this.props
         let data;
         if (stats && stats[recipe.craft.blizzardId]) {
-            console.log(recipe);
-            console.log(recipe.craft.blizzardId, 'craftId');
-            console.log(stats, 'stats');
-            console.log(stats[recipe.craft.blizzardId], '////');
-            data = stats[recipe.craft.blizzardId].map(element => ({ name: element.timestamp, value: element.mean }))
+            data = stats[recipe.craft.blizzardId].map(element => {
+                let obj = {};
+                obj['timestamp'] = element.timestamp;
+                obj[recipe.craft.blizzardId] = element.median;
+                return obj;
+            });
+            console.log(data, '////////////');
+            recipe.reagents.map( reagent => {
+                console.log('ok');
+                stats[reagent.blizzardId].map(stat => {
+                    data.map(element => {
+                        return element.timestamp === stat.timestamp ? element[reagent.blizzardId] = stat.median : '' ;
+                    })
+                    // const indexTimeStamp = data.findIndex(element => element.timestamp === stat.timestamp)
+                    // data[indexTimeStamp]
+                    // console.log(includesTimeStamp);
+                })
+                
+            })
             console.log('data', data);
+            console.log(selectedStats);
             return (
                 <div>
                     <h2>here</h2>
                     <LineChart width={600} height={300} data={data}>
-                        <Line type="monotone" dataKey="value" stroke="#8884d8" />
+                        {selectedStats && selectedStats.map((reagent, i) => {
+                            console.log(reagent)    
+                            return(
+                            <Line key={reagent} type="monotone" dataKey={reagent} stroke="#ff4433" />
+                        )})}
                         <CartesianGrid stroke="#ccc" strokeDasharray="5 5" />
-                        <XAxis dataKey="name" />
+                        <Legend />
+                        <XAxis dataKey="timestamp" />
                         <YAxis />
                         <Tooltip content={<CustomTooltip />} />
                     </LineChart>
-                    {selectedStats.includes('recipe') && <h1>Recipe Stats</h1>}
-                    {selectedStats.includes(recipe.craft.blizzardId) && <h1>{stats[recipe.craft.blizzardId][0]['mean']} Stats</h1>}
-                    {recipe.reagents.map((reagent) => (
-                        selectedStats.includes(reagent.blizzardId) && <h1>{reagent.name} Stats</h1>
-                    ))}
                 </div>
             );
         }

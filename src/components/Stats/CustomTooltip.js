@@ -6,13 +6,19 @@ import PropTypes from 'prop-types';
 class CustomTooltip extends React.Component {
 
   render() {
+    
     const { active } = this.props;
-
+console.log(active);
     if (active) {
-      const { payload, label } = this.props;
+      const { payload } = this.props;
+    console.log(payload);
+      console.log(payload[0].dataKey);
+// console.log(payload[0].payload);
+// console.log(payload[0].payload[payload[0].datakey]);
+      // const { payload, label } = this.props;
       return (
         <div className="custom-tooltip">
-        <PriceCoinDisplay price={this.props.payload[0].payload.value}/>
+        <PriceCoinDisplay price={payload[0].payload[payload[0].dataKey]}/>
         </div>
       );
     }
@@ -27,3 +33,4 @@ CustomTooltip.propTypes = {
 }
 
 export default CustomTooltip;
+//<PriceCoinDisplay price={payload[0].payload[payload[0].datakey]}/>

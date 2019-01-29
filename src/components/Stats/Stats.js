@@ -7,7 +7,7 @@ import { apiURL } from '../../constants';
 
 class DisplayStats extends React.Component {
     state = {
-        selectedStats: [],
+        selectedStats: null,
         stats: null,
         loading: false
     }
