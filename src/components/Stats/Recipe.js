@@ -11,14 +11,14 @@ const Recipe = (props) => (
             <ul className="craft">
                 <li>Craft: </li>
                 <li>
-                    <Checkbox value={props.recipe.craft.blizzardId}><WHLink {...props.recipe.craft} /></Checkbox>
+                    <Checkbox value={{id:props.recipe.craft.blizzardId,name:props.recipe.craft.name}}><WHLink {...props.recipe.craft} /></Checkbox>
                 </li>
             </ul>
         }
         <ul className="reagent">
             <li>Reagents: </li>
             {props.recipe.reagents.map((reagent, i) => (
-                <li key={i}><Checkbox value={reagent.blizzardId}><WHLink {...reagent} /></Checkbox></li>
+                <li key={i}><Checkbox value={{id:reagent.blizzardId,name:reagent.name}}><WHLink {...reagent} /></Checkbox></li>
             ))}
 
         </ul>

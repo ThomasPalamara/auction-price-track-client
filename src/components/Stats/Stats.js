@@ -42,6 +42,9 @@ class DisplayStats extends React.Component {
     }
     
     handleSelectedStats = (selectedStats) => {
+        console.log(this.props.selectedRecipe.find(e => {
+            console.log(e);
+            return e.blizzardId === selectedStats}));
         this.setState({ selectedStats })
     }
 

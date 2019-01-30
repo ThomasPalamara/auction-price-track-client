@@ -6,12 +6,13 @@ import CustomTooltip from "./CustomTooltip"
 class Stats extends React.Component {
     render() {
         const { stats, recipe, selectedStats } = this.props
+        const statValue = 'median'
         let data;
         if (stats && stats[recipe.craft.blizzardId]) {
             data = stats[recipe.craft.blizzardId].map(element => {
                 let obj = {};
                 obj['timestamp'] = element.timestamp;
-                obj[recipe.craft.blizzardId] = element.median;
+                obj[recipe.craft.blizzardId] = element[statValue];
                 return obj;
             });
             console.log(data, '////////////');
@@ -19,11 +20,8 @@ class Stats extends React.Component {
                 console.log('ok');
                 stats[reagent.blizzardId].map(stat => {
                     data.map(element => {
-                        return element.timestamp === stat.timestamp ? element[reagent.blizzardId] = stat.median : '' ;
+                        return element.timestamp === stat.timestamp ? element[reagent.blizzardId] = stat[statValue] : '' ;
                     })
-                    // const indexTimeStamp = data.findIndex(element => element.timestamp === stat.timestamp)
-                    // data[indexTimeStamp]
-                    // console.log(includesTimeStamp);
                 })
                 
             })
@@ -33,10 +31,10 @@ class Stats extends React.Component {
                 <div>
                     <h2>here</h2>
                     <LineChart width={600} height={300} data={data}>
-                        {selectedStats && selectedStats.map((reagent, i) => {
-                            console.log(reagent)    
+                        {selectedStats && selectedStats.map((element, i) => {
+                            console.log(element)    
                             return(
-                            <Line key={reagent} type="monotone" dataKey={reagent} stroke="#ff4433" />
+                            <Line key={element.id} type="monotone" name={element.name} dataKey={element.id} stroke="#ff4433" />
                         )})}
                         <CartesianGrid stroke="#ccc" strokeDasharray="5 5" />
                         <Legend />
