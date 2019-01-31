@@ -21,18 +21,11 @@ export default class AuctionPriceTrack extends React.Component {
   }
 
   render() {
-    let displayPriceSection;
-    if (!this.state.auctionHouse) {
-      displayPriceSection = <h3>Veuillez selectionner un serveur</h3>;
-    } else {
-      displayPriceSection = <Stats auctionHouse={this.state.auctionHouse} />
-    }
     return (
       <div className="main">
         <RealmSelection loading={this.state.loading} handleRealmPicked={this.handleRealmPicked} />
         <MainList />
         <Stats realm={this.state.realm} />
-        {displayPriceSection}
       </div>
     );
   }
