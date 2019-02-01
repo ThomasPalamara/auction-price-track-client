@@ -1,8 +1,7 @@
 import React from "react";
 import { connect } from 'react-redux';
-import { Row, Col, Tabs, Icon } from "antd";
-import Recipe from "./Recipe"
-import GraphsItems from "./GraphsItems.js"
+import { Tabs, Icon } from "antd";
+import GraphsItems from "./GraphsItems.js";
 import { apiURL } from '../../constants';
 
 const TabPane = Tabs.TabPane;
@@ -15,16 +14,28 @@ class Stats extends React.Component {
     }
 
     componentDidUpdate(prevProps, prevState) {
-
+        console.log(this.props.recipe);
         if ((this.props.realm.value && this.props.recipe._id) && (prevProps.realm.value !== this.props.realm.value || prevProps.recipe._id !== this.props.recipe._id)) {
             let fetches = [];
             console.log('%c Fetching', 'background: #222; color: #bada55');
             this.setState({ loading: true, itemsStats: null }, () => {
+
                 this.props.recipe.reagents.map(reagent => fetches.push(this.fetchItemStats(reagent.blizzardId)));
                 fetches.push(this.fetchItemStats(this.props.recipe.craft.blizzardId));
+                
                 Promise.all(fetches).then((responses) => {
                     let itemsStats = {};
+                    console.log(responses);
                     responses.map(response => itemsStats[response[0].itemId] = response);
+                    console.log(itemsStats);
+
+                    Object.keys(itemsStats).forEach(function(item) {
+                        itemsStats[item].forEach((element,i, array) => {
+                            // console.log(element.timestamp);
+                            // console.log(new Date(element.timestamp).getTime());
+                            array[i].timestamp = new Date(element.timestamp).getTime();
+                        });
+                    });
                     this.setState({ loading: false, itemsStats });
                     console.log('%c End Fetching', 'background: #222; color: #bada55');
                 });
@@ -35,6 +46,7 @@ class Stats extends React.Component {
 
     fetchItemStats(itemId) {
         return fetch(`${apiURL}/itemstats/${this.props.realm.value}/${itemId}`)
+        // return fetch(`${apiURL}/itemstats/${this.props.realm.value}/${itemId}?start=2019-01-16T23:52:50.000Z&end=2019-02-01T07:52:50.000Z`)
             .then(res => {
                 if (!res.ok) {
                     throw new Error("Not found");
@@ -50,9 +62,6 @@ class Stats extends React.Component {
 
     render() {
         let {recipe, realm} = this.props;
-        console.log(this.props);
-        console.log(recipe);
-        console.log(realm);
         let display;
         if (realm && recipe.type) {
             display = (

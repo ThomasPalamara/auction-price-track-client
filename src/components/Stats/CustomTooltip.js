@@ -6,19 +6,32 @@ import PropTypes from 'prop-types';
 class CustomTooltip extends React.Component {
 
   render() {
-    
+
     const { active } = this.props;
-console.log(active);
+    // console.log(active);
     if (active) {
       const { payload } = this.props;
-    console.log(payload);
-      console.log(payload[0].dataKey);
-// console.log(payload[0].payload);
-// console.log(payload[0].payload[payload[0].datakey]);
+      console.log(payload);
+      //   console.log(payload[0].dataKey);
+      // console.log(payload[0].payload);
+      // console.log(payload[0].payload[payload[0].datakey]);
       // const { payload, label } = this.props;
       return (
         <div className="custom-tooltip">
-        <PriceCoinDisplay price={payload[0].payload[payload[0].dataKey]}/>
+        <table>
+        {payload.map(e => {
+          console.log(e);
+          console.log(e.dataKey);
+          console.log(e.payload[e.dataKey]);
+          return(
+            <tr>
+              <td>{e.dataKey} :</td>
+              <td><PriceCoinDisplay price={e.payload[e.dataKey]} /></td>
+            </tr>
+            
+        )})}
+        </table>
+          
         </div>
       );
     }

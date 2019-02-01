@@ -1,6 +1,6 @@
 import React from 'react';
 import Select from 'react-select';
-import { Button, Divider } from 'antd';
+import { Divider } from 'antd';
 import { apiURL } from '../../constants';
 
 export default class realmSelection extends React.Component {

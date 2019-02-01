@@ -2,6 +2,9 @@ import React from "react";
 import { Radio, Col, Row } from "antd";
 import LineGraph from "./LineGraph";
 import WHLink from "../WHLink";
+import ZoomGraph from "./zoomGraph";
+import { Label, LineChart, Line, CartesianGrid, XAxis, YAxis, Tooltip, ReferenceArea } from 'recharts';
+import EmptyChart from "./EmptyChart";
 
 
 class GraphsItems extends React.Component {
@@ -13,12 +16,24 @@ class GraphsItems extends React.Component {
         this.setState({ item: e.target.value });
     }
 
-    componentWillMount() {
+    componentDidMount() {
         this.setState({ item: this.props.recipe.craft.blizzardId })
+    }
+    componentDidUpdate(prevProps, prevState) {
+        if (this.props.recipe.craft.blizzardId !== prevProps.recipe.craft.blizzardId) {
+            console.log('YAS');
+            this.setState({ item: this.props.recipe.craft.blizzardId })
+        }
     }
     render() {
         let { loading, recipe, itemsStats } = this.props;
-        console.log(loading,itemsStats );
+        console.log(loading, itemsStats);
+        let graphs;
+        if (!loading && itemsStats) {
+            graphs = <ZoomGraph stats={['percentile5']} item={this.state.item} itemStats={itemsStats[this.state.item]} />
+        } else {
+            graphs = <EmptyChart/>
+        }
         return (
             <Row>
                 <Col span={6}>
@@ -35,17 +50,14 @@ class GraphsItems extends React.Component {
                         <ul className="reagent">
                             <li>Reagents: </li>
                             {recipe.reagents.map((reagent, i) => (
-                                <li key={i}><Radio value={reagent.blizzardId}><WHLink {...reagent} /></Radio></li>
+                                <li key={i}><Radio key={i} value={reagent.blizzardId}><WHLink {...reagent} /></Radio></li>
                             ))}
 
                         </ul>
                     </Radio.Group>
                 </Col>
                 <Col span={18}>
-                    {!loading && itemsStats &&
-                        <LineGraph stats={['median', 'mean', 'percentile5']} item={this.state.item} itemStats={itemsStats[this.state.item]} />
-                    }
-
+                    {graphs}
                 </Col>
             </Row>
         );

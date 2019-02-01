@@ -7,7 +7,7 @@ const colors = ['#ff404a', '#b139ec', '#ff881d', '#5ca0f2', '#8fd16f', '#ea4c89'
 class Graphs extends React.Component {
     render() {
 
-        const { item, stats, itemStats } = this.props
+        const { stats, itemStats } = this.props
         let data;
 
         if (itemStats) {
@@ -25,11 +25,12 @@ class Graphs extends React.Component {
                         {stats.map((stat, i) => {
                             return (
                                 <Line
-                                    key={stat.blizzardId}
+                                    key={i}
                                     type="monotone"
                                     name={stat.name}
                                     dataKey={stat}
                                     stroke={colors[i + 1]}
+                                    dot={false}
                                 />
                             )
                         })}

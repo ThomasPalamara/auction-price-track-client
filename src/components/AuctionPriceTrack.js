@@ -2,7 +2,6 @@ import React from 'react';
 import RealmSelection from './RealmSelection';
 import MainList from './MainList';
 import Stats from './Stats';
-import { apiURL } from '../constants';
 
 // TODO Ajouter la selection de language au store puis corrigé celle en place et ajouter a display table
 

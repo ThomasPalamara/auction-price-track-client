@@ -51,7 +51,7 @@ export class MainListFilter extends React.Component {
 
 const mapStateToProps = state => {
     let array = [];
-    state.recipes.recipesList.map( recipe => {recipe.professions.map( profession => {array.indexOf(profession) === -1 ? array.push(profession) : ''})})
+    state.recipes.recipesList.map( recipe => recipe.professions.map( profession => array.indexOf(profession) === -1 ? array.push(profession) : ''));
 
     return {
         filters: state.filters,
