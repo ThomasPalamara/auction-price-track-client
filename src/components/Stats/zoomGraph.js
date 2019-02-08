@@ -12,10 +12,8 @@ const initialState = {
   right : 'dataMax',
   refAreaLeft : '',
   refAreaRight : '',
-  top : 'dataMax+1',
+  top : 'dataMax',
   bottom : 'dataMin-1',
-  top2 : 'dataMax+20',
-  bottom2 : 'dataMin-20',
   animation : true
 };
 
@@ -78,16 +76,18 @@ class ZoomGraph extends React.Component {
     		[ refAreaLeft, refAreaRight ] = [ refAreaRight, refAreaLeft ];
 
 		// yAxis domain
-    const [ bottom, top ] = this.getAxisYDomain( refAreaLeft, refAreaRight, 'percentile5', 30000 );
-    
+    const [ bottom, top ] = this.getAxisYDomain( refAreaLeft, refAreaRight, 'percentile5', 0 );
+    console.log(top);
     this.setState( () => ({
       refAreaLeft : '',
       refAreaRight : '',
     	data : data.slice(),
       left : refAreaLeft,
       right : refAreaRight,
-      bottom, top,
+      bottom: bottom, 
+      top: top,
     } ) );
+    console.log(this.state.top);
   };
 
 	zoomOut() {
@@ -98,7 +98,7 @@ class ZoomGraph extends React.Component {
       refAreaRight : '',
       left : 'dataMin',
       right : 'dataMax',
-      top : 'dataMax+1',
+      top : 'dataMax',
       bottom : 'dataMin',
     }) );
   }
@@ -135,13 +135,13 @@ class ZoomGraph extends React.Component {
             />
             <YAxis 
               allowDataOverflow={true}
-              domain={[bottom, top]}
+              domain={[0, top => {console.log(top); return(Number(top) + Number(top)*0.1)}]}
               type="number"
               yAxisId="1"
              />
-            <Tooltip/>
+            <Tooltip content={<CustomTooltip />}/>
             {stats.map(stat => (
-              <Line yAxisId="1" type='natural' dataKey={stat} stroke='#8884d8' animationDuration={300}/>
+              <Line yAxisId="1" type='monotoneX' dot={false} dataKey={stat} stroke='#8884d8' animationDuration={300}/>
             ))}
             
             

@@ -39,14 +39,13 @@ class Stats extends React.Component {
                     this.setState({ loading: false, itemsStats });
                     console.log('%c End Fetching', 'background: #222; color: #bada55');
                 });
-            }
-            );
+            });
         }
     }
 
     fetchItemStats(itemId) {
-        return fetch(`${apiURL}/itemstats/${this.props.realm.value}/${itemId}`)
-        // return fetch(`${apiURL}/itemstats/${this.props.realm.value}/${itemId}?start=2019-01-16T23:52:50.000Z&end=2019-02-01T07:52:50.000Z`)
+        // return fetch(`${apiURL}/itemstats/${this.props.realm.value}/${itemId}`)
+        return fetch(`${apiURL}/itemstats/${this.props.realm.value}/${itemId}?start=2019-01-16T23:52:50.000Z&end=2019-02-01T07:52:50.000Z`)
             .then(res => {
                 if (!res.ok) {
                     throw new Error("Not found");

@@ -11,27 +11,30 @@ class CustomTooltip extends React.Component {
     // console.log(active);
     if (active) {
       const { payload } = this.props;
-      console.log(payload);
+      // console.log(payload);
       //   console.log(payload[0].dataKey);
       // console.log(payload[0].payload);
       // console.log(payload[0].payload[payload[0].datakey]);
       // const { payload, label } = this.props;
       return (
         <div className="custom-tooltip">
-        <table>
-        {payload.map(e => {
-          console.log(e);
-          console.log(e.dataKey);
-          console.log(e.payload[e.dataKey]);
-          return(
-            <tr>
-              <td>{e.dataKey} :</td>
-              <td><PriceCoinDisplay price={e.payload[e.dataKey]} /></td>
-            </tr>
-            
-        )})}
-        </table>
-          
+          <table>
+            <tbody>
+              {payload.map(e => {
+                // console.log(e);
+                // console.log(e.dataKey);
+                // console.log(e.payload[e.dataKey]);
+                return (
+                  <tr key={e.dataKey}>
+                    <td>{e.dataKey} :</td>
+                    <td><PriceCoinDisplay price={e.payload[e.dataKey]} /></td>
+                  </tr>
+
+                )
+              })}
+            </tbody>
+          </table>
+
         </div>
       );
     }
