@@ -1,5 +1,5 @@
 import React from "react";
-import { Label, LineChart, Line, CartesianGrid, XAxis, YAxis, Tooltip, ReferenceArea } from 'recharts';
+import { LineChart, Line, CartesianGrid, XAxis, YAxis, Tooltip, ReferenceArea } from 'recharts';
 import CustomTooltip from "./CustomTooltip"
 
 
@@ -25,7 +25,6 @@ class ZoomGraph extends React.Component {
   }
 
   getAxisYDomain = (from, to, ref, offset) => {
-    console.log(from, to);
     const fromPos = this.state.data.map(e => e.timestamp).indexOf(from);
     const toPos = this.state.data.map(e => e.timestamp).indexOf(to);
     // const refData = this.state.data.slice(from-1, to);
@@ -77,7 +76,7 @@ class ZoomGraph extends React.Component {
 
 		// yAxis domain
     const [ bottom, top ] = this.getAxisYDomain( refAreaLeft, refAreaRight, 'percentile5', 0 );
-    console.log(top);
+    console.log(top, 'top after zoom');
     this.setState( () => ({
       refAreaLeft : '',
       refAreaRight : '',
@@ -86,8 +85,8 @@ class ZoomGraph extends React.Component {
       right : refAreaRight,
       bottom: bottom, 
       top: top,
-    } ) );
-    console.log(this.state.top);
+    } ), () => {console.log(this.state.top, 'top state after zoom');} );
+    
   };
 
 	zoomOut() {
@@ -104,7 +103,8 @@ class ZoomGraph extends React.Component {
   }
   
   render() {
-    const { data, barIndex, left, right, refAreaLeft, refAreaRight, top, bottom, top2, bottom2 } = this.state;
+    const { data, left, right, refAreaLeft, refAreaRight, top } = this.state;
+    console.log(Number(top) + Number(top)*0.3);
     const { stats, itemStats } = this.props
       return (
         <div className="highlight-bar-charts">
@@ -135,7 +135,7 @@ class ZoomGraph extends React.Component {
             />
             <YAxis 
               allowDataOverflow={true}
-              domain={[0, top => {console.log(top); return(Number(top) + Number(top)*0.1)}]}
+              domain={[0, (isNaN(Number(top)) ? top => (top + top*0.3) : Number(top) + Number(top)*0.3)]}
               type="number"
               yAxisId="1"
              />

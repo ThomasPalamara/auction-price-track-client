@@ -1,9 +1,7 @@
 import React from "react";
 import { Radio, Col, Row } from "antd";
-import LineGraph from "./LineGraph";
 import WHLink from "../WHLink";
 import ZoomGraph from "./zoomGraph";
-import { Label, LineChart, Line, CartesianGrid, XAxis, YAxis, Tooltip, ReferenceArea } from 'recharts';
 import EmptyChart from "./EmptyChart";
 
 

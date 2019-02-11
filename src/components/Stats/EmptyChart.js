@@ -1,5 +1,5 @@
 import React from "react";
-import { Label, LineChart, Line, CartesianGrid, XAxis, YAxis, Tooltip, ReferenceArea } from 'recharts';
+import { LineChart,  CartesianGrid, XAxis, YAxis } from 'recharts';
 
 const data = [{name: 'Page A', uv: 4000, pv: 2400, amt: 2400},
 {name: 'Page B', uv: 3000, pv: 1398, amt: 2210},

@@ -36,8 +36,9 @@ class Stats extends React.Component {
                             array[i].timestamp = new Date(element.timestamp).getTime();
                         });
                     });
-                    this.setState({ loading: false, itemsStats });
+                    this.setState({ itemsStats });                    
                     console.log('%c End Fetching', 'background: #222; color: #bada55');
+                    this.setState({ loading: false });
                 });
             });
         }
@@ -45,7 +46,7 @@ class Stats extends React.Component {
 
     fetchItemStats(itemId) {
         // return fetch(`${apiURL}/itemstats/${this.props.realm.value}/${itemId}`)
-        return fetch(`${apiURL}/itemstats/${this.props.realm.value}/${itemId}?start=2019-01-16T23:52:50.000Z&end=2019-02-01T07:52:50.000Z`)
+        return fetch(`${apiURL}/itemstats/${this.props.realm.value}/${itemId}?start=2019-02-01T23:52:50.000Z&end=2019-02-04T07:52:50.000Z`)
             .then(res => {
                 if (!res.ok) {
                     throw new Error("Not found");
