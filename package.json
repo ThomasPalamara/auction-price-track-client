@@ -8,6 +8,7 @@
     "enzyme": "^3.7.0",
     "enzyme-adapter-react-16": "^1.7.0",
     "enzyme-to-json": "^3.3.4",
+    "lodash": "^4.17.11",
     "netlify-cli": "^1.2.3",
     "raf": "^3.4.1",
     "react": "^16.4.2",

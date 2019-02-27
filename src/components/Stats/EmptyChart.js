@@ -12,7 +12,7 @@ const data = [{name: 'Page A', uv: 4000, pv: 2400, amt: 2400},
 const EmptyChart = (props) => (
   <LineChart width={800} height={400} data={data}>
     <CartesianGrid stroke="#ccc" />
-    <XAxis dataKey="name" />
+    <XAxis />
     <YAxis />
   </LineChart>
 );

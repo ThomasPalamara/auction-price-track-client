@@ -1,18 +1,18 @@
 import React from "react";
-import { Radio, Col, Row, Spin, Icon } from "antd";
+import { Radio, Col, Row, Spin, Icon, Checkbox } from "antd";
 import WHLink from "../WHLink";
 import ZoomGraph from "./ZoomGraph";
 import EmptyChart from "./EmptyChart";
 
 const loadIcon = <Icon type="loading" style={{ fontSize: 24 }} spin />;
 
-class GraphsItems extends React.Component {
+class GraphsRecipe extends React.Component {
     state = {
-        item: ''
+        item: []
     }
 
-    radioHandler = (e) => {
-        this.setState({ item: e.target.value });
+    checkHandler = (checkedList) => {
+        this.setState({ item: checkedList });
     }
 
     componentDidMount() {
@@ -27,14 +27,12 @@ class GraphsItems extends React.Component {
         let { loading, recipe, itemsStats } = this.props;
         let { item } = this.state;
         let graphs;
-        if (!loading && itemsStats) {
+        console.log(item);
+        console.log(itemsStats);
+        if (!loading && itemsStats && item.length) {
             graphs = (
                 <React.Fragment>
-                    <ZoomGraph stats={['percentile5']} item={item} itemStats={itemsStats[item]} />
-                    <ZoomGraph stats={['percentile25']} item={item} itemStats={itemsStats[item]} />
-                    <ZoomGraph stats={['mean']} item={item} itemStats={itemsStats[item]} />
-                    <ZoomGraph stats={['median']} item={item} itemStats={itemsStats[item]} />
-                    <ZoomGraph stats={['mode']} item={item} itemStats={itemsStats[item]} />
+                    
                 </React.Fragment>
             );
         } else {
@@ -43,23 +41,23 @@ class GraphsItems extends React.Component {
         return (
             <Row>
                 <Col span={6}>
-                    <Radio.Group style={{ width: '100%' }} value={item} onChange={this.radioHandler}>
+                    <Checkbox.Group style={{ width: '100%' }} value={[item]} onChange={this.checkHandler}>
                         {
                             recipe.craft &&
                             <ul className="craft">
                                 <li>Craft: </li>
                                 <li>
-                                    <Radio defaultChecked={true} value={recipe.craft.blizzardId}><WHLink {...recipe.craft} /></Radio>
+                                    <Checkbox defaultChecked={true} value={recipe.craft.blizzardId}><WHLink {...recipe.craft} /></Checkbox>
                                 </li>
                             </ul>
                         }
                         <ul className="reagent">
                             <li>Reagents: </li>
                             {recipe.reagents.map((reagent, i) => (
-                                <li key={i}><Radio key={i} value={reagent.blizzardId}><WHLink {...reagent} /></Radio></li>
+                                <li key={i}><Checkbox key={i} value={reagent.blizzardId}><WHLink {...reagent} /></Checkbox></li>
                             ))}
                         </ul>
-                    </Radio.Group>
+                    </Checkbox.Group>
                 </Col>
                 <Col span={18}>
                     <Spin spinning={loading} tip="Fetching..." indicator={loadIcon}>
@@ -71,7 +69,7 @@ class GraphsItems extends React.Component {
     }
 }
 
-export default GraphsItems;
+export default GraphsRecipe;
 
 
 

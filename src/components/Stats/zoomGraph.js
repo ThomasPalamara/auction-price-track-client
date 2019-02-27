@@ -1,9 +1,7 @@
 import React from "react";
 import { LineChart, Line, CartesianGrid, XAxis, YAxis, Tooltip, ReferenceArea } from 'recharts';
 import CustomTooltip from "./CustomTooltip"
-
-
-
+import PriceCoinDisplay from "components/PriceCoinDisplay"
 
 
 const initialState = {
@@ -15,6 +13,13 @@ const initialState = {
   top : 'dataMax',
   bottom : 'dataMin-1',
   animation : true
+};
+
+// const priceFormatter = (value) => <PriceCoinDisplay price={value}/>;
+
+const priceFormatter = (value) => {
+  value = value.toString();
+  return value.slice(0,-4).replace(/\B(?=(\d{3})+(?!\d))/g, '\u00a0') + '.' + value.slice(-4,-2);
 };
 
 class ZoomGraph extends React.Component {
@@ -30,7 +35,6 @@ class ZoomGraph extends React.Component {
     // const refData = this.state.data.slice(from-1, to);
     const refData = this.state.data.slice(fromPos, toPos);
     let [ bottom, top ] = [ refData[0][ref], refData[0][ref] ];
-    console.log(refData);
     refData.forEach( d => {
       if ( d[ref] > top ) top = d[ref];
       if ( d[ref] < bottom ) bottom = d[ref];
@@ -75,7 +79,7 @@ class ZoomGraph extends React.Component {
     		[ refAreaLeft, refAreaRight ] = [ refAreaRight, refAreaLeft ];
 
 		// yAxis domain
-    const [ bottom, top ] = this.getAxisYDomain( refAreaLeft, refAreaRight, 'percentile5', 0 );
+    const [ bottom, top ] = this.getAxisYDomain( refAreaLeft, refAreaRight, this.props.stats[0], 0 );
     console.log(top, 'top after zoom');
     this.setState( () => ({
       refAreaLeft : '',
@@ -104,7 +108,7 @@ class ZoomGraph extends React.Component {
   
   render() {
     const { data, left, right, refAreaLeft, refAreaRight, top } = this.state;
-    console.log(Number(top) + Number(top)*0.3);
+    console.log(data, 'data');
     const { stats, itemStats } = this.props
       return (
         <div className="highlight-bar-charts">
@@ -138,10 +142,12 @@ class ZoomGraph extends React.Component {
               domain={[0, (isNaN(Number(top)) ? top => (top + top*0.3) : Number(top) + Number(top)*0.3)]}
               type="number"
               yAxisId="1"
+              tickFormatter={priceFormatter}
+              // tickFormatter={dateFormatter}
              />
             <Tooltip content={<CustomTooltip />}/>
-            {stats.map(stat => (
-              <Line yAxisId="1" type='monotoneX' dot={false} dataKey={stat} stroke='#8884d8' animationDuration={300}/>
+            {stats.map((stat,i) => (
+              <Line key={i} yAxisId="1" type='monotoneX' dot={false} dataKey={stat} stroke='#8884d8' animationDuration={300}/>
             ))}
             
             
