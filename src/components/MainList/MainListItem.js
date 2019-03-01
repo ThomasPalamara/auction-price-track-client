@@ -4,9 +4,6 @@ import { selectRecipe } from '../../actions/recipes'
 import WHLink from '../WHLink'
 
 class MainListItem extends React.Component {
-    componentDidUpdate(){
-        console.log('ok');
-    }
     render() {
         return (
             <li

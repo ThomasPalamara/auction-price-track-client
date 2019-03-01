@@ -26,9 +26,8 @@ class Stats extends React.Component {
 
                 Promise.all(fetches).then((responses) => {
                     let itemsStats = {};
-                    console.log(responses);
+                    console.log('reponses', responses);
                     responses.map(response => itemsStats[response[0].itemId] = response);
-                    console.log(itemsStats);
 
                     Object.keys(itemsStats).forEach(function (item) {
                         itemsStats[item].forEach((element, i, array) => {
@@ -37,6 +36,7 @@ class Stats extends React.Component {
                             array[i].timestamp = new Date(element.timestamp).getTime();
                         });
                     });
+                    console.log('itemsStats',itemsStats);
                     this.setState({ itemsStats });
                     console.log('%c End Fetching', 'background: #222; color: #bada55');
                     this.setState({ loading: false });
@@ -63,7 +63,6 @@ class Stats extends React.Component {
     render() {
         let { recipe, realm } = this.props;
         let { loading, itemsStats } = this.state;
-        console.log(itemsStats);
         let display;
         if (realm && recipe.type) {
             display = (
