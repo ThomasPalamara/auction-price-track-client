@@ -34,7 +34,13 @@
   },
   "proxy": "http://localhost:5000/",
   "devDependencies": {
+    "babel-eslint": "^10.0.1",
     "babel-plugin-import": "^1.8.0",
+    "eslint": "^5.15.0",
+    "eslint-config-airbnb": "^17.1.0",
+    "eslint-plugin-import": "^2.16.0",
+    "eslint-plugin-jsx-a11y": "^6.2.1",
+    "eslint-plugin-react": "^7.12.4",
     "node-sass-tilde-importer": "^1.0.2",
     "react-app-rewired": "^1.5.2",
     "react-test-renderer": "^16.6.1"

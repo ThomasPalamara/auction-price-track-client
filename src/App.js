@@ -9,9 +9,11 @@ import { selectRecipe } from './actions/recipes'//for test purpose
 // import logo from './logo.svg';
 
 import './css/App.css';
-import 'antd/dist/antd.css';
+import 'antd/dist/antd.css'
 
 const store = configureStore();
+
+foo:30,
 
 store.dispatch(setTextFilter(''));
 

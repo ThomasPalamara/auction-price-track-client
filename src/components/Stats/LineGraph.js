@@ -1,6 +1,6 @@
-import React from "react";
+import React from 'react';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from 'recharts';
-import CustomTooltip from "./CustomTooltip"
+import CustomTooltip from './CustomTooltip'
 
 const colors = ['#ff404a', '#b139ec', '#ff881d', '#5ca0f2', '#8fd16f', '#ea4c89']
 

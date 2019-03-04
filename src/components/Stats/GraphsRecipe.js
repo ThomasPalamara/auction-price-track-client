@@ -34,7 +34,7 @@ class GraphsRecipe extends React.Component {
             for (let i = 1; i < items.length; i++) {
                 const dataWithSameTimestamp = data[items[i]].find(x => x.timestamp === ref.timestamp);
                 for (var propName in dataWithSameTimestamp) {
-                    if (dataToAdd.find(x => x === propName)) {
+                    if (dataToSum.find(x => x === propName)) {
                         returnedObj[propName] += dataWithSameTimestamp[propName];
                     }
                 }

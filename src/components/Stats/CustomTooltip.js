@@ -1,7 +1,7 @@
 import React from "react";
 import PriceCoinDisplay from "components/PriceCoinDisplay"
 import PropTypes from 'prop-types';
-import capitalize from 'functions/capitalize'
+import capitalize from 'functions/capitalize';
 
 
 class CustomTooltip extends React.Component {
