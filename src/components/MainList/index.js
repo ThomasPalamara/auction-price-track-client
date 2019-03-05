@@ -1,3 +1,3 @@
-import MainList from "./MainList";
+import MainList from './MainList';
 
 export default MainList;

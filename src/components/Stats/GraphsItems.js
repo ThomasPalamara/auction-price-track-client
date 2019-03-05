@@ -1,8 +1,8 @@
-import React from "react";
-import { Radio, Col, Row, Spin, Icon } from "antd";
-import WHLink from "../WHLink";
-import ZoomGraph from "./ZoomGraph";
-import EmptyChart from "./EmptyChart";
+import React from 'react';
+import { Radio, Col, Row, Spin, Icon } from 'antd';
+import WHLink from '../WHLink';
+import ZoomGraph from './ZoomGraph';
+import EmptyChart from './EmptyChart';
 
 const loadIcon = <Icon type="loading" style={{ fontSize: 24 }} spin />;
 

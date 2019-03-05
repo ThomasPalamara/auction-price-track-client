@@ -20,5 +20,19 @@
         "react"
     ],
     "rules": {
+        "linebreak-style": 0,
+        "react/jsx-filename-extension": [1, {
+            "extensions": [".js", ".jsx"]
+        }],
+        "template-curly-spacing": "off",
+        "indent": ["error", 2, {
+            "ignoredNodes": ["TemplateLiteral"]
+        }],
+        "import/no-named-as-default": 0,
+        "object-curly-newline": ["error", {
+            "multiline": true,
+            "minProperties": 6
+        }],
+        "no-underscore-dangle": 0
     }
 }

@@ -30,7 +30,8 @@
     "build": "react-scripts build",
     "test": "react-app-rewired test --env=jsdom",
     "tests": "jest --config=jest.config.json",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "eslint": "./node_modules/.bin/eslint"
   },
   "proxy": "http://localhost:5000/",
   "devDependencies": {
