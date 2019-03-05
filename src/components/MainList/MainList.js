@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import FlipMove from 'react-flip-move';
 import { Row, Col, Spin, Icon, Divider } from 'antd';
 import MainListItem from './MainListItem';
@@ -7,7 +8,7 @@ import MainListFilter from './MainListFilter';
 import ItemLanguage from '../ItemLanguage';
 import selectRecipes from '../../selectors/recipes';
 import { addRecipes } from '../../actions/recipes';
-import { apiURL } from '../../constants';
+import { apiURL, recipePropTypes } from '../../constants';
 
 const antIcon = <Icon type="loading" style={{ fontSize: 24 }} spin />;
 
@@ -78,7 +79,18 @@ export class MainList extends React.Component {
   }
 }
 
-const mapStatetoProps = ({ state }) => ({
+MainList.propTypes = {
+  recipesList: PropTypes.arrayOf(PropTypes.object).isRequired,
+
+  itemLanguage: PropTypes.string,
+
+  selectedRecipe: recipePropTypes.isRequired,
+  dispatch: PropTypes.func.isRequired,
+};
+
+MainList.defaultProps = { itemLanguage: 'en' };
+
+const mapStatetoProps = state => ({
   itemLanguage: state.itemLanguage,
   recipesList: selectRecipes(state.recipes.recipesList, state.filters),
   selectedRecipe: state.recipes.selectedRecipe,

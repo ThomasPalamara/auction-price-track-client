@@ -6,25 +6,27 @@ import Stats from './Stats';
 // TODO Ajouter la selection de language au store puis corrigé celle en place et ajouter a display table
 
 export default class AuctionPriceTrack extends React.Component {
+  // State par default pour faciliter les tests
   state = {
     realm: {
       label: 'Arathi',
-      value: 'arathi'
+      value: 'arathi',
     },
-    auctionHouse: null,
     loading: false,
   };
+
   handleRealmPicked = (realm) => {
-    console.log(realm, 'relam');
+    console.log(realm, 'realm');
     this.setState({ realm });
   }
 
   render() {
+    const { loading, realm } = this.state;
     return (
       <div className="main">
-        <RealmSelection loading={this.state.loading} handleRealmPicked={this.handleRealmPicked} />
+        <RealmSelection loading={loading} handleRealmPicked={this.handleRealmPicked} />
         <MainList />
-        <Stats realm={this.state.realm} />
+        <Stats realm={realm} />
       </div>
     );
   }

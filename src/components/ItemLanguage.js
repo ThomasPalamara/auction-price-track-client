@@ -1,34 +1,35 @@
-import React from "react";
+import React from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { Button } from 'antd';
 import { setItemLanguage } from '../actions/itemLanguage';
-import { Button } from "antd";
 
 class ItemLanguage extends React.Component {
-
   handleItemLanguageChange = () => {
-    if (this.props.itemLanguage === 'en') {
-      this.props.dispatch(setItemLanguage('fr'));
+    const { itemLanguage, dispatch } = this.props;
+    if (itemLanguage === 'en') {
+      dispatch(setItemLanguage('fr'));
     } else {
-      this.props.dispatch(setItemLanguage('en'));
+      dispatch(setItemLanguage('en'));
     }
   }
 
   render() {
+    const { itemLanguage } = this.props;
     return (
       <div className="itemLanguageBtn">
         <Button onClick={() => this.handleItemLanguageChange()} type="dashed">
-          Use {this.props.itemLanguage === 'en' ? 'french' : 'english'} items names
+          {`Use ${itemLanguage === 'en' ? 'french' : 'english'} items names`}
         </Button>
       </div>
-    )
+    );
   }
-};
+}
 
-const mapStatetoProps = state => {
-  return {
-    itemLanguage: state.itemLanguage
-  }
-};
+ItemLanguage.propTypes = { itemLanguage: PropTypes.string, dispatch: PropTypes.func.isRequired };
 
-//	More common way to do is to export by default for the HOC and call the function as parameters
+ItemLanguage.defaultProps = { itemLanguage: 'en' };
+
+const mapStatetoProps = state => ({ itemLanguage: state.itemLanguage });
+
 export default connect(mapStatetoProps)(ItemLanguage);

@@ -1,19 +1,19 @@
 export const setTextFilter = (text = '') => ({
-    type: 'SET_TEXT_FILTER',
-    text
-})
+  type: 'SET_TEXT_FILTER',
+  text,
+});
 
 export const setProfessionFilter = (profession = 'all') => ({
-    type: 'SET_PROFESSION_FILTER',
-    profession
-})
+  type: 'SET_PROFESSION_FILTER',
+  profession,
+});
 
 export const setisCustomFilter = (isCustom = false) => ({
-    type: 'SET_IS_CUSTOM_FILTER',
-    isCustom
-})
+  type: 'SET_IS_CUSTOM_FILTER',
+  isCustom,
+});
 
 export const setRealm = (realm = null) => ({
-    type: 'SET_REALM',
-    realm
-})
+  type: 'SET_REALM',
+  realm,
+});

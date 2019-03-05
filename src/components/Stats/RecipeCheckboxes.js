@@ -1,48 +1,62 @@
-import React from "react";
-import { Checkbox } from "antd";
-import WHLink from "../WHLink";
+import React from 'react';
+import PropTypes from 'prop-types';
+import { Checkbox } from 'antd';
+import WHLink from '../WHLink';
+import { recipePropTypes } from '../../constants';
 
 
-const Recipe = (props) => (
-    <Checkbox.Group style={{ width: '100%' }} onChange={props.handler}>
-        <Checkbox value="recipe">Recipe</Checkbox>
-        {
-            props.recipe.craft &&
-            <ul className="craft">
-                <li>Craft: </li>
-                <li>
-                    <Checkbox value={props.recipe.craft.blizzardId}><WHLink {...props.recipe.craft} /></Checkbox>
-                </li>
-            </ul>
-        }
-        <ul className="reagent">
-            <li>Reagents: </li>
-            {props.recipe.reagents.map((reagent, i) => (
-                <li key={i}><Checkbox value={reagent.blizzardId}><WHLink {...reagent} /></Checkbox></li>
-            ))}
-
+const Recipe = ({ recipe, handler }) => (
+  <Checkbox.Group style={{ width: '100%' }} onChange={handler}>
+    <Checkbox value="recipe">Recipe</Checkbox>
+    {
+      recipe.craft
+      && (
+        <ul className="craft">
+          <li>Craft: </li>
+          <li>
+            <Checkbox value={recipe.craft.blizzardId}><WHLink {...recipe.craft} /></Checkbox>
+          </li>
         </ul>
-    </Checkbox.Group>
+      )
+    }
+    <ul className="reagent">
+      <li>Reagents: </li>
+      {recipe.reagents.map(reagent => (
+        <li key={reagent.blizzardId}>
+          <Checkbox value={reagent.blizzardId}><WHLink {...reagent} /></Checkbox>
+        </li>
+      ))}
+
+    </ul>
+  </Checkbox.Group>
 );
+
+Recipe.propTypes = {
+  handler: PropTypes.func.isRequired,
+  recipe: recipePropTypes.isRequired,
+};
+
 
 export default Recipe;
 
 
-// <Checkbox.Group style={{ width: '100%' }} onChange={props.handler}>
+// <Checkbox.Group style={{ width: '100%' }} onChange={handler}>
 // <Checkbox value="recipe">Recipe</Checkbox>
 // {
-//     props.recipe.craft &&
+//     recipe.craft &&
 //     <ul className="craft">
 //         <li>Craft: </li>
 //         <li>
-//             <Checkbox value={{id:props.recipe.craft.blizzardId,name:props.recipe.craft.name}}><WHLink {...props.recipe.craft} /></Checkbox>
+//             <Checkbox value={{id:recipe.craft.blizzardId,name:recipe.craft.name}}>
+// <WHLink {...recipe.craft} /></Checkbox>
 //         </li>
 //     </ul>
 // }
 // <ul className="reagent">
 //     <li>Reagents: </li>
-//     {props.recipe.reagents.map((reagent, i) => (
-//         <li key={i}><Checkbox value={{id:reagent.blizzardId,name:reagent.name}}><WHLink {...reagent} /></Checkbox></li>
+//     {recipe.reagents.map((reagent, i) => (
+//         <li key={i}><Checkbox value={{id:reagent.blizzardId,name:reagent.name}}>
+// <WHLink {...reagent} /></Checkbox></li>
 //     ))}
 
 // </ul>

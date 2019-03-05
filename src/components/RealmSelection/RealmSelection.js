@@ -1,42 +1,46 @@
 import React from 'react';
 import Select from 'react-select';
+import PropTypes from 'prop-types';
 import { Divider } from 'antd';
 import { apiURL } from '../../constants';
 
-export default class realmSelection extends React.Component {
+export default class RealmSelection extends React.Component {
   state = {
     status: undefined,
     error: undefined,
-    selectedOption: { value: "", label: "" },
+    selectedOption: { value: '', label: '' },
     realms: [],
   };
 
   componentDidMount() {
     fetch(`${apiURL}/realms`)
-      .then(res => {
+      .then((res) => {
         if (!res.ok) {
-          throw new Error("Not found");
+          throw new Error('Not found');
         }
         return res.json();
       })
-      .then(response => {
-        let realms = response.map(realm => ({ value: realm.slug, label: realm.name }));
-        this.setState({ realms: realms });
+      .then((response) => {
+        const realms = response.map(realm => ({ value: realm.slug, label: realm.name }));
+        this.setState({ realms });
       });
   }
 
 
   handleChange = (selected) => {
+    const { selectedOption, realms } = this.state;
+    const { handleRealmPicked } = this.props;
+
     this.setState({
       selectedOption: {
         value: selected.value,
-        label: selected.label
-      }
-    }, function () {
-      if (this.state.selectedOption && this.state.realms.find(x => {return x.value === this.state.selectedOption.value })) {
-        const realm = this.state.selectedOption;
+        label: selected.label,
+      },
+    }, () => {
+      if (selectedOption && realms.find(x => (x.value === selectedOption.value))) {
+        const realm = selectedOption;
         this.setState({ error: '' });
-        this.props.handleRealmPicked(realm);
+        handleRealmPicked(realm);
       } else {
         this.setState({ selectedOption: null });
         this.setState({ error: 'Veuillez selectionner un nom de royaume valide' });
@@ -45,21 +49,26 @@ export default class realmSelection extends React.Component {
   }
 
   render() {
+    const { selectedOption, status, realms, error } = this.state;
     return (
       <div className="realmSelection">
-        <Divider orientation="left"> <h3 className={`step ${this.state.status}`}>1/ Choisissez votre royaume</h3> </Divider>
+        <Divider orientation="left">
+          <h3 className={`step ${status}`}>1/ Choisissez votre royaume</h3>
+        </Divider>
         <div className="select-realm">
           <Select
-            value={this.state.selectedOption}
+            value={selectedOption}
             onChange={this.handleChange}
             name="realm"
-            isClearable={true}
-            isSearchable={true}
-            options={this.state.realms.map(realm => realm)}
+            isClearable
+            isSearchable
+            options={realms.map(realm => realm)}
           />
-          {this.state.error && <label className="error">{this.state.error}</label>}
+          {error && <span className="error">{error}</span>}
         </div>
       </div>
     );
   }
 }
+
+RealmSelection.propTypes = { handleRealmPicked: PropTypes.func.isRequired };
