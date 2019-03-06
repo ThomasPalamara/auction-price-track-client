@@ -84,11 +84,14 @@ class GraphsItems extends React.Component {
 }
 
 GraphsItems.propTypes = {
-  loading: PropTypes.string,
+  loading: PropTypes.bool,
   recipe: recipePropTypes.isRequired,
-  itemsStats: PropTypes.arrayOf(PropTypes.object).isRequired,
+  itemsStats: PropTypes.objectOf(PropTypes.array),
 };
 
-GraphsItems.defaultProps = { loading: false };
+GraphsItems.defaultProps = { 
+  loading: false,
+  itemsStats: null,
+};
 
 export default GraphsItems;

@@ -11,33 +11,36 @@ const loadIcon = <Icon type="loading" style={{ fontSize: 24 }} spin />;
 const statsToSum = ['itemCount', 'itemId', 'max', 'mean', 'median', 'min', 'mode', 'percentile25', 'percentile5', 'percentile7', 'percentile95'];
 
 class GraphsRecipe extends React.Component {
-  state = { item: [] }
+  state = {
+    items: [],
+    isCraftChecked: true,
+  }
 
   componentDidMount() {
     const { recipe } = this.props;
-    this.setState({ item: [recipe.craft.blizzardId] });
+    this.setState({ items: [recipe.craft.blizzardId] });
   }
 
   componentDidUpdate(prevProps) {
     const { recipe } = this.props;
     if (recipe.craft.blizzardId !== prevProps.recipe.craft.blizzardId) {
-      this.setState({ item: [recipe.craft.blizzardId] });
+      this.setState({ items: [recipe.craft.blizzardId] });
     }
   }
 
   checkHandler = (checkedList) => {
     // console.log(checkedList);
-    this.setState({ item: [...checkedList] });
+    this.setState({ items: [...checkedList] });
   }
 
-  addRecipeData = (items, data, dataToSum) => (
+  addRecipeData = (items, data, statsToSum) => (
     data[items[0]].map((ref) => {
       const returnedObj = { ...ref };
       returnedObj.itemId = 'recipe';
       for (let i = 1; i < items.length; i += 1) {
         const dataWithSameTimestamp = data[items[i]].find(x => x.timestamp === ref.timestamp);
         Object.keys(dataWithSameTimestamp).forEach((key) => {
-          if (dataToSum.find(x => x === key)) {
+          if (statsToSum.find(x => x === key)) {
             returnedObj[key] += dataWithSameTimestamp[key];
           }
         });
@@ -48,13 +51,13 @@ class GraphsRecipe extends React.Component {
 
   render() {
     const { loading, recipe, itemsStats } = this.props;
-    const { item } = this.state;
+    const { items, isCraftChecked } = this.state;
     let graphs;
-    console.log(item);
-    if (!loading && itemsStats && item.length) {
+    console.log(items);
+    if (!loading && itemsStats && items.length) {
       graphs = (
         <React.Fragment>
-          <ZoomGraph stats={['mean']} item={item} itemStats={itemsStats[item]} />
+          <ZoomGraph stats={['mean']} item={items} itemStats={itemsStats[items]} />
         </React.Fragment>
       );
     } else {
@@ -63,19 +66,19 @@ class GraphsRecipe extends React.Component {
     return (
       <Row>
         <Col span={6}>
+          {
+            recipe.craft
+            && (
+              <ul className="craft">
+                <li>Craft: </li>
+                <li>
+                  <Checkbox defaultChecked value={recipe.craft.blizzardId}>
+                    <WHLink {...recipe.craft} />
+                  </Checkbox>
+                </li>
+              </ul>
+            )}
           <Checkbox.Group style={{ width: '100%' }} value={item} onChange={this.checkHandler}>
-            {
-              recipe.craft
-              && (
-                <ul className="craft">
-                  <li>Craft: </li>
-                  <li>
-                    <Checkbox defaultChecked value={recipe.craft.blizzardId}>
-                      <WHLink {...recipe.craft} />
-                    </Checkbox>
-                  </li>
-                </ul>
-              )}
             <ul className="reagent">
               <li>Reagents: </li>
               {recipe.reagents.map(reagent => (
@@ -99,11 +102,15 @@ class GraphsRecipe extends React.Component {
 }
 
 GraphsRecipe.propTypes = {
-  loading: PropTypes.string,
+  loading: PropTypes.bool,
   recipe: recipePropTypes.isRequired,
-  itemsStats: PropTypes.arrayOf(PropTypes.object).isRequired,
+  itemsStats: PropTypes.objectOf(PropTypes.array),
 };
 
-GraphsRecipe.defaultProps = { loading: false };
+GraphsRecipe.defaultProps = {
+  loading: false,
+  itemsStats: null,
+};
+
 
 export default GraphsRecipe;
