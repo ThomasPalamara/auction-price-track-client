@@ -26,7 +26,7 @@ export default class AuctionPriceTrack extends React.Component {
       <div className="main">
         <RealmSelection loading={loading} handleRealmPicked={this.handleRealmPicked} />
         <MainList />
-        <Stats realm={realm} />
+        <Stats realm={realm} recipe={{}} />
       </div>
     );
   }

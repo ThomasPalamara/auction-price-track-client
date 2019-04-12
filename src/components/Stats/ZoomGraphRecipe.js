@@ -2,44 +2,35 @@
 /* eslint-disable no-bitwise */
 /* provided as it by rechats */
 import React from 'react';
+import PropTypes from 'prop-types';
 import { LineChart, Line, CartesianGrid, XAxis, YAxis, Tooltip, ReferenceArea } from 'recharts';
-import CustomTooltip from './CustomTooltip';
-
-
-const initialState = {
-  data: [],
-  left: 'dataMin',
-  right: 'dataMax',
-  refAreaLeft: '',
-  refAreaRight: '',
-  top: 'dataMax',
-  bottom: 'dataMin-1',
-  top2 : 'dataMax',
-  bottom2 : 'dataMin-1',
-  animation: true,
-};
-
-// const priceFormatter = (value) => <PriceCoinDisplay price={value}/>;
-
-const priceFormatter = (value) => {
-  const val = value.toString();
-  return `${val.slice(0, -4).replace(/\B(?=(\d{3})+(?!\d))/g, '\u00a0')} . ${val.slice(-4, -2)}`;
-};
+import CustomTooltip from './ChartsMiscs/CustomTooltip';
 
 class ZoomGraph extends React.Component {
+
   constructor(props) {
     super(props);
+
+    const initialState = {
+      data: this.props.data,
+      left: 'dataMin',
+      right: 'dataMax',
+      refAreaLeft: '',
+      refAreaRight: '',
+      top: 'dataMax+1',
+      bottom: 'dataMin-1',
+      top2: 'dataMax+20',
+      bottom2: 'dataMin-20',
+      animation: true,
+    };
+
     this.state = initialState;
   }
 
-  componentDidMount() {
-    this.setdata();
-  }
-
   componentDidUpdate(prevProps) {
-    const { item } = this.props;
+    const { data, item } = this.props;
     if (prevProps.item !== item) {
-      this.setdata();
+      this.setState({ data });
     }
   }
 
@@ -54,28 +45,12 @@ class ZoomGraph extends React.Component {
       if (d[ref] > top) top = d[ref];
       if (d[ref] < bottom) bottom = d[ref];
     });
-    return [(bottom | 0) - offset, (top | 0) + offset];
+
+    return [(bottom | 0) - offset, (top | 0) + offset]
   };
 
-  setdata = () => {
-    const { itemStats, stats } = this.props;
-    console.log(itemStats);
-    const data = itemStats.map((element) => {
-      const obj = {};
-      obj.timestamp = element.timestamp;
-      stats.forEach((stat) => {
-        obj[stat] = element[stat];
-      });
-      return obj;
-    });
-    this.setState({ data });
-  }
-
   zoom() {
-    let { refAreaLeft, refAreaRight } = this.state;
-    const { stats } = this.props;
-    const { data } = this.state;
-    console.log(refAreaLeft, refAreaRight);
+    let { refAreaLeft, refAreaRight, data } = this.state;
 
     if (refAreaLeft === refAreaRight || refAreaRight === '') {
       this.setState(() => ({
@@ -89,10 +64,12 @@ class ZoomGraph extends React.Component {
     if (refAreaLeft > refAreaRight) {
       [refAreaLeft, refAreaRight] = [refAreaRight, refAreaLeft];
     }
-
     // yAxis domain
-    const [bottom, top] = this.getAxisYDomain(refAreaLeft, refAreaRight, stats[0], 0);
-    console.log(top, 'top after zoom');
+    const [bottom1, top1] = this.getAxisYDomain(refAreaLeft, refAreaRight, 'craft', 0);
+    const [bottom2, top2] = this.getAxisYDomain(refAreaLeft, refAreaRight, 'recipe', 0);
+
+    const bottom = Math.min(bottom1, bottom2);
+    const top = Math.max(top1, top2);
     this.setState(() => ({
       refAreaLeft: '',
       refAreaRight: '',
@@ -102,7 +79,7 @@ class ZoomGraph extends React.Component {
       bottom,
       top,
     }));
-  }
+  };
 
   zoomOut() {
     const { data } = this.state;
@@ -112,17 +89,14 @@ class ZoomGraph extends React.Component {
       refAreaRight: '',
       left: 'dataMin',
       right: 'dataMax',
-      top: 'dataMax',
+      top: 'dataMax+1',
       bottom: 'dataMin',
     }));
   }
 
   render() {
-    const {
-      data, left, right, refAreaLeft, refAreaRight, top,
-    } = this.state;
-    console.log(data, 'data');
-    const { stats, itemStats } = this.props;
+    const { data, barIndex, left, right, refAreaLeft, refAreaRight, top, bottom } = this.state;
+
     return (
       <div className="highlight-bar-charts">
         <button
@@ -152,17 +126,13 @@ class ZoomGraph extends React.Component {
           />
           <YAxis
             allowDataOverflow
-            domain={[0, (isNaN(Number(top)) ? top => (top + top * 0.3) : Number(top) + Number(top) * 0.3)]}
+            domain={[bottom, top]}
             type="number"
             yAxisId="1"
-            tickFormatter={priceFormatter}
-          // tickFormatter={dateFormatter}
           />
           <Tooltip content={<CustomTooltip />} />
-          {stats.map((stat, i) => (
-            <Line key={i} yAxisId="1" type="monotoneX" dot={false} dataKey={stat} stroke='#8884d8' animationDuration={300} />
-          ))}
-
+          <Line yAxisId="1" type="monotoneX" dot={false} dataKey="craft" stroke="#8884d8" animationDuration={300} />
+          <Line yAxisId="1" type="monotoneX" dot={false} dataKey="recipe" stroke="#82ca9d" animationDuration={300} />
 
           {
             (refAreaLeft && refAreaRight) ? (
@@ -176,5 +146,10 @@ class ZoomGraph extends React.Component {
     );
   }
 }
+
+ZoomGraph.propTypes = {
+  data: PropTypes.array.isRequired,
+};
+
 
 export default ZoomGraph;

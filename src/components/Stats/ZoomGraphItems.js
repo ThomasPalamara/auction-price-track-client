@@ -3,7 +3,8 @@
 /* provided as it by rechats */
 import React from 'react';
 import { LineChart, Line, CartesianGrid, XAxis, YAxis, Tooltip, ReferenceArea } from 'recharts';
-import CustomTooltip from './CustomTooltip';
+import CustomTooltip from './ChartsMiscs/CustomTooltip';
+import CustomAxisLabel from './ChartsMiscs/CustomAxisLabel';
 
 
 const initialState = {
@@ -59,7 +60,6 @@ class ZoomGraph extends React.Component {
 
   setdata = () => {
     const { itemStats, stats } = this.props;
-    console.log(itemStats);
     const data = itemStats.map((element) => {
       const obj = {};
       obj.timestamp = element.timestamp;
@@ -75,7 +75,6 @@ class ZoomGraph extends React.Component {
     let { refAreaLeft, refAreaRight } = this.state;
     const { stats } = this.props;
     const { data } = this.state;
-    console.log(refAreaLeft, refAreaRight);
 
     if (refAreaLeft === refAreaRight || refAreaRight === '') {
       this.setState(() => ({
@@ -92,7 +91,6 @@ class ZoomGraph extends React.Component {
 
     // yAxis domain
     const [bottom, top] = this.getAxisYDomain(refAreaLeft, refAreaRight, stats[0], 0);
-    console.log(top, 'top after zoom');
     this.setState(() => ({
       refAreaLeft: '',
       refAreaRight: '',
@@ -121,7 +119,6 @@ class ZoomGraph extends React.Component {
     const {
       data, left, right, refAreaLeft, refAreaRight, top,
     } = this.state;
-    console.log(data, 'data');
     const { stats, itemStats } = this.props;
     return (
       <div className="highlight-bar-charts">
@@ -149,6 +146,7 @@ class ZoomGraph extends React.Component {
             dataKey="timestamp"
             domain={[left, right]}
             type="number"
+            label={<CustomAxisLabel/>}
           />
           <YAxis
             allowDataOverflow

@@ -37,7 +37,7 @@ export class MainList extends React.Component {
   // }
 
   componentDidUpdate() {
-    window.$WowheadPower.refreshLinks();
+    // window.$WowheadPower.refreshLinks();
   }
 
   render() {

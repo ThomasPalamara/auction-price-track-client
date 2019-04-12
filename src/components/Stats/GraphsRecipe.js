@@ -2,62 +2,104 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Col, Row, Spin, Icon, Checkbox } from 'antd';
 import WHLink from '../WHLink';
-import ZoomGraph from './ZoomGraph';
-import EmptyChart from './EmptyChart';
+import ZoomGraph from './ZoomGraphRecipe';
+import EmptyChart from './ChartsMiscs/EmptyChart';
 import { recipePropTypes } from '../../constants';
 
 const loadIcon = <Icon type="loading" style={{ fontSize: 24 }} spin />;
 
-const statsToSum = ['itemCount', 'itemId', 'max', 'mean', 'median', 'min', 'mode', 'percentile25', 'percentile5', 'percentile7', 'percentile95'];
+const statsToSum = ['itemCount', 'max', 'mean', 'median', 'min', 'mode', 'percentile25', 'percentile5', 'percentile7', 'percentile95'];
 
 class GraphsRecipe extends React.Component {
   state = {
-    items: [],
+    reagentItems: [],
     isCraftChecked: true,
   }
 
-  componentDidMount() {
-    const { recipe } = this.props;
-    this.setState({ items: [recipe.craft.blizzardId] });
-  }
+  // componentDidMount() {
+  //   const { recipe } = this.props;
+  //   this.setState({ reagentItems: [recipe.craft.blizzardId] });
+  // }
 
   componentDidUpdate(prevProps) {
-    const { recipe } = this.props;
-    if (recipe.craft.blizzardId !== prevProps.recipe.craft.blizzardId) {
-      this.setState({ items: [recipe.craft.blizzardId] });
-    }
+    const { itemsStats } = this.props;
+    if (itemsStats !== prevProps.itemsStats) {
+      console.log('AGFADSFGADFHSADFHSA');}
+    // const { recipe } = this.props;
+    // if (recipe.craft.blizzardId !== prevProps.recipe.craft.blizzardId) {
+    //   this.setState({ reagentItems: [], isCraftChecked: false });
+    // }
   }
 
   checkHandler = (checkedList) => {
     // console.log(checkedList);
-    this.setState({ items: [...checkedList] });
+    this.setState({ reagentItems: [...checkedList] });
   }
 
-  addRecipeData = (items, data, statsToSum) => (
-    data[items[0]].map((ref) => {
+  onChangeCraftCheck = (e) => {
+    this.setState({ isCraftChecked: e.target.checked });
+  }
+
+  sumRecipeData = (items, data, sumStats) => {
+    return data[items[0]].map((ref) => {
       const returnedObj = { ...ref };
       returnedObj.itemId = 'recipe';
       for (let i = 1; i < items.length; i += 1) {
         const dataWithSameTimestamp = data[items[i]].find(x => x.timestamp === ref.timestamp);
         Object.keys(dataWithSameTimestamp).forEach((key) => {
-          if (statsToSum.find(x => x === key)) {
+          if (sumStats.find(x => x === key)) {
             returnedObj[key] += dataWithSameTimestamp[key];
           }
         });
       }
       return returnedObj;
     })
-  )
+  };
+
+  getItemDataForGivenStat = (data, statName, indexName) => {
+    return data.map((element) => {
+      const obj = {};
+      obj.timestamp = element.timestamp;
+      obj[indexName] = element[statName];
+      return obj;
+    })
+  };
+
+  getGraphData = (statName) => {
+    console.log('%c Fire! ', 'background: #ee5423; color: #ffffff');
+    const { reagentItems, isCraftChecked } = this.state;
+    const { recipe, itemsStats } = this.props;
+    const craftId = recipe.craft.blizzardId;
+    let craftGraphData;
+    let reagentGraphData;
+    if (reagentItems.length) {
+      reagentGraphData = this.getItemDataForGivenStat(this.sumRecipeData(reagentItems, itemsStats, statsToSum), statName, 'recipe');
+    }
+    if (isCraftChecked) {
+      craftGraphData = this.getItemDataForGivenStat(itemsStats[craftId], statName, 'craft');
+    }
+    if (isCraftChecked && !reagentItems.length) return craftGraphData;
+    if (!isCraftChecked && reagentItems.length) return reagentGraphData;
+    if (isCraftChecked && reagentItems.length) {
+      const datae = reagentGraphData.map((e) => {
+        const dataWithSameTimestamp = craftGraphData.find(x => x.timestamp === e.timestamp);
+        e.craft = dataWithSameTimestamp.craft;
+        return e;
+      });
+      return datae;
+    }
+  }
 
   render() {
     const { loading, recipe, itemsStats } = this.props;
-    const { items, isCraftChecked } = this.state;
+    const { reagentItems, isCraftChecked } = this.state;
     let graphs;
-    console.log(items);
-    if (!loading && itemsStats && items.length) {
+    console.log(isCraftChecked, reagentItems);
+    console.log(loading, 'loading');
+    if (!loading && itemsStats && (reagentItems.length || isCraftChecked)) {
       graphs = (
         <React.Fragment>
-          <ZoomGraph stats={['mean']} item={items} itemStats={itemsStats[items]} />
+          <ZoomGraph stats={['mean']} item={reagentItems} data={this.getGraphData('mean')} />
         </React.Fragment>
       );
     } else {
@@ -72,13 +114,13 @@ class GraphsRecipe extends React.Component {
               <ul className="craft">
                 <li>Craft: </li>
                 <li>
-                  <Checkbox defaultChecked value={recipe.craft.blizzardId}>
+                  <Checkbox checked={isCraftChecked} onChange={this.onChangeCraftCheck}>
                     <WHLink {...recipe.craft} />
                   </Checkbox>
                 </li>
               </ul>
             )}
-          <Checkbox.Group style={{ width: '100%' }} value={item} onChange={this.checkHandler}>
+          <Checkbox.Group style={{ width: '100%' }} value={reagentItems} onChange={this.checkHandler}>
             <ul className="reagent">
               <li>Reagents: </li>
               {recipe.reagents.map(reagent => (

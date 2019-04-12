@@ -5,46 +5,46 @@ import CustomTooltip from './CustomTooltip'
 const colors = ['#ff404a', '#b139ec', '#ff881d', '#5ca0f2', '#8fd16f', '#ea4c89']
 
 class Graphs extends React.Component {
-    render() {
+  render() {
 
-        const { stats, itemStats } = this.props
-        let data;
+    const { stats, itemStats } = this.props
+    let data;
 
-        if (itemStats) {
-            data = itemStats.map(element => {
-                let obj = {};
-                obj['timestamp'] = element.timestamp;
-                stats.map(stat => obj[stat] = element[stat])
+    if (itemStats) {
+      data = itemStats.map((element) => {
+        const obj = {};
+        obj.timestamp = element.timestamp;
+        stats.map(stat => obj[stat] = element[stat])
 
-                return obj;
-            });
-            console.log(data, 'data');
-            return (
-                <div>
-                    <LineChart width={600} height={300} data={data}>
-                        {stats.map((stat, i) => {
-                            return (
-                                <Line
-                                    key={i}
-                                    type="monotone"
-                                    name={stat.name}
-                                    dataKey={stat}
-                                    stroke={colors[i + 1]}
-                                    dot={false}
-                                />
-                            )
-                        })}
-                        <CartesianGrid stroke="#ccc" strokeDasharray="5 5" />
-                        <Legend />
-                        <XAxis dataKey="timestamp" />
-                        <YAxis />
-                        <Tooltip content={<CustomTooltip />} />
-                    </LineChart>
-                </div>
-            );
-        }
-        return null;
+        return obj;
+      });
+      console.log(data, 'data');
+      return (
+        <div>
+          <LineChart width={600} height={300} data={data}>
+            {stats.map((stat, i) => {
+              return (
+                <Line
+                  key={i}
+                  type="monotone"
+                  name={stat.name}
+                  dataKey={stat}
+                  stroke={colors[i + 1]}
+                  dot={false}
+                />
+              )
+            })}
+            <CartesianGrid stroke="#ccc" strokeDasharray="5 5" />
+            <Legend />
+            <XAxis dataKey="timestamp" />
+            <YAxis />
+            <Tooltip content={<CustomTooltip />} />
+          </LineChart>
+        </div>
+      );
     }
+    return null;
+  }
 }
 
 

@@ -5,6 +5,7 @@
   "dependencies": {
     "all": "^0.0.0",
     "antd": "^3.8.1",
+    "chart.js": "^2.7.3",
     "enzyme": "^3.7.0",
     "enzyme-adapter-react-16": "^1.7.0",
     "enzyme-to-json": "^3.3.4",
@@ -12,12 +13,12 @@
     "netlify-cli": "^1.2.3",
     "prop-types": "^15.7.2",
     "raf": "^3.4.1",
-    "react": "^16.4.2",
+    "react": "16.8.0",
     "react-chartjs-2": "^2.7.4",
-    "react-dom": "^16.4.2",
+    "react-dom": "^16.8.6",
     "react-flip-move": "^3.0.2",
     "react-redux": "^5.0.7",
-    "react-scripts": "1.1.4",
+    "react-scripts": "2.1.8",
     "react-select": "^2.0.0",
     "recharts": "^1.4.2",
     "redux": "^4.0.0",
@@ -34,7 +35,6 @@
     "eject": "react-scripts eject",
     "eslint": "./node_modules/.bin/eslint"
   },
-  "proxy": "http://localhost:5000/",
   "devDependencies": {
     "babel-eslint": "^10.0.1",
     "babel-plugin-import": "^1.8.0",
@@ -46,5 +46,15 @@
     "node-sass-tilde-importer": "^1.0.2",
     "react-app-rewired": "^1.5.2",
     "react-test-renderer": "^16.6.1"
-  }
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ],
+  "main": "index.js",
+  "repository": "https://github.com/ThomasPalamara/auction-price-track-client.git",
+  "author": "ThomasP-Weblimitless <thomas@algbmail.com>",
+  "license": "MIT"
 }

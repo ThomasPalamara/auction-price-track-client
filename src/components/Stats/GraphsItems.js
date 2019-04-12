@@ -2,14 +2,14 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Radio, Col, Row, Spin, Icon } from 'antd';
 import WHLink from '../WHLink';
-import ZoomGraph from './ZoomGraph';
-import EmptyChart from './EmptyChart';
+import ZoomGraph from './ZoomGraphItems';
+import EmptyChart from './ChartsMiscs/EmptyChart';
 import { recipePropTypes } from '../../constants';
 
 const loadIcon = <Icon type="loading" style={{ fontSize: 24 }} spin />;
 
 class GraphsItems extends React.Component {
-  state = { item: '' }
+  state = { item: null }
 
   componentDidMount() {
     const { recipe } = this.props;
@@ -32,7 +32,7 @@ class GraphsItems extends React.Component {
     const { loading, recipe, itemsStats } = this.props;
     const { item } = this.state;
     let graphs;
-    if (!loading && itemsStats) {
+    if (!loading && itemsStats && item) {
       graphs = (
         <React.Fragment>
           <ZoomGraph stats={['percentile5']} item={item} itemStats={itemsStats[item]} />
