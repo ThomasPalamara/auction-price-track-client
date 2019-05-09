@@ -5,6 +5,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { LineChart, Line, CartesianGrid, XAxis, YAxis, Tooltip, ReferenceArea } from 'recharts';
 import CustomTooltip from './ChartsMiscs/CustomTooltip';
+import CustomAxisTick from './ChartsMiscs/CustomAxisTick';
 
 class ZoomGraph extends React.Component {
 
@@ -65,8 +66,17 @@ class ZoomGraph extends React.Component {
       [refAreaLeft, refAreaRight] = [refAreaRight, refAreaLeft];
     }
     // yAxis domain
-    const [bottom1, top1] = this.getAxisYDomain(refAreaLeft, refAreaRight, 'craft', 0);
-    const [bottom2, top2] = this.getAxisYDomain(refAreaLeft, refAreaRight, 'recipe', 0);
+    // let craftValues = [];
+    // let recipeValues = [];
+    // data.forEach(e => {
+    //   craftValues.push(e.craft);
+    //   recipeValues.push(e.recipe);
+    // });
+    
+    const offset = Math.max(data.craft);
+    console.log(offset);
+    const [bottom1, top1] = this.getAxisYDomain(refAreaLeft, refAreaRight, 'craft');
+    const [bottom2, top2] = this.getAxisYDomain(refAreaLeft, refAreaRight, 'recipe');
 
     const bottom = Math.min(bottom1, bottom2);
     const top = Math.max(top1, top2);
@@ -113,7 +123,7 @@ class ZoomGraph extends React.Component {
           width={800}
           height={400}
           data={data}
-          onMouseDown={e => this.setState({ refAreaLeft: e.activeLabel })}
+          onMouseDown={e => (e ? this.setState({ refAreaLeft: e.activeLabel }) : '')}
           onMouseMove={e => refAreaLeft && this.setState({ refAreaRight: e.activeLabel })}
           onMouseUp={this.zoom.bind(this)}
         >
@@ -129,6 +139,7 @@ class ZoomGraph extends React.Component {
             domain={[bottom, top]}
             type="number"
             yAxisId="1"
+            tick={ <CustomAxisTick/> }
           />
           <Tooltip content={<CustomTooltip />} />
           <Line yAxisId="1" type="monotoneX" dot={false} dataKey="craft" stroke="#8884d8" animationDuration={300} />

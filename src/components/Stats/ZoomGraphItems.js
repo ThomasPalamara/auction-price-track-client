@@ -4,7 +4,7 @@
 import React from 'react';
 import { LineChart, Line, CartesianGrid, XAxis, YAxis, Tooltip, ReferenceArea } from 'recharts';
 import CustomTooltip from './ChartsMiscs/CustomTooltip';
-import CustomAxisLabel from './ChartsMiscs/CustomAxisLabel';
+import CustomAxisTick from './ChartsMiscs/CustomAxisTick';
 
 
 const initialState = {
@@ -136,7 +136,7 @@ class ZoomGraph extends React.Component {
           width={800}
           height={400}
           data={data}
-          onMouseDown={e => this.setState({ refAreaLeft: e.activeLabel })}
+          onMouseDown={e => (e ? this.setState({ refAreaLeft: e.activeLabel }) : '')} // prevent clicking on axis labels
           onMouseMove={e => refAreaLeft && this.setState({ refAreaRight: e.activeLabel })}
           onMouseUp={this.zoom.bind(this)}
         >
@@ -146,7 +146,7 @@ class ZoomGraph extends React.Component {
             dataKey="timestamp"
             domain={[left, right]}
             type="number"
-            label={<CustomAxisLabel/>}
+            tick={<CustomAxisTick/>}
           />
           <YAxis
             allowDataOverflow

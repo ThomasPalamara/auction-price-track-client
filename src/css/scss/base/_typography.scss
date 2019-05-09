@@ -1,0 +1,32 @@
+.step{
+  font-size: 19px;
+  margin-bottom: 0;
+  color: $body-color;
+  text-transform: uppercase;
+  .done{
+  color: darkgray;
+}}
+
+.lined-title{
+  color: #616161;
+  text-align: left;
+  padding-left: 50px;
+  span{
+    padding: 15px;
+    background: $body-bg;
+  }
+  &:before{
+    content: "";
+    display: block;
+    width: 95vw;
+    height: 1px;
+    position: absolute;
+    top: 50%;
+    z-index: -1;
+    transform: translateY(-50%);
+    margin: 0 auto;
+    right: 0;
+    left: 0;
+    background-color: #616161;
+  }
+}

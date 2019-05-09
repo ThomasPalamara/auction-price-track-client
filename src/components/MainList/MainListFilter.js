@@ -3,14 +3,14 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { Radio, Select } from 'antd';
+import { Radio, Select, Input } from 'antd';
 import capitalize from 'functions/capitalize';
 import { setTextFilter, setProfessionFilter, setisCustomFilter } from '../../actions/filters';
 
 const { Option } = Select;
 
 const MainListFilter = ({ professions, filters, dispatch }) => (
-  <div className="InputTextFilter">
+  <React.Fragment>
     <Radio.Group
       value={filters.isCustom}
       onChange={e => dispatch(setisCustomFilter(e.target.value))}
@@ -30,13 +30,14 @@ const MainListFilter = ({ professions, filters, dispatch }) => (
         }
       </Select>
     </label>
-    <input
-      type="text"
+    <Input
       value={filters.text}
+      style={{ width: 200 }}
+      allowClear
       placeholder="Filter items"
       onChange={e => (dispatch(setTextFilter(e.target.value)))}
     />
-  </div>
+  </React.Fragment>
 );
 
 MainListFilter.propTypes = {
