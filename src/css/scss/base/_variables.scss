@@ -1,9 +1,0 @@
-$primary: #2684ff;
-$body-bg: #fefefe;
-$dark-grey: #e8e8e8;
-
-@mixin baseTransition {
-    -webkit-transition: all .2s ease;
-        -ms-transition: all .2s ease;
-        transition: all .2s ease;
-}

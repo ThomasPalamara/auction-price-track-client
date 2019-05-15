@@ -14,6 +14,7 @@ const MainListItem = ({ element, active, dispatch }) => (
     onKeyDown={e => (e.keycode !== 13 ? e.preventDefault() : '')}
   >
     <div className={element.isCustom ? 'generalBg' : `${element.professions[0]}Bg`}>
+      <i className={`professionIcon ${element.professions[0]}Icon`} />
       {element.craft && (
         <h6>
           <WHLink {...element.craft} />
