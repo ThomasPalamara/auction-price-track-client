@@ -16,9 +16,9 @@ const Stats = (props) => {
   const [loading, setLoading] = useState(false);
 
   const fetchItemStats = (itemId) => {
-    return fetch(`${apiURL}/itemstats/${realm.value}/${itemId}`)
-      // eslint-disable-next-line max-len
-      // return fetch(`${apiURL}/itemstats/${realm.value}/${itemId}?start=2019-02-01T23:52:50.000Z&end=2019-02-04T07:52:50.000Z`)
+    // return fetch(`${apiURL}/itemstats/${realm.value}/${itemId}`)
+    // eslint-disable-next-line max-len
+    return fetch(`${apiURL}/itemstats/${realm.value}/${itemId}?start=2019-04-15T23:52:50.000Z&end=2019-04-16T07:52:50.000Z`)
       .then((res) => {
         if (!res.ok) {
           throw new Error('Not found');

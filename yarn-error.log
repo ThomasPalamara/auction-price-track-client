@@ -1,8 +1,8 @@
 Arguments: 
-  C:\Program Files\nodejs\node.exe C:\Users\Web Thomas\AppData\Roaming\npm\node_modules\yarn\bin\yarn.js install react-dom
+  C:\Program Files\nodejs\node.exe C:\Users\Web Thomas\AppData\Roaming\npm\node_modules\yarn\bin\yarn.js add react swipe-js-iso react-swipe
 
 PATH: 
-  C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Intel\iCLS Client\;C:\Program Files\Intel\iCLS Client\;C:\windows\system32;C:\windows;C:\windows\System32\Wbem;C:\windows\System32\WindowsPowerShell\v1.0\;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\Git\cmd;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\Program Files (x86)\Brackets\command;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\Microsoft VS Code\bin;C:\Program Files\Intel\WiFi\bin\;C:\Program Files\Common Files\Intel\WirelessCommon\;D:\wamp64\bin\php\php7.1.9;C:\ProgramData\ComposerSetup\bin;C:\Program Files\nodejs\;C:\Ruby25-x64\bin;C:\Users\Web Thomas\AppData\Local\Microsoft\WindowsApps;C:\Users\Web Thomas\AppData\Local\atom\bin;C:\Users\Web Thomas\AppData\Local\Microsoft\WindowsApps;C:\Program Files\Microsoft VS Code\bin;C:\Program Files\heroku\bin;C:\Users\Web Thomas\AppData\Roaming\Composer\vendor\bin;C:\Users\Web Thomas\AppData\Roaming\npm;"C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Intel\iCLS Client\;C:\Program Files\Intel\iCLS Client\;C:\windows\system32;C:\windows;C:\windows\System32\Wbem;C:\windows\System32\WindowsPowerShell\v1.0\;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\Git\cmd;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\Program Files (x86)\Brackets\command;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\Microsoft VS Code\bin;C:\Program Files\Intel\WiFi\bin\;C:\Program Files\Common Files\Intel\WirelessCommon\;D:\wamp64\bin\php\php7.1.9;C:\ProgramData\ComposerSetup\bin;C:\Program Files\nodejs\;D:\wamp64\bin\php\php5.6.31";
+  C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Intel\iCLS Client\;C:\Program Files\Intel\iCLS Client\;C:\windows\system32;C:\windows;C:\windows\System32\Wbem;C:\windows\System32\WindowsPowerShell\v1.0\;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\Git\cmd;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\Program Files (x86)\Brackets\command;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\Microsoft VS Code\bin;C:\Program Files\Intel\WiFi\bin\;C:\Program Files\Common Files\Intel\WirelessCommon\;D:\wamp64\bin\php\php7.1.9;C:\ProgramData\ComposerSetup\bin;C:\Program Files\nodejs\;C:\wamp\www\resiliation\seresilier\app\Console;C:\Ruby25-x64\bin;C:\Users\Web Thomas\AppData\Local\Microsoft\WindowsApps;C:\Users\Web Thomas\AppData\Local\atom\bin;C:\Users\Web Thomas\AppData\Local\Microsoft\WindowsApps;C:\Program Files\Microsoft VS Code\bin;C:\Program Files\heroku\bin;C:\Users\Web Thomas\AppData\Roaming\Composer\vendor\bin;C:\Users\Web Thomas\AppData\Roaming\npm;"C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Intel\iCLS Client\;C:\Program Files\Intel\iCLS Client\;C:\windows\system32;C:\windows;C:\windows\System32\Wbem;C:\windows\System32\WindowsPowerShell\v1.0\;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\Git\cmd;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\Program Files (x86)\Brackets\command;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\Microsoft VS Code\bin;C:\Program Files\Intel\WiFi\bin\;C:\Program Files\Common Files\Intel\WirelessCommon\;D:\wamp64\bin\php\php7.1.9;C:\ProgramData\ComposerSetup\bin;C:\Program Files\nodejs\;C:\wamp\www\resiliation\seresilier\app\Console;;D:\wamp64\bin\php\php5.6.31";
 
 Yarn version: 
   1.5.1
@@ -31,7 +31,7 @@ npm manifest:
       "raf": "^3.4.1",
       "react": "16.8.0",
       "react-chartjs-2": "^2.7.4",
-      "react-dom": "^16.4.2",
+      "react-dom": "^16.8.6",
       "react-flip-move": "^3.0.2",
       "react-redux": "^5.0.7",
       "react-scripts": "2.1.8",
@@ -9147,14 +9147,14 @@ Lockfile:
       strip-ansi "5.0.0"
       text-table "0.2.0"
   
-  react-dom@^16.4.2:
-    version "16.4.2"
-    resolved "https://registry.yarnpkg.com/react-dom/-/react-dom-16.4.2.tgz#4afed569689f2c561d2b8da0b819669c38a0bda4"
+  react-dom@^16.8.6:
+    version "16.8.6"
+    resolved "https://registry.yarnpkg.com/react-dom/-/react-dom-16.8.6.tgz#71d6303f631e8b0097f56165ef608f051ff6e10f"
     dependencies:
-      fbjs "^0.8.16"
       loose-envify "^1.1.0"
       object-assign "^4.1.1"
-      prop-types "^15.6.0"
+      prop-types "^15.6.2"
+      scheduler "^0.13.6"
   
   react-error-overlay@^5.1.4:
     version "5.1.4"
@@ -9907,7 +9907,7 @@ Lockfile:
       loose-envify "^1.1.0"
       object-assign "^4.1.1"
   
-  scheduler@^0.13.0:
+  scheduler@^0.13.0, scheduler@^0.13.6:
     version "0.13.6"
     resolved "https://registry.yarnpkg.com/scheduler/-/scheduler-0.13.6.tgz#466a4ec332467b31a91b9bf74e5347072e4cd889"
     dependencies:
@@ -11672,9 +11672,4 @@ Lockfile:
       window-size "0.1.0"
 
 Trace: 
-  Error: `install` has been replaced with `add` to add new dependencies. Run "yarn add react-dom" instead.
-      at new MessageError (C:\Users\Web Thomas\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:186:110)
-      at Object.<anonymous> (C:\Users\Web Thomas\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:21987:13)
-      at Generator.next (<anonymous>)
-      at step (C:\Users\Web Thomas\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:98:30)
-      at C:\Users\Web Thomas\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:109:13
+  Error: EPERM: operation not permitted, scandir 'D:\Projects\auction_price_track\client\node_modules\@types'

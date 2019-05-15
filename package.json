@@ -20,8 +20,10 @@
     "react-redux": "^5.0.7",
     "react-scripts": "2.1.8",
     "react-select": "^2.0.0",
+    "react-swipe": "^6.0.4",
     "recharts": "^1.4.2",
     "redux": "^4.0.0",
+    "swipe-js-iso": "^2.1.5",
     "webpack": "^4.18.0",
     "wowhead": "0.0.2"
   },
