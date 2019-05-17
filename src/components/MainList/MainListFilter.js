@@ -33,7 +33,6 @@ const MainListFilter = ({ professions, filters, dispatch }) => (
     <Input
       value={filters.text}
       style={{ width: 200 }}
-      allowClear
       placeholder="Filter items"
       onChange={e => (dispatch(setTextFilter(e.target.value)))}
     />
