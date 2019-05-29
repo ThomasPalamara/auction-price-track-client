@@ -6,6 +6,9 @@
   src: url("../fonts/LeagueSpartan-Bold.otf");
   /* IE9 Compat Modes */ }
 
+.ant-tabs {
+  color: #242424; }
+
 * {
   box-sizing: border-box; }
 
@@ -13,8 +16,8 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Lato', 'Montserrat Alternates', sans-serif !important;
-  background-color: #242424 !important;
-  color: #f0f0f0; }
+  background-color: #f0f0f0 !important;
+  color: #242424; }
 
 .main {
   padding: 50px; }
@@ -31,7 +34,7 @@ ul {
 .step {
   font-size: 19px;
   margin-bottom: 0;
-  color: #f0f0f0;
+  color: #242424;
   text-transform: uppercase; }
   .step .done {
     color: darkgray; }
@@ -42,7 +45,7 @@ ul {
   padding-left: 50px; }
   .lined-title span {
     padding: 15px;
-    background: #242424; }
+    background: #f0f0f0; }
   .lined-title:before {
     content: "";
     display: block;
@@ -1620,6 +1623,9 @@ ul {
 .MainList .itemLanguageBtn {
   margin-top: 20px;
   text-align: right; }
+
+.MainList .filterGroup__label {
+  display: block; }
 
 .ant-table-like {
   background: #fafafa;

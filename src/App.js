@@ -6,9 +6,6 @@ import { setTextFilter } from './actions/filters';
 
 // import logo from './logo.svg';
 
-import './css/App.css';
-import 'antd/dist/antd.css';
-
 const store = configureStore();
 
 store.dispatch(setTextFilter(''));

@@ -72,4 +72,7 @@
         margin-top: 20px;
         text-align: right;
     }
+    .filterGroup{
+        &__label{display: block;}
+    }
 }

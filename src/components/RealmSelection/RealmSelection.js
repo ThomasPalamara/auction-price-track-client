@@ -1,17 +1,17 @@
 import React, { useEffect, useState } from 'react';
-import Select from 'react-select';
 import PropTypes from 'prop-types';
-import { Divider } from 'antd';
+import { Divider, Select } from 'antd';
 import { apiURL } from '../../constants';
+
+const { Option } = Select;
 
 const RealmSelection = (props) => {
 
   const [status, setStatus] = useState(undefined);
-  const [error, setError] = useState(undefined);
-  const [selectedOption, setSelectedOption] = useState({ value: '', label: '' });
   const [realms, setRealms] = useState([]);
 
   useEffect(() => {
+    console.log('Fetch Realms');
     fetch(`${apiURL}/realms`)
       .then((res) => {
         if (!res.ok) {
@@ -24,38 +24,27 @@ const RealmSelection = (props) => {
       });
   }, []);
 
-  useEffect(() => {
-    const { handleRealmPicked } = props;
-
-    if (selectedOption && realms.find(x => (x.value === selectedOption.value))) {
-      const realm = selectedOption;
-      setError('');
-      handleRealmPicked(realm);
-    } else {
-      setSelectedOption(null);
-      setError('Veuillez selectionner un nom de royaume valide');
-    }
-  }, [selectedOption]);
-
   const handleChange = (selected) => {
-    setSelectedOption({ value: selected.value, label: selected.label });
+    const { handleRealmPicked } = props;
+    handleRealmPicked(selected);
   };
 
   return (
     <div className="realmSelection">
       <Divider orientation="left">
-        <h3 className={`step ${status}`}>1/ Choisissez votre royaume</h3>
+        <h3 className={`step ${status}`}>1/ Choose you realm</h3>
       </Divider>
       <div className="select-realm">
         <Select
-          value={selectedOption}
+          showSearch
+          style={{ width: 200 }}
+          placeholder="Ysondre"
+          optionFilterProp="children"
           onChange={handleChange}
-          name="realm"
-          isClearable
-          isSearchable
-          options={realms.map(realm => realm)}
-        />
-        {error && <span className="error">{error}</span>}
+          filterOption={(input, option) => option.props.children.toLowerCase().indexOf(input.toLowerCase()) >= 0}
+        >
+          {realms && realms.map(realm => <Option key={realm.value} value={realm.value}>{realm.label}</Option>)}
+        </Select>
       </div>
     </div>
   );

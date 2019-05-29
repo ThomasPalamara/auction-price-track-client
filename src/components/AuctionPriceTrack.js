@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import ReactSwipe from 'react-swipe';
 import { Tabs, Steps } from 'antd';
+import { connect } from 'react-redux';
 
 import RealmSelection from './RealmSelection';
 import MainList from './MainList';
@@ -11,28 +12,34 @@ import Stats from './Stats';
 const { TabPane } = Tabs;
 const { Step } = Steps;
 
-const AuctionPriceTrack = () => {
-  // State par default pour faciliter les tests
-  let reactSwipeEl;
+const AuctionPriceTrack = (props) => {
 
-  const [realm, setRealm] = useState({
-    label: '',
-    value: '',
-  });
+  const [realm, setRealm] = useState(null);
+  const [activeTab, setActiveTab] = useState('1');
+  const [selectedRecipe, setSelectedRecipe] = useState(null);
 
   const handleRealmPicked = (e) => {
-    console.log(e, 'realm');
-    setRealm(realm);
+    console.log(e, 'e');
+    setRealm(e);
+    console.log(realm, 'realm');
+    setActiveTab('2');
   };
 
-  const renderTabBar = () => (
-    
-  );
+  useEffect(() => {
+    console.log(props.selectedRecipe, 'props.selectedRecipe');
+    setSelectedRecipe(props.selectedRecipe);
+    if (selectedRecipe) {
+      console.log(realm);
+      setActiveTab('3');
+    }
+    console.log(selectedRecipe, 'selectedRecipe');
+  }, [props.selectedRecipe]);
+
 
   return (
     <div className="main">
 
-      <Tabs defaultActiveKey="1" renderTabBar={renderTabBar}>
+      <Tabs defaultActiveKey="1" activeKey={activeTab}>
         <TabPane tab="Tab 1" key="1" style={{ height: 200 }}>
           <RealmSelection handleRealmPicked={handleRealmPicked} />
         </TabPane>
@@ -48,4 +55,9 @@ const AuctionPriceTrack = () => {
   );
 }
 
-export default AuctionPriceTrack;
+const mapStatetoProps = state => ({
+  selectedRecipe: state.recipes.selectedRecipe,
+});
+
+// More common way to do is to export by default for the HOC and call the function as parameters
+export default connect(mapStatetoProps)(AuctionPriceTrack);

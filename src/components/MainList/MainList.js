@@ -20,6 +20,7 @@ export class MainList extends React.Component {
 
   componentWillMount() {
     const { dispatch } = this.props;
+
     fetch(`${apiURL}/recipes`)
       .then(res => res.json())
       .then((response) => {
@@ -37,19 +38,19 @@ export class MainList extends React.Component {
   // }
 
   componentDidUpdate() {
-    // window.$WowheadPower.refreshLinks();
+    window.$WowheadPower.refreshLinks();
   }
 
   render() {
     const { recipesList, itemLanguage, selectedRecipe } = this.props;
-    const { status, activeList, loading } = this.state;
+    const { loading } = this.state;
     return (
       <div className="MainList">
         <Divider orientation="left">
-          <h3 className={`step ${status}`}>2/ Choose your Recipe</h3>
+          <h3 className="step">2/ Choose your Items</h3>
         </Divider>
 
-        <MainListFilter activeList={activeList} handleToggleList={this.handleToggleList} />
+        <MainListFilter />
 
         <ItemLanguage />
 
