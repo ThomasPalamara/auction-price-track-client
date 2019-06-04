@@ -20,7 +20,22 @@ body {
   color: #242424; }
 
 .main {
-  padding: 50px; }
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto; }
+  @media (min-width: 768px) {
+    .main .container {
+      width: 750px; } }
+  @media (min-width: 992px) {
+    .main .container {
+      width: 970px; } }
+  @media (min-width: 1200px) {
+    .main .container {
+      width: 1170px; } }
+  @media (min-width: 1400px) {
+    .main .container {
+      width: 1300px; } }
 
 ul {
   list-style: none; }
@@ -37,7 +52,7 @@ ul {
   color: #242424;
   text-transform: uppercase; }
   .step .done {
-    color: darkgray; }
+    color: #2684ff; }
 
 .lined-title {
   color: #616161;
@@ -1560,13 +1575,49 @@ ul {
 .recharts-cartesian-axis-tick {
   user-select: none; }
 
+.tab__title i {
+  position: relative;
+  padding-left: 27px; }
+
+.tab__title i:after {
+  content: attr(data-num);
+  border: solid 1px currentColor;
+  border-radius: 100%;
+  display: inline-block;
+  width: 21px;
+  height: 21px;
+  position: absolute;
+  left: 0;
+  text-align: center;
+  vertical-align: middle;
+  line-height: 19px; }
+
+.tab__title--done i:after {
+  content: '';
+  background-color: #2684ff;
+  border-color: #2684ff; }
+
+.tab__title--done i:before {
+  content: '';
+  display: block;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 7px;
+  width: 12px;
+  transform: rotate(-45deg) translate(-26%, -140%);
+  border: #fefefe solid 3px;
+  border-top: none;
+  border-right: none;
+  z-index: 10; }
+
 .realmSelection {
   text-align: center; }
   .realmSelection .select-realm {
     display: inline-block;
     margin: 20px auto;
     height: 30px;
-    width: 400px;
     font-size: 20px; }
   .realmSelection .btn-large {
     display: inline-block;

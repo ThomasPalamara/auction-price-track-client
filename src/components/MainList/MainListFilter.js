@@ -9,11 +9,17 @@ import { setTextFilter, setProfessionFilter, setisCustomFilter } from '../../act
 
 const { Option } = Select;
 
+// TODO Redo the whole text filter so it works with craft and recipe items
+// TODO Decide if each filters should get its own component.
+// TODO Found a solution for the scroll bar appearing while switching type of list on mobile.
+
+// All filters values are sent to the store. The selector then filters the list in the MainList component.
+
 const MainListFilter = ({ professions, filters, dispatch }) => (
   <React.Fragment>
     <Row>
       <Col span={12} className="filterGroup">
-      <p className="filterGroup__label" htmlFor="professionFilter"> Type of list</p>
+        <p className="filterGroup__label" htmlFor="professionFilter"> Type of list</p>
         <Radio.Group
           value={filters.isCustom}
           onChange={e => dispatch(setisCustomFilter(e.target.value))}
@@ -36,6 +42,7 @@ const MainListFilter = ({ professions, filters, dispatch }) => (
           }
         </Select>
       </Col>
+
       <Input
         value={filters.text}
         style={{ width: 200 }}
@@ -58,6 +65,7 @@ MainListFilter.propTypes = {
 
 const mapStateToProps = (state) => {
   const array = [];
+  // Getting all the professions names from the list of recipes
   state.recipes.recipesList.map(recipe => recipe.professions.map(profession => (array.indexOf(profession) === -1 ? array.push(profession) : '')));
 
   return {

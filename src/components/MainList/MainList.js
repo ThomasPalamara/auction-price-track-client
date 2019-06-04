@@ -12,31 +12,35 @@ import { apiURL, recipePropTypes } from '../../constants';
 
 const antIcon = <Icon type="loading" style={{ fontSize: 24 }} spin />;
 
+// Cannot use hook without breaking the WH link refresher. Inside a hook they are updating infinitly.
+// Maybe the update need to be done inside the mainlistitem component to avoid that.
+// But it also mean calling the function for each and every items instead of calling it one time here
+
 export class MainList extends React.Component {
   constructor(props) {
     super(props);
     this.state = { loading: true };
   }
 
+  // Adding all recipe to the store.
   componentWillMount() {
     const { dispatch } = this.props;
 
     fetch(`${apiURL}/recipes`)
-      .then(res => res.json())
+      .then((res) => {
+        if (!res.ok) {
+          throw new Error('Not found');
+        }
+        return res.json();
+      })
       .then((response) => {
         this.setState({ loading: false });
         dispatch(addRecipes(response));
       });
   }
 
-  // componentDidMount() {
-  //   fetch(`${apiURL}/items`)
-  //     .then(res => res.json())
-  //     .then(response => (
-  //       this.setState({ response })
-  //     ));
-  // }
-
+  // Function provided by WowHead allowing us to refresh the icons and tooltip provided by them.
+  // We need to update everytime a recipe appear or disappear due to filters.
   componentDidUpdate() {
     window.$WowheadPower.refreshLinks();
   }
@@ -66,7 +70,7 @@ export class MainList extends React.Component {
                           element={item}
                           key={item._id}
                           itemLanguage={itemLanguage}
-                          active={selectedRecipe._id === item._id}
+                          active={(selectedRecipe && selectedRecipe._id === item._id) || false}
                         />
                       ))
                   }
@@ -85,11 +89,11 @@ MainList.propTypes = {
 
   itemLanguage: PropTypes.string,
 
-  selectedRecipe: recipePropTypes.isRequired,
+  selectedRecipe: recipePropTypes,
   dispatch: PropTypes.func.isRequired,
 };
 
-MainList.defaultProps = { itemLanguage: 'en' };
+MainList.defaultProps = { itemLanguage: 'en', selectedRecipe: null };
 
 const mapStatetoProps = state => ({
   itemLanguage: state.itemLanguage,

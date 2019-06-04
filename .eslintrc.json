@@ -21,6 +21,8 @@
     ],
     "rules": {
         "linebreak-style": 0,
+        "max-len": 0,
+        "jsx-a11y/no-noninteractive-element-to-interactive-role": 0,
         "react/jsx-filename-extension": [1, {
             "extensions": [".js", ".jsx"]
         }],

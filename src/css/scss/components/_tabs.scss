@@ -1,0 +1,41 @@
+.tab__title {
+  $size: 21px;
+  i{
+    position: relative;
+    padding-left: $size + 6;
+  }
+  i:after {
+    content: attr(data-num);
+    border: solid 1px currentColor;
+    border-radius: 100%;
+    display: inline-block;
+    width: $size;
+    height: $size;
+    position: absolute;
+    left: 0;
+    text-align: center;
+    vertical-align: middle;
+    line-height: $size - 2;
+
+  }
+
+  &--done {
+    i:after {
+      content: '';
+      background-color: $primary;
+      border-color: $primary;
+    }
+    i:before{
+      content: '';
+      display: block;
+      @include absCenter;
+      height: 7px;
+      width: 12px;
+      transform: rotate(-45deg) translate(-26%, -140%);
+      border: $white solid 3px;
+      border-top: none;
+      border-right: none;
+      z-index: 10;
+    }
+  }
+}

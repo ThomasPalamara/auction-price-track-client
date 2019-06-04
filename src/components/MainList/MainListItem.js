@@ -5,13 +5,14 @@ import { selectRecipe } from '../../actions/recipes';
 import WHLink from '../WHLink';
 import { recipePropTypes } from '../../constants';
 
+// TODO Maybe dispatching should be done in MainList via a prop function pushing the element up.
+// This way no need to connect this componenet just for the dispatch function. Need to decide if it would be useful or not.
 const MainListItem = ({ element, active, dispatch }) => (
   <li
-    // eslint-disable-next-line jsx-a11y/no-noninteractive-element-to-interactive-role
     role="button"
     className={`recipe list-item ${active ? 'active' : ''} `}
     onClick={() => dispatch(selectRecipe(element))}
-    onKeyDown={e => (e.keycode !== 13 ? e.preventDefault() : '')}
+    onKeyDown={e => (e.keycode === 13 ? dispatch(selectRecipe(element)) : '')}
   >
     <div className={element.isCustom ? 'generalBg' : `${element.professions[0]}Bg`}>
       <i className={`professionIcon ${element.professions[0]}Icon`} />

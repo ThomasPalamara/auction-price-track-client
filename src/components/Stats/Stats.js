@@ -15,10 +15,11 @@ const Stats = (props) => {
   const [itemsStats, setItemsStats] = useState(null);
   const [loading, setLoading] = useState(false);
 
+  // API ItemStat fetching function
   const fetchItemStats = (itemId) => {
     // return fetch(`${apiURL}/itemstats/${realm.value}/${itemId}`)
     // eslint-disable-next-line max-len
-    return fetch(`${apiURL}/itemstats/${realm.value}/${itemId}?start=2019-04-15T23:52:50.000Z&end=2019-04-16T07:52:50.000Z`)
+    return fetch(`${apiURL}/itemstats/${realm}/${itemId}?start=2019-06-01T23:52:50.000Z&end=2019-06-04T07:52:50.000Z`)
       .then((res) => {
         if (!res.ok) {
           throw new Error('Not found');
@@ -27,22 +28,32 @@ const Stats = (props) => {
       });
   };
 
+
   useEffect(() => {
-    if (realm.value && recipe._id) {
+    if (realm && recipe._id) {
+      // fetches : array of requests for all items in the recipe
       const fetches = [];
       console.log('%c Fetching', 'background: #222; color: #bada55');
 
       setLoading(true);
       setItemsStats(null);
 
+      // Pushing requests for recipes items then for craft
       recipe.reagents.map(reagent => fetches.push(fetchItemStats(reagent.blizzardId)));
       fetches.push(fetchItemStats(recipe.craft.blizzardId));
 
       Promise.all(fetches).then((responses) => {
+        console.log('responses', responses);
+        // formatedData regroups all the reponses from fetches at the following format :
+        // formatedData[itemId] = {items stats}
         const formatedData = {};
         responses.forEach((response) => {
           formatedData[response[0].itemId] = response;
         });
+
+        console.log('formatedData', formatedData);
+
+        
 
         Object.keys(formatedData).forEach((item) => {
           formatedData[item].forEach((element, i, array) => {
@@ -58,8 +69,6 @@ const Stats = (props) => {
     }
   }, [realm, recipe]);
 
-  console.log(loading);
-  console.log(itemsStats);
   const newDataHasBeenFetched = itemsStats && recipe.craft.blizzardId in itemsStats;
   console.log('newDataHasBeenFetched', newDataHasBeenFetched);
   let display;

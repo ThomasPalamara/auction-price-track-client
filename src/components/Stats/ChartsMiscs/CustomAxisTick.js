@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 
 
 const CustomAxisLabel = (props) => {
-  const { x, y, stroke, payload } = props;
+  const { x, y, payload } = props;
   // if (active) {
   //   const dateOptions = { weekday: 'short', year: 'numeric', month: 'short', day: 'numeric' };
   // console.log(payload);
