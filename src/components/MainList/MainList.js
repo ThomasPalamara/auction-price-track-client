@@ -49,19 +49,17 @@ export class MainList extends React.Component {
     const { recipesList, itemLanguage, selectedRecipe } = this.props;
     const { loading } = this.state;
     return (
-      <div className="MainList">
+      <div className="mainList">
         <Divider orientation="left">
           <h3 className="step">2/ Choose your Items</h3>
         </Divider>
 
         <MainListFilter />
 
-        <ItemLanguage />
-
-        <Row className="container-item-display">
+        <Row className="mainList__container">
           <Col span={24}>
             <Spin spinning={loading} indicator={antIcon}>
-              <ul className="list">
+              <ul className="mainList__list">
                 <FlipMove>
                   {recipesList
                     && recipesList

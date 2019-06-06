@@ -41,6 +41,9 @@ const RealmSelection = (props) => {
           placeholder="Realm"
           optionFilterProp="children"
           onChange={handleChange}
+          size="large"
+          allowClear
+          autoFocus
         >
           {realms && realms.map(realm => (
             <Option key={realm.value} value={realm.value}>{realm.label}</Option>

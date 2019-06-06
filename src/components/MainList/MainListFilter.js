@@ -17,9 +17,9 @@ const { Option } = Select;
 
 const MainListFilter = ({ professions, filters, dispatch }) => (
   <React.Fragment>
-    <Row>
-      <Col span={12} className="filterGroup">
-        <p className="filterGroup__label" htmlFor="professionFilter"> Type of list</p>
+    <Row className="filters__container" type="flex" justify="space-between" align="bottom">
+      <Col order="1" className="filterGroup">
+        <p className="filterGroup__label" htmlFor="professionFilter"> Type of list :</p>
         <Radio.Group
           value={filters.isCustom}
           onChange={e => dispatch(setisCustomFilter(e.target.value))}
@@ -29,8 +29,8 @@ const MainListFilter = ({ professions, filters, dispatch }) => (
         </Radio.Group>
       </Col>
 
-      <Col span={12} className="filterGroup">
-        <p className="filterGroup__label" htmlFor="professionFilter">Profession</p>
+      <Col order="2" className="filterGroup">
+        <p className="filterGroup__label" htmlFor="professionFilter">Profession :</p>
         <Select id="professionFilter" defaultValue="all" style={{ width: 120 }} onChange={value => dispatch(setProfessionFilter(value))}>
           <Option value="all">All</Option>
           {
@@ -42,13 +42,17 @@ const MainListFilter = ({ professions, filters, dispatch }) => (
           }
         </Select>
       </Col>
-
-      <Input
-        value={filters.text}
-        style={{ width: 200 }}
-        placeholder="Filter items"
-        onChange={e => (dispatch(setTextFilter(e.target.value)))}
-      />
+      <Col order="3" className="filterGroup">
+        <p className="filterGroup__label" htmlFor="textFilter">Search item name :</p>
+        <Input
+          id="textFilter"
+          value={filters.text}
+          style={{ width: 172 }}
+          placeholder="Filter items"
+          onChange={e => (dispatch(setTextFilter(e.target.value)))}
+        />
+      </Col>
+      <Col order="4" />
     </Row>
   </React.Fragment>
 );

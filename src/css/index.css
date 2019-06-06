@@ -7,7 +7,7 @@
   /* IE9 Compat Modes */ }
 
 .ant-tabs {
-  color: #242424; }
+  color: rgba(0, 0, 0, 0.54); }
 
 * {
   box-sizing: border-box; }
@@ -17,7 +17,7 @@ body {
   padding: 0;
   font-family: 'Lato', 'Montserrat Alternates', sans-serif !important;
   background-color: #f0f0f0 !important;
-  color: #242424; }
+  color: rgba(0, 0, 0, 0.54); }
 
 .main {
   padding-right: 15px;
@@ -49,7 +49,7 @@ ul {
 .step {
   font-size: 19px;
   margin-bottom: 0;
-  color: #242424;
+  color: rgba(0, 0, 0, 0.54);
   text-transform: uppercase; }
   .step .done {
     color: #2684ff; }
@@ -74,6 +74,9 @@ ul {
     right: 0;
     left: 0;
     background-color: #616161; }
+
+h1, h2, h3, h4, h5, h6 {
+  color: rgba(0, 0, 0, 0.87); }
 
 .m-0 {
   margin: 0 !important; }
@@ -1626,57 +1629,73 @@ ul {
     min-width: 70px;
     margin-left: 20px; }
 
-.MainList .container-item-display {
-  margin-top: 50px; }
-  .MainList .container-item-display .list {
-    text-align: center;
-    padding-left: 0;
-    overflow-y: auto;
-    min-height: 100px;
-    padding: 5px; }
-    .MainList .container-item-display .list > div {
-      display: flex;
-      flex-wrap: wrap;
-      align-content: stretch;
-      height: 100%; }
-    .MainList .container-item-display .list .list-item {
-      width: 430px;
-      display: inline-block;
-      padding: 5px 10px; }
-      .MainList .container-item-display .list .list-item.active {
-        border-color: #40a9ff;
-        outline: 0;
-        -webkit-box-shadow: 0 0 0 2px rgba(24, 144, 255, 0.2);
-        box-shadow: 0 0 0 2px rgba(24, 144, 255, 0.2);
-        border-right-width: 1px !important; }
-      .MainList .container-item-display .list .list-item div {
-        padding: 10px 0;
-        border-radius: 6px; }
-      .MainList .container-item-display .list .list-item .professionIcon {
-        height: 10px;
-        width: 10px; }
-      .MainList .container-item-display .list .list-item .alchemyIcon {
-        background-image: url("../img/alchemy.png"); }
-      .MainList .container-item-display .list .list-item h6 {
-        display: block;
-        font-size: 18px;
-        font-weight: bold; }
-      .MainList .container-item-display .list .list-item ul {
-        display: flex;
-        flex-wrap: wrap;
-        align-content: stretch;
-        height: 100%;
-        padding: 0; }
-        .MainList .container-item-display .list .list-item ul li {
-          display: inline-block;
-          width: 33.333332%; }
+.mainList .filters__container {
+  padding: 0 30px; }
 
-.MainList .itemLanguageBtn {
+.mainList__container {
+  margin-top: 25px; }
+
+.mainList__list {
+  text-align: center;
+  padding-left: 0;
+  overflow-y: auto;
+  min-height: 100px;
+  padding: 5px; }
+  .mainList__list > div {
+    display: flex;
+    flex-wrap: wrap;
+    align-content: stretch;
+    height: 100%; }
+
+.mainList__item {
+  width: 430px;
+  display: inline-block;
+  padding: 9px 12px;
+  border: #2684ff solid 2px;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  background-color: #fefefe; }
+  .mainList__item div {
+    padding: 10px 0;
+    border-radius: 6px; }
+  .mainList__item h6 {
+    display: block;
+    font-size: 14px;
+    text-transform: uppercase; }
+    .mainList__item h6 a {
+      color: #5f5f5f; }
+  .mainList__item ul {
+    display: flex;
+    flex-wrap: wrap;
+    align-content: stretch;
+    height: 100%;
+    padding: 0; }
+    .mainList__item ul li {
+      display: inline-block;
+      width: 33.333332%; }
+      .mainList__item ul li a {
+        color: rgba(0, 0, 0, 0.54); }
+  .mainList__item--enchant {
+    border-color: #7ec8ff; }
+  .mainList__item--jewelcrafting {
+    border-color: #fd5d5d; }
+  .mainList__item--alchemy {
+    border-color: #6fe2b4; }
+  .mainList__item--inscription {
+    border-color: #47cf73; }
+
+.mainList .itemLanguageBtn {
   margin-top: 20px;
   text-align: right; }
 
-.MainList .filterGroup__label {
-  display: block; }
+.mainList .filterGroup {
+  margin-bottom: 10px;
+  padding: 0 5px; }
+  .mainList .filterGroup__label {
+    display: block; }
+    @media (max-width: 767.98px) {
+      .mainList .filterGroup__label {
+        margin-bottom: .7px; } }
 
 .ant-table-like {
   background: #fafafa;

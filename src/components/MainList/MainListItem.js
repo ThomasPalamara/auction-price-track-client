@@ -10,27 +10,25 @@ import { recipePropTypes } from '../../constants';
 const MainListItem = ({ element, active, dispatch }) => (
   <li
     role="button"
-    className={`recipe list-item ${active ? 'active' : ''} `}
+    className={`mainList__item ${active ? 'active' : ''} mainList__item--${element.isCustom ? 'general' : element.professions[0]}`}
     onClick={() => dispatch(selectRecipe(element))}
     onKeyDown={e => (e.keycode === 13 ? dispatch(selectRecipe(element)) : '')}
   >
-    <div className={element.isCustom ? 'generalBg' : `${element.professions[0]}Bg`}>
-      <i className={`professionIcon ${element.professions[0]}Icon`} />
-      {element.craft && (
-        <h6>
-          <WHLink {...element.craft} />
-        </h6>
-      )}
+    <i className={`professionIcon ${element.professions[0]}Icon`} />
+    {element.craft && (
+      <h6>
+        <WHLink {...element.craft} />
+      </h6>
+    )}
 
-      <ul>
-        {element.reagents.map(reagent => (
-          <li key={reagent.blizzardId}>
-            <WHLink {...reagent} />
-          </li>
-        ))
-        }
-      </ul>
-    </div>
+    <ul>
+      {element.reagents.map(reagent => (
+        <li key={reagent.blizzardId}>
+          <WHLink {...reagent} />
+        </li>
+      ))
+      }
+    </ul>
   </li>
 );
 

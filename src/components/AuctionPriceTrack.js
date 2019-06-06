@@ -1,11 +1,13 @@
 /* eslint-disable react/require-default-props */
 import React, { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 import { Tabs } from 'antd';
 import { connect } from 'react-redux';
 
 import RealmSelection from './RealmSelection';
 import MainList from './MainList';
 import Stats from './Stats';
+import { selectRecipe } from '../actions/recipes';
 
 import { recipePropTypes } from '../constants';
 
@@ -14,16 +16,17 @@ const { TabPane } = Tabs;
 // TODO handle going back and forth between tabs (maybe deactivate them while previous step not completed (then should be more explicite that tabs represent steps by adding nubers ?))
 
 const AuctionPriceTrack = (props) => {
-  const { selectedRecipe } = props;
+  const { selectedRecipe, dispatch } = props;
   // Selected Realm could be handled by redux store (like selected recipe) but decided to try another way.
-  // Might nee to choose between the two ways.
+  // Might need to choose between the two ways.
   const [realm, setRealm] = useState(null);
-  // Active tab for mobile display
+  // Active tab for mobile display only
   const [activeTab, setActiveTab] = useState('1');
 
   const handleRealmPicked = (e) => {
-    setRealm(e);
     setActiveTab('2');
+    dispatch(selectRecipe(null));
+    setRealm(e);
   };
 
   const handleTabClick = (e) => {
@@ -46,7 +49,7 @@ const AuctionPriceTrack = (props) => {
 
   return (
     <div className="main">
-      <Tabs defaultActiveKey="1" onChange={handleTabClick} activeKey={activeTab}>
+      <Tabs defaultActiveKey="1" onChange={handleTabClick} activeKey={activeTab} tabBarStyle={{ textAlign: 'center' }}>
 
         <TabPane
           tab={(
@@ -92,7 +95,10 @@ const AuctionPriceTrack = (props) => {
 
 const mapStatetoProps = state => ({ selectedRecipe: state.recipes.selectedRecipe });
 
-AuctionPriceTrack.propTypes = { selectedRecipe: recipePropTypes };
+AuctionPriceTrack.propTypes = {
+  selectedRecipe: recipePropTypes,
+  dispatch: PropTypes.func.isRequired,
+};
 
 // More common way to do is to export by default for the HOC and call the function as parameters
 export default connect(mapStatetoProps)(AuctionPriceTrack);

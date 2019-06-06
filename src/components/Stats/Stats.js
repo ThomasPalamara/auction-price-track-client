@@ -30,7 +30,8 @@ const Stats = (props) => {
 
 
   useEffect(() => {
-    if (realm && recipe._id) {
+    console.log('Effect HOOK STATS');
+    if (realm && recipe) {
       // fetches : array of requests for all items in the recipe
       const fetches = [];
       console.log('%c Fetching', 'background: #222; color: #bada55');
@@ -52,9 +53,6 @@ const Stats = (props) => {
         });
 
         console.log('formatedData', formatedData);
-
-        
-
         Object.keys(formatedData).forEach((item) => {
           formatedData[item].forEach((element, i, array) => {
             // console.log(element.timestamp);
@@ -69,10 +67,10 @@ const Stats = (props) => {
     }
   }, [realm, recipe]);
 
-  const newDataHasBeenFetched = itemsStats && recipe.craft.blizzardId in itemsStats;
+  const newDataHasBeenFetched = itemsStats && recipe && recipe.craft.blizzardId in itemsStats;
   console.log('newDataHasBeenFetched', newDataHasBeenFetched);
   let display;
-  if (realm && recipe.type && !loading && newDataHasBeenFetched) {
+  if (realm && recipe && !loading && newDataHasBeenFetched) {
     display = (
       <Tabs defaultActiveKey="2">
         <TabPane tab={(<span><Icon type="border" /> Items</span>)} key="1">
@@ -84,7 +82,7 @@ const Stats = (props) => {
       </Tabs>
     );
   } else {
-    display = <h3>Please select {!realm && 'a realm'} {(!realm && !recipe.type) && 'and'} {!recipe.type && 'a recipe'}</h3>;
+    display = <h3>Please select {!realm && 'a realm'} {(!realm && !recipe) && 'and'} {!recipe && 'a recipe'}</h3>;
   }
 
   return (
