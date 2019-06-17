@@ -4,7 +4,8 @@
 import React from 'react';
 import { LineChart, Line, CartesianGrid, XAxis, YAxis, Tooltip, ReferenceArea } from 'recharts';
 import CustomTooltip from './ChartsMiscs/CustomTooltip';
-import CustomAxisTick from './ChartsMiscs/CustomAxisTick';
+import CustomPriceAxisTick from './ChartsMiscs/CustomPriceAxisTick';
+import CustomDateAxisTick from './ChartsMiscs/CustomDateAxisTick';
 
 
 const initialState = {
@@ -146,14 +147,14 @@ class ZoomGraph extends React.Component {
             dataKey="timestamp"
             domain={[left, right]}
             type="number"
-            tick={<CustomAxisTick/>}
+            tick={<CustomPriceAxisTick />}
           />
           <YAxis
             allowDataOverflow
             domain={[0, (isNaN(Number(top)) ? top => (top + top * 0.3) : Number(top) + Number(top) * 0.3)]}
             type="number"
             yAxisId="1"
-            tickFormatter={priceFormatter}
+            tick={<CustomDateAxisTick />}
           // tickFormatter={dateFormatter}
           />
           <Tooltip content={<CustomTooltip />} />

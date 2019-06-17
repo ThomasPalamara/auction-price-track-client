@@ -19,7 +19,7 @@ const Stats = (props) => {
   const fetchItemStats = (itemId) => {
     // return fetch(`${apiURL}/itemstats/${realm.value}/${itemId}`)
     // eslint-disable-next-line max-len
-    return fetch(`${apiURL}/itemstats/${realm}/${itemId}?start=2019-06-01T23:52:50.000Z&end=2019-06-04T07:52:50.000Z`)
+    return fetch(`${apiURL}/itemstats/${realm}/${itemId}?start=2019-06-01T23:52:50.000Z&end=2019-06-15T07:52:50.000Z`)
       .then((res) => {
         if (!res.ok) {
           throw new Error('Not found');

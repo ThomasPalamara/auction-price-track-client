@@ -9,7 +9,7 @@ import capitalize from 'functions/capitalize';
 const CustomTooltip = ({ payload, active }) => {
   // console.log(active);
   if (active) {
-    const dateOptions = { weekday: 'short', year: 'numeric', month: 'short', day: 'numeric' };
+    const dateOptions = { weekday: 'short', year: 'numeric', month: 'short', day: 'numeric', hour: 'numeric', minute: 'numeric'};
     // console.log(payload);
     // console.log(payload[0].dataKey);
     // console.log(payload[0].payload);

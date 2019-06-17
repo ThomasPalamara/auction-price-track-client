@@ -5,7 +5,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { LineChart, Line, CartesianGrid, XAxis, YAxis, Tooltip, ReferenceArea } from 'recharts';
 import CustomTooltip from './ChartsMiscs/CustomTooltip';
-import CustomAxisTick from './ChartsMiscs/CustomAxisTick';
+import CustomPriceAxisTick from './ChartsMiscs/CustomPriceAxisTick';
+import CustomDateAxisTick from './ChartsMiscs/CustomDateAxisTick';
 
 class ZoomGraph extends React.Component {
 
@@ -133,13 +134,14 @@ class ZoomGraph extends React.Component {
             dataKey="timestamp"
             domain={[left, right]}
             type="number"
+            tick={ <CustomDateAxisTick /> }
           />
           <YAxis
             allowDataOverflow
             domain={[bottom, top]}
             type="number"
             yAxisId="1"
-            tick={ <CustomAxisTick/> }
+            tick={ <CustomPriceAxisTick /> }
           />
           <Tooltip content={<CustomTooltip />} />
           <Line yAxisId="1" type="monotoneX" dot={false} dataKey="craft" stroke="#8884d8" animationDuration={300} />
