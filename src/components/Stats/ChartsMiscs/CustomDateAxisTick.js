@@ -14,12 +14,12 @@ const CustomAxisLabel = (props) => {
   // console.log(payload[0].payload[payload[0].datakey]);
   // const { payload, label } = this.props;
   // const date = new Date(payload[0].payload.timestamp);
-  const dateOptions = { weekday: 'short', year: 'numeric', month: 'short', day: 'numeric', hour: 'numeric', minute: 'numeric'};
+  const dateOptions = { day: 'numeric', month: 'short'};
   const date = new Date(payload.value);
-  console.log(payload);
+  console.log(x, y);
   return (
     <g transform={`translate(${x},${y})`}>
-      <text x={0} y={0} dy={0} textAnchor="end" fill="#666">{date.toLocaleDateString('en-GB', dateOptions)}</text>
+      <text x={20} y={15} dy={0} textAnchor="end" fill="#666">{date.toLocaleDateString('en-GB', dateOptions)}</text>
     </g>
   );
   // }

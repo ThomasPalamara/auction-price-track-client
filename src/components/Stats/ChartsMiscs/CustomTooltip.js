@@ -31,7 +31,7 @@ const CustomTooltip = ({ payload, active }) => {
                   <td>
                     {`${capitalize(e.dataKey)} :`}
                   </td>
-                  <td><PriceCoinDisplay price={e.payload[e.dataKey]} /></td>
+                  <td>{`${(e.payload[e.dataKey] / 10000).toFixed(2)}g`}</td>
                 </tr>
               );
             })}

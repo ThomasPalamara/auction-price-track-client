@@ -47,7 +47,7 @@ class GraphsItems extends React.Component {
     }
     return (
       <Row>
-        <Col span={6}>
+        <Col xs={24} lg={6}>
           <Radio.Group style={{ width: '100%' }} value={item} onChange={this.radioHandler}>
             {
               recipe.craft
@@ -73,7 +73,7 @@ class GraphsItems extends React.Component {
             </ul>
           </Radio.Group>
         </Col>
-        <Col span={18}>
+        <Col xs={24} lg={18}>
           <Spin spinning={loading} tip="Fetching..." indicator={loadIcon}>
             {graphs}
           </Spin>

@@ -78,6 +78,9 @@ ul {
 h1, h2, h3, h4, h5, h6 {
   color: rgba(0, 0, 0, 0.87); }
 
+.text-right {
+  text-align: right !important; }
+
 .m-0 {
   margin: 0 !important; }
 
@@ -1577,6 +1580,23 @@ h1, h2, h3, h4, h5, h6 {
 
 .recharts-cartesian-axis-tick {
   user-select: none; }
+
+.custom-tooltip {
+  background-color: rgba(0, 0, 0, 0.54);
+  padding: 10px 15px;
+  color: white; }
+
+.btn.update {
+  background-color: #fefefe;
+  border: solid 1px #cccccc;
+  padding: 5px 10px;
+  cursor: pointer;
+  box-shadow: 0 2px 0 rgba(0, 0, 0, 0.015);
+  transition: all .3s ease;
+  border-radius: 2px; }
+  .btn.update:hover {
+    color: #2684ff;
+    border-color: #2684ff; }
 
 .tab__title i {
   position: relative;

@@ -1,3 +1,29 @@
 .recharts-cartesian-axis-tick{
   user-select: none;
 }
+
+.custom-tooltip{
+  background-color: $body-color;
+  padding: 10px 15px;
+  color: white;
+}
+// .custom-tooltip{
+//   background-color: #fff;
+//   padding: 10px 15px;
+//   border: solid 1px $dark-grey;
+// }
+
+.btn.update{
+  background-color: $white;
+  border: solid 1px $dark-grey;
+  padding: 5px 10px;
+  cursor: pointer;
+  box-shadow: 0 2px 0 rgba(0,0,0,0.015);
+  transition: all .3s ease;
+  border-radius: 2px;
+  &:hover{
+    // border-style: dashed;
+    color: $primary;
+    border-color: $primary;
+  }
+}

@@ -3,7 +3,7 @@
 /* provided as it by rechats */
 import React from 'react';
 import PropTypes from 'prop-types';
-import { LineChart, Line, CartesianGrid, XAxis, YAxis, Tooltip, ReferenceArea } from 'recharts';
+import { LineChart, Line, CartesianGrid, XAxis, YAxis, Tooltip, ReferenceArea, ResponsiveContainer } from 'recharts';
 import CustomTooltip from './ChartsMiscs/CustomTooltip';
 import CustomPriceAxisTick from './ChartsMiscs/CustomPriceAxisTick';
 import CustomDateAxisTick from './ChartsMiscs/CustomDateAxisTick';
@@ -73,7 +73,7 @@ class ZoomGraph extends React.Component {
     //   craftValues.push(e.craft);
     //   recipeValues.push(e.recipe);
     // });
-    
+
     const offset = Math.max(data.craft);
     console.log(offset);
     const [bottom1, top1] = this.getAxisYDomain(refAreaLeft, refAreaRight, 'craft');
@@ -120,41 +120,39 @@ class ZoomGraph extends React.Component {
 
 
         <p>Highlight / Zoom - able Line Chart</p>
-        <LineChart
-          width={800}
-          height={400}
-          data={data}
-          onMouseDown={e => (e ? this.setState({ refAreaLeft: e.activeLabel }) : '')}
-          onMouseMove={e => refAreaLeft && this.setState({ refAreaRight: e.activeLabel })}
-          onMouseUp={this.zoom.bind(this)}
-        >
-          <CartesianGrid strokeDasharray="3 3" />
-          <XAxis
-            allowDataOverflow
-            dataKey="timestamp"
-            domain={[left, right]}
-            type="number"
-            tick={ <CustomDateAxisTick /> }
-          />
-          <YAxis
-            allowDataOverflow
-            domain={[bottom, top]}
-            type="number"
-            yAxisId="1"
-            tick={ <CustomPriceAxisTick /> }
-          />
-          <Tooltip content={<CustomTooltip />} />
-          <Line yAxisId="1" type="monotoneX" dot={false} dataKey="craft" stroke="#8884d8" animationDuration={300} />
-          <Line yAxisId="1" type="monotoneX" dot={false} dataKey="recipe" stroke="#82ca9d" animationDuration={300} />
+        <ResponsiveContainer width="100%" height={400}>
+          <LineChart
+            data={data}
+            onMouseDown={e => (e ? this.setState({ refAreaLeft: e.activeLabel }) : '')}
+            onMouseMove={e => refAreaLeft && this.setState({ refAreaRight: e.activeLabel })}
+            onMouseUp={this.zoom.bind(this)}
+          >
+            <CartesianGrid strokeDasharray="3 3" />
+            <XAxis
+              allowDataOverflow
+              dataKey="timestamp"
+              domain={[left, right]}
+              type="number"
+              tick={<CustomDateAxisTick />}
+            />
+            <YAxis
+              allowDataOverflow
+              domain={[bottom, top]}
+              type="number"
+              yAxisId="1"
+              tick={<CustomPriceAxisTick />}
+            />
+            <Tooltip content={<CustomTooltip />} />
+            <Line yAxisId="1" type="monotoneX" dot={false} dataKey="craft" stroke="#8884d8" animationDuration={300} />
+            <Line yAxisId="1" type="monotoneX" dot={false} dataKey="recipe" stroke="#82ca9d" animationDuration={300} />
 
-          {
-            (refAreaLeft && refAreaRight) ? (
-              <ReferenceArea yAxisId="1" x1={refAreaLeft} x2={refAreaRight} strokeOpacity={0.3} />) : null
+            {
+              (refAreaLeft && refAreaRight) ? (
+                <ReferenceArea yAxisId="1" x1={refAreaLeft} x2={refAreaRight} strokeOpacity={0.3} />) : null
 
-          }
-
-        </LineChart>
-
+            }
+          </LineChart>
+        </ResponsiveContainer>
       </div>
     );
   }

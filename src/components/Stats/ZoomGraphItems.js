@@ -2,7 +2,7 @@
 /* eslint-disable no-bitwise */
 /* provided as it by rechats */
 import React from 'react';
-import { LineChart, Line, CartesianGrid, XAxis, YAxis, Tooltip, ReferenceArea } from 'recharts';
+import { LineChart, Line, CartesianGrid, XAxis, YAxis, Tooltip, ReferenceArea, ResponsiveContainer } from 'recharts';
 import CustomTooltip from './ChartsMiscs/CustomTooltip';
 import CustomPriceAxisTick from './ChartsMiscs/CustomPriceAxisTick';
 import CustomDateAxisTick from './ChartsMiscs/CustomDateAxisTick';
@@ -16,8 +16,8 @@ const initialState = {
   refAreaRight: '',
   top: 'dataMax',
   bottom: 'dataMin-1',
-  top2 : 'dataMax',
-  bottom2 : 'dataMin-1',
+  top2: 'dataMax',
+  bottom2: 'dataMin-1',
   animation: true,
 };
 
@@ -123,53 +123,55 @@ class ZoomGraph extends React.Component {
     const { stats, itemStats } = this.props;
     return (
       <div className="highlight-bar-charts">
-        <button
-          type="button"
-          className="btn update"
-          onClick={this.zoomOut.bind(this)}
-        >
-          Zoom Out
-        </button>
+        <div className="text-right">
+          <button
+            type="button"
+            className="btn update"
+            onClick={this.zoomOut.bind(this)}
+          >
+            Reset Zoom
+          </button>
+        </div>
+
+        <ResponsiveContainer width="100%" height={400}>
+          <LineChart
+            width={800}
+            height={400}
+            data={data}
+            onMouseDown={e => (e ? this.setState({ refAreaLeft: e.activeLabel }) : '')} // prevent clicking on axis labels
+            onMouseMove={e => refAreaLeft && this.setState({ refAreaRight: e.activeLabel })}
+            onMouseUp={this.zoom.bind(this)}
+          >
+            <CartesianGrid strokeDasharray="3 3" />
+            <XAxis
+              allowDataOverflow
+              dataKey="timestamp"
+              domain={[left, right]}
+              type="number"
+              tick={<CustomDateAxisTick />}
+            />
+            <YAxis
+              allowDataOverflow
+              domain={[0, (isNaN(Number(top)) ? top => (top + top * 0.3) : Number(top) + Number(top) * 0.3)]}
+              type="number"
+              yAxisId="1"
+              tick={<CustomPriceAxisTick />}
+            // tickFormatter={dateFormatter}
+            />
+            <Tooltip content={<CustomTooltip />} />
+            {stats.map((stat, i) => (
+              <Line key={i} yAxisId="1" type="monotoneX" dot={false} dataKey={stat} stroke="#8884d8" animationDuration={300} />
+            ))}
 
 
-        <p>Highlight / Zoom - able Line Chart</p>
-        <LineChart
-          width={800}
-          height={400}
-          data={data}
-          onMouseDown={e => (e ? this.setState({ refAreaLeft: e.activeLabel }) : '')} // prevent clicking on axis labels
-          onMouseMove={e => refAreaLeft && this.setState({ refAreaRight: e.activeLabel })}
-          onMouseUp={this.zoom.bind(this)}
-        >
-          <CartesianGrid strokeDasharray="3 3" />
-          <XAxis
-            allowDataOverflow
-            dataKey="timestamp"
-            domain={[left, right]}
-            type="number"
-            tick={<CustomPriceAxisTick />}
-          />
-          <YAxis
-            allowDataOverflow
-            domain={[0, (isNaN(Number(top)) ? top => (top + top * 0.3) : Number(top) + Number(top) * 0.3)]}
-            type="number"
-            yAxisId="1"
-            tick={<CustomDateAxisTick />}
-          // tickFormatter={dateFormatter}
-          />
-          <Tooltip content={<CustomTooltip />} />
-          {stats.map((stat, i) => (
-            <Line key={i} yAxisId="1" type="monotoneX" dot={false} dataKey={stat} stroke='#8884d8' animationDuration={300} />
-          ))}
+            {
+              (refAreaLeft && refAreaRight) ? (
+                <ReferenceArea yAxisId="1" x1={refAreaLeft} x2={refAreaRight} strokeOpacity={0.3} />) : null
 
+            }
 
-          {
-            (refAreaLeft && refAreaRight) ? (
-              <ReferenceArea yAxisId="1" x1={refAreaLeft} x2={refAreaRight} strokeOpacity={0.3} />) : null
-
-          }
-
-        </LineChart>
+          </LineChart>
+        </ResponsiveContainer>
 
       </div>
     );
