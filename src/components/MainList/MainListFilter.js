@@ -11,7 +11,7 @@ const { Option } = Select;
 
 // TODO Redo the whole text filter so it works with craft and recipe items
 // TODO Decide if each filters should get its own component.
-// TODO Found a solution for the scroll bar appearing while switching type of list on mobile.
+// TODO Find a solution for the scroll bar appearing while switching type of list on mobile.
 
 // All filters values are sent to the store. The selector then filters the list in the MainList component.
 

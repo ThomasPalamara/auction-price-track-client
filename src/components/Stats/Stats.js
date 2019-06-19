@@ -31,6 +31,7 @@ const Stats = (props) => {
 
   useEffect(() => {
     console.log('Effect HOOK STATS');
+
     if (realm && recipe) {
       // fetches : array of requests for all items in the recipe
       const fetches = [];
@@ -66,6 +67,9 @@ const Stats = (props) => {
       });
     }
   }, [realm, recipe]);
+
+  // Update Wowhead links
+  useEffect(() => window.$WowheadPower.refreshLinks());
 
   const newDataHasBeenFetched = itemsStats && recipe && recipe.craft.blizzardId in itemsStats;
   console.log('newDataHasBeenFetched', newDataHasBeenFetched);

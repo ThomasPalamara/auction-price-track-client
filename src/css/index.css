@@ -9,6 +9,9 @@
 .ant-tabs {
   color: rgba(0, 0, 0, 0.54); }
 
+svg:not(:root) {
+  overflow: visible; }
+
 * {
   box-sizing: border-box; }
 
@@ -1584,7 +1587,8 @@ h1, h2, h3, h4, h5, h6 {
 .custom-tooltip {
   background-color: rgba(0, 0, 0, 0.54);
   padding: 10px 15px;
-  color: white; }
+  color: white;
+  border-radius: 4px; }
 
 .btn.update {
   background-color: #fefefe;
@@ -1673,7 +1677,7 @@ h1, h2, h3, h4, h5, h6 {
   padding: 9px 12px;
   border: #2684ff solid 2px;
   border-radius: 8px;
-  margin-bottom: 10px;
+  margin: 10px 10px;
   background-color: #fefefe; }
   .mainList__item div {
     padding: 10px 0;

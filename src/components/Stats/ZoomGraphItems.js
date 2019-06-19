@@ -2,7 +2,7 @@
 /* eslint-disable no-bitwise */
 /* provided as it by rechats */
 import React from 'react';
-import { LineChart, Line, CartesianGrid, XAxis, YAxis, Tooltip, ReferenceArea, ResponsiveContainer } from 'recharts';
+import { LineChart, Line, CartesianGrid, XAxis, YAxis, Tooltip, ReferenceArea, ResponsiveContainer, Legend } from 'recharts';
 import CustomTooltip from './ChartsMiscs/CustomTooltip';
 import CustomPriceAxisTick from './ChartsMiscs/CustomPriceAxisTick';
 import CustomDateAxisTick from './ChartsMiscs/CustomDateAxisTick';
@@ -158,6 +158,7 @@ class ZoomGraph extends React.Component {
               tick={<CustomPriceAxisTick />}
             // tickFormatter={dateFormatter}
             />
+            <Legend />
             <Tooltip content={<CustomTooltip />} />
             {stats.map((stat, i) => (
               <Line key={i} yAxisId="1" type="monotoneX" dot={false} dataKey={stat} stroke="#8884d8" animationDuration={300} />

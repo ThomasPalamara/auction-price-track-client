@@ -1,3 +1,7 @@
 .ant-tabs{
   color: $body-color;
 }
+
+svg:not(:root) {
+    overflow: visible;
+}

@@ -3,7 +3,7 @@
 /* provided as it by rechats */
 import React from 'react';
 import PropTypes from 'prop-types';
-import { LineChart, Line, CartesianGrid, XAxis, YAxis, Tooltip, ReferenceArea, ResponsiveContainer } from 'recharts';
+import { LineChart, Line, CartesianGrid, XAxis, YAxis, Tooltip, ReferenceArea, ResponsiveContainer, Legend } from 'recharts';
 import CustomTooltip from './ChartsMiscs/CustomTooltip';
 import CustomPriceAxisTick from './ChartsMiscs/CustomPriceAxisTick';
 import CustomDateAxisTick from './ChartsMiscs/CustomDateAxisTick';
@@ -136,15 +136,17 @@ class ZoomGraph extends React.Component {
               tick={<CustomDateAxisTick />}
             />
             <YAxis
+              label={{ value: 'Market Price', angle: -90, position: 'left', offset: 20 }}
               allowDataOverflow
               domain={[bottom, top]}
               type="number"
               yAxisId="1"
               tick={<CustomPriceAxisTick />}
             />
+            <Legend />
             <Tooltip content={<CustomTooltip />} />
-            <Line yAxisId="1" type="monotoneX" dot={false} dataKey="craft" stroke="#8884d8" animationDuration={300} />
-            <Line yAxisId="1" type="monotoneX" dot={false} dataKey="recipe" stroke="#82ca9d" animationDuration={300} />
+            <Line yAxisId="1" type="monotoneX" dot={false} dataKey="craft" stroke="#00a9ff" animationDuration={300} />
+            <Line yAxisId="1" type="monotoneX" dot={false} dataKey="recipe" stroke="#ff5a46" animationDuration={300} />
 
             {
               (refAreaLeft && refAreaRight) ? (
