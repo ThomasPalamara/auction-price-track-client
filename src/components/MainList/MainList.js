@@ -59,8 +59,7 @@ export class MainList extends React.Component {
         <Row className="mainList__container">
           <Col span={24}>
             <Spin spinning={loading} indicator={antIcon}>
-              <ul className="mainList__list">
-                <FlipMove>
+                <FlipMove className="mainList__list">
                   {recipesList
                     && recipesList
                       .map(item => (
@@ -73,7 +72,6 @@ export class MainList extends React.Component {
                       ))
                   }
                 </FlipMove>
-              </ul>
             </Spin>
           </Col>
         </Row>
